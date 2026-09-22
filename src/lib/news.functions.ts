@@ -3,11 +3,44 @@ import { createServerFn } from "@tanstack/react-start";
 import { FALLBACK_NEWS, type NewsItem } from "./news-data";
 
 /**
- * AACC portalındaki haber/duyuru akışını okur.
- * Portal uç noktası (AACC_NEWS_URL) tanımlı değilse veya cevap vermezse
- * yedek içerik döner; böylece site her durumda dolu görünür.
+ * Sektörel akış içeriği:
+ * - Duyurular: veritabanındaki yayındaki kayıtlar (varsa) önce gelir.
+ * - Haberler: AACC portal akışı (AACC_NEWS_URL) veya yedek içerik.
  */
-export const getSectorNews = createServerFn({ method: "GET" }).handler(async (): Promise<NewsItem[]> => {
+export const getSectorNews = createServerFn({ method: "GET" }).handler(
+  async (): Promise<NewsItem[]> => {
+    const announcements = await readAnnouncements();
+    const rest = await readPortalFeed();
+    const merged = [...announcements, ...rest];
+    return merged.length > 0 ? merged.slice(0, 24) : FALLBACK_NEWS;
+  },
+);
+
+async function readAnnouncements(): Promise<NewsItem[]> {
+  try {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data } = await supabaseAdmin
+      .from("announcements")
+      .select("id, title, summary, category, url, created_at")
+      .eq("is_published", true)
+      .order("created_at", { ascending: false })
+      .limit(12);
+
+    return (data ?? []).map((a) => ({
+      id: a.id,
+      title: a.title,
+      summary: a.summary,
+      category: a.category,
+      kind: "duyuru" as const,
+      date: a.created_at,
+      ...(a.url ? { href: a.url } : {}),
+    }));
+  } catch {
+    return [];
+  }
+}
+
+async function readPortalFeed(): Promise<NewsItem[]> {
   const url = process.env["AACC_NEWS_URL"];
   if (!url) return FALLBACK_NEWS;
 
@@ -35,4 +68,4 @@ export const getSectorNews = createServerFn({ method: "GET" }).handler(async ():
   } catch {
     return FALLBACK_NEWS;
   }
-});
+}

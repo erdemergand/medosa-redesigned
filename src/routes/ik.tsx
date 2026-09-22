@@ -4,7 +4,7 @@ import { GraduationCap, HeartHandshake, Layers, TrendingUp, Users } from "lucide
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
-import { sendFormMail } from "@/lib/mail.functions";
+import { submitApplication } from "@/lib/applications.functions";
 
 export const Route = createFileRoute("/ik")({
   head: () => ({
@@ -74,7 +74,7 @@ function fileToBase64(file: File) {
 }
 
 function IK() {
-  const sendMail = useServerFn(sendFormMail);
+  const sendApplication = useServerFn(submitApplication);
   const [tab, setTab] = useState<"is" | "staj">("is");
   const [sent, setSent] = useState<null | "is" | "staj">(null);
   const [sending, setSending] = useState(false);
@@ -146,39 +146,32 @@ function IK() {
               setError(null);
               setSending(true);
               try {
-                let attachment;
+                let cvFile;
                 const cv = fd.get("cv");
                 if (cv instanceof File && cv.size > 0) {
                   if (cv.size > 6 * 1024 * 1024) {
                     throw new Error("CV dosyası en fazla 6 MB olabilir.");
                   }
-                  attachment = {
+                  cvFile = {
                     filename: cv.name,
                     contentType: cv.type || "application/octet-stream",
                     data: await fileToBase64(cv),
                   };
                 }
 
-                await sendMail({
+                await sendApplication({
                   data: {
-                    subject: `${isJob ? "İş" : "Staj"} başvurusu — ${get("ad")}`,
-                    replyTo: get("email"),
-                    attachment,
-                    fields: [
-                      { label: "Başvuru tipi", value: isJob ? "İş başvurusu" : "Staj başvurusu" },
-                      { label: "Ad - Soyad", value: get("ad") },
-                      { label: "E-Posta", value: get("email") },
-                      { label: "Telefon", value: get("tel") },
-                      { label: "Başvuru Yeri", value: get("yer") },
-                      ...(isJob
-                        ? [{ label: "Pozisyon", value: get("pozisyon") }]
-                        : [
-                            { label: "Staj Türü", value: get("stajTuru") },
-                            { label: "Okul", value: get("okul") },
-                          ]),
-                      { label: "Konu", value: get("konu") },
-                      { label: "Mesaj", value: get("mesaj") },
-                    ],
+                    kind: isJob ? "is" : "staj",
+                    fullName: get("ad"),
+                    email: get("email"),
+                    phone: get("tel"),
+                    location: get("yer"),
+                    position: isJob ? get("pozisyon") : "",
+                    internshipType: isJob ? "" : get("stajTuru"),
+                    school: isJob ? "" : get("okul"),
+                    subject: get("konu"),
+                    message: get("mesaj"),
+                    cv: cvFile,
                   },
                 });
                 setSent(tab);
