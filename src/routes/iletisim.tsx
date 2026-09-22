@@ -353,7 +353,97 @@ function Iletisim() {
           </form>
         </div>
       </section>
+      {BRANCHES.map((b) => {
+        const cityPage = CITY_PAGES.find((c) => c.branchCity === b.city);
+        const offices = cityPage
+          ? CUSTOMS_OFFICES.filter((o) => cityPage.officeCities.includes(o.city))
+          : [];
+        return (
+          <Modal
+            key={b.city}
+            open={branchModal === b.city}
+            onClose={() => setBranchModal(null)}
+            label={`${b.city} ofisi`}
+          >
+            <span className="eyebrow text-cobalt">Şubemiz</span>
+            <h2 className="mt-2 text-xl font-bold text-navy">{b.city}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{b.address}</p>
+            {b.note && <p className="mt-2 text-xs text-muted-foreground/80">{b.note}</p>}
+
+            <div className="mt-5 space-y-2 border-t border-border pt-4 text-sm">
+              <a
+                href={`tel:${b.phoneHref ?? (b.phone ?? "0212 551 43 07").replace(/\s/g, "")}`}
+                className="flex items-center gap-2 font-semibold text-foreground hover:text-cobalt"
+              >
+                <Phone className="h-4 w-4 text-cobalt" /> {b.phone ?? "0212 551 43 07"}
+              </a>
+              <a
+                href={`mailto:${b.email ?? OFFICE_EMAIL}`}
+                className="flex items-center gap-2 font-semibold text-foreground hover:text-cobalt"
+              >
+                <Mail className="h-4 w-4 text-cobalt" /> {b.email ?? OFFICE_EMAIL}
+              </a>
+            </div>
+
+            {cityPage && (
+              <>
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                  {cityPage.intro}
+                </p>
+                {offices.length > 0 && (
+                  <>
+                    <h3 className="mt-5 text-xs font-bold uppercase tracking-wide text-navy">
+                      Bu bölgede çalıştığımız gümrük müdürlükleri
+                    </h3>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {offices.map((o) => (
+                        <span
+                          key={o.name}
+                          className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
+                        >
+                          {o.name}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </>
+            )}
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveBranch(b);
+                  setBranchModal(null);
+                }}
+                className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cobalt to-primary px-4 py-2 text-xs font-semibold text-white"
+              >
+                <MapPin className="h-3.5 w-3.5" /> Haritada gör
+              </button>
+              <a
+                href={directionsUrl(b.q)}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-border px-4 py-2 text-xs font-semibold text-foreground hover:bg-muted"
+              >
+                Yol tarifi
+              </a>
+              {cityPage && (
+                <Link
+                  to="/gumruk-musavirligi/$sehir"
+                  params={{ sehir: cityPage.slug }}
+                  className="rounded-full border border-border px-4 py-2 text-xs font-semibold text-foreground hover:bg-muted"
+                >
+                  {cityPage.city} sayfası
+                </Link>
+              )}
+            </div>
+          </Modal>
+        );
+      })}
     </>
+
   );
 }
 
