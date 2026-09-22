@@ -74,7 +74,10 @@ const PORTALS = [
 ];
 
 function ETakip() {
+  const [portal, setPortal] = useState<string | null>(null);
+
   return (
+
     <>
       <PageHero
         eyebrow="E-Takip"
