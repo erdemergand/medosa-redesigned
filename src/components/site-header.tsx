@@ -26,12 +26,13 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
         <Link to="/" className="flex items-center gap-3">
-          <img
-            src={logoFull.url}
-            alt="Medosa logosu"
-            className="h-14 w-auto object-contain md:h-16"
-          />
+          <img src={logoMark.url} alt="Medosa logosu" className="h-14 w-14 object-contain" />
+          <div>
+            <div className="font-display text-xl font-extrabold text-foreground">MEDOSA</div>
+            <div className="text-[11px] text-muted-foreground">Customs • Trade • Technology</div>
+          </div>
         </Link>
+
 
         <nav className="hidden items-center gap-6 md:flex">
           {NAV.map((n) =>
