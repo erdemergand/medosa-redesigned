@@ -1,9 +1,23 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, Radar, X } from "lucide-react";
+import { Menu, Moon, Radar, Sun, X } from "lucide-react";
 import { useState } from "react";
 
 import logo from "@/assets/medosa-logo.jpg.asset.json";
 import { NAV } from "@/lib/site-data";
+import { useTheme } from "@/lib/theme";
+
+function ThemeToggle({ className = "" }: { className?: string }) {
+  const { theme, toggle } = useTheme();
+  return (
+    <button
+      onClick={toggle}
+      aria-label={theme === "dark" ? "Gündüz moduna geç" : "Gece moduna geç"}
+      className={`inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-muted ${className}`}
+    >
+      {theme === "dark" ? <Sun className="h-4.5 w-4.5" /> : <Moon className="h-4.5 w-4.5" />}
+    </button>
+  );
+}
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,10 +26,10 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
         <Link to="/" className="flex items-center gap-3">
-          <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl ring-1 ring-border">
+          <span className="logo-tile flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl ring-1 ring-border">
             <img src={logo.url} alt="Medosa logosu" className="h-full w-full object-cover" />
           </span>
-          <span className="font-display text-lg font-extrabold tracking-tight text-navy">
+          <span className="font-display text-2xl font-extrabold tracking-tight text-navy">
             MEDOSA
           </span>
         </Link>
@@ -46,15 +60,19 @@ export function SiteHeader() {
               </Link>
             ),
           )}
+          <ThemeToggle />
         </nav>
 
-        <button
-          aria-label="Menü"
-          onClick={() => setMenuOpen((v) => !v)}
-          className="rounded-md p-2 text-foreground md:hidden"
-        >
-          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            aria-label="Menü"
+            onClick={() => setMenuOpen((v) => !v)}
+            className="rounded-md p-2 text-foreground"
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {menuOpen && (
