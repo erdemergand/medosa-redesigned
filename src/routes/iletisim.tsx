@@ -128,19 +128,22 @@ function Iletisim() {
                               : "border-border bg-card hover:border-cobalt/40"
                           }`}
                         >
-                          {(() => {
-                            const OfficeIcon = OFFICE_ICONS[o.type];
-                            return (
-                              <OfficeIcon
-                                aria-label={OFFICE_LABELS[o.type]}
-                                className="mt-0.5 h-4 w-4 shrink-0 text-cobalt"
-                              />
-                            );
-                          })()}
+                          <span className="mt-0.5 flex shrink-0 items-center gap-1">
+                            {o.types.map((t) => {
+                              const OfficeIcon = OFFICE_ICONS[t];
+                              return (
+                                <OfficeIcon
+                                  key={t}
+                                  aria-label={OFFICE_LABELS[t]}
+                                  className="h-4 w-4 text-cobalt"
+                                />
+                              );
+                            })}
+                          </span>
                           <span>
                             <span className="block text-sm font-semibold text-navy">{o.name}</span>
                             <span className="text-xs text-muted-foreground">
-                              {o.city} · {OFFICE_LABELS[o.type]}
+                              {o.city} · {o.types.map((t) => OFFICE_LABELS[t]).join(" / ")}
                             </span>
                           </span>
                         </button>
