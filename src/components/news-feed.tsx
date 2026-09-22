@@ -99,14 +99,19 @@ export function NewsFeed({ compact = false }: { compact?: boolean }) {
                     )
                   )}
                 </div>
-                <p className="mt-1 text-sm font-semibold leading-snug text-white">{n.title}</p>
+                <p className="mt-1 line-clamp-2 text-sm font-semibold leading-snug text-white">
+                  {n.title}
+                </p>
                 {locked ? (
-                  <p className="mt-1 text-xs leading-relaxed text-white/55">
+                  <p className="mt-1 line-clamp-1 text-xs leading-relaxed text-white/55">
                     Detay için aacc portal girişi gerekir — görmek için tıklayın.
                   </p>
                 ) : (
-                  !compact && n.summary && (
-                    <p className="mt-1 text-xs leading-relaxed text-white/60">{n.summary}</p>
+                  !compact &&
+                  n.summary && (
+                    <p className="mt-1 line-clamp-1 text-xs leading-relaxed text-white/60">
+                      {n.summary}
+                    </p>
                   )
                 )}
               </Wrapper>
