@@ -75,8 +75,16 @@ const BRANCHES = [
     desc: "1456 sok. Bener Nural İş Hanı No:10 Kat:1 / Alsancak / İZMİR (2007 yılında faaliyete geçti.)",
     note: "Ege bölgesi operasyonları",
   },
-  { city: "Bursa Şubesi", desc: "2011 yılı sonu itibariyle açıldı.", note: "Marmara bölgesi operasyonları" },
-  { city: "Kayseri Şubesi", desc: "Şubat 2024'te kuruldu.", note: "İç Anadolu bölgesi operasyonları" },
+  {
+    city: "Bursa Şubesi",
+    desc: "Fethiye Mah. Fesleğen Sok. No:2/1 Ata Plaza D:5 (Ata Bulvarı) Nilüfer / Bursa (2011 yılı sonu itibariyle açıldı.)",
+    note: "Marmara bölgesi operasyonları",
+  },
+  {
+    city: "Kayseri Şubesi",
+    desc: "Serbest Bölge, Anbar Mah. 54. Cd. 15-D, Melikgazi / KAYSERİ (Şubat 2024'te kuruldu.)",
+    note: "İç Anadolu bölgesi operasyonları",
+  },
 ];
 
 const SECTORS = [
