@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, Radar } from "lucide-react";
 
 import heroPort from "@/assets/hero-port.jpg";
-import { METRICS, WHATSAPP } from "@/lib/site-data";
+import { METRICS } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,31 +56,27 @@ function Index() {
 
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
-            to="/iletisim"
+            to="/e-takip"
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cobalt/30 transition-all hover:-translate-y-0.5"
           >
-            Teklif Alın
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+            </span>
+            <Radar className="h-4 w-4" /> E-Takip Portalı
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noreferrer"
-            className="glass-panel inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-white"
-          >
-            <MessageCircle className="h-4 w-4" /> Hızlı İletişim
-          </a>
-          <Link
-            to="/e-takip"
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white/85 transition-colors hover:bg-white/10"
-          >
-            E-Takip
           </Link>
           <Link
             to="/uygulamalar"
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white/85 transition-colors hover:bg-white/10"
+            className="glass-panel inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-white"
           >
             E-Uygulamalar
+          </Link>
+          <Link
+            to="/iletisim"
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white/85 transition-colors hover:bg-white/10"
+          >
+            İletişim
           </Link>
         </div>
 

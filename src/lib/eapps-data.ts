@@ -58,7 +58,7 @@ export const SAGLIK_BAKANLIGI: AppLink[] = [
 export const TARIM_ORMAN: AppLink[] = [
   {
     name: "Sınır Veteriner Kontrol Noktaları (VSKN / Veteriner Giriş Belgesi)",
-    href: "https://vgb.tarimorman.gov.tr/",
+    href: "https://vskn.tarimorman.gov.tr/",
   },
   { name: "Bitki Karantina Kayıt Takip Sistemi (BKS)", href: "https://bks.tarimorman.gov.tr/" },
   { name: "Tarım TPS Kontrol Belgesi", href: "https://tps.tarimorman.gov.tr/" },

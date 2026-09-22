@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ETakipRouteImport } from './routes/e-takip'
 import { Route as HakkimizdaRouteImport } from './routes/hakkimizda'
 import { Route as HizmetlerRouteImport } from './routes/hizmetler'
+import { Route as IkRouteImport } from './routes/ik'
 import { Route as IletisimRouteImport } from './routes/iletisim'
 import { Route as UygulamalarRouteImport } from './routes/uygulamalar'
 
@@ -36,6 +37,11 @@ const HizmetlerRoute = HizmetlerRouteImport.update({
   path: '/hizmetler',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IkRoute = IkRouteImport.update({
+  id: '/ik',
+  path: '/ik',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IletisimRoute = IletisimRouteImport.update({
   id: '/iletisim',
   path: '/iletisim',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/e-takip': typeof ETakipRoute
   '/hakkimizda': typeof HakkimizdaRoute
   '/hizmetler': typeof HizmetlerRoute
+  '/ik': typeof IkRoute
   '/iletisim': typeof IletisimRoute
   '/uygulamalar': typeof UygulamalarRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/e-takip': typeof ETakipRoute
   '/hakkimizda': typeof HakkimizdaRoute
   '/hizmetler': typeof HizmetlerRoute
+  '/ik': typeof IkRoute
   '/iletisim': typeof IletisimRoute
   '/uygulamalar': typeof UygulamalarRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/e-takip': typeof ETakipRoute
   '/hakkimizda': typeof HakkimizdaRoute
   '/hizmetler': typeof HizmetlerRoute
+  '/ik': typeof IkRoute
   '/iletisim': typeof IletisimRoute
   '/uygulamalar': typeof UygulamalarRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/e-takip'
     | '/hakkimizda'
     | '/hizmetler'
+    | '/ik'
     | '/iletisim'
     | '/uygulamalar'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/e-takip'
     | '/hakkimizda'
     | '/hizmetler'
+    | '/ik'
     | '/iletisim'
     | '/uygulamalar'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/e-takip'
     | '/hakkimizda'
     | '/hizmetler'
+    | '/ik'
     | '/iletisim'
     | '/uygulamalar'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   ETakipRoute: typeof ETakipRoute
   HakkimizdaRoute: typeof HakkimizdaRoute
   HizmetlerRoute: typeof HizmetlerRoute
+  IkRoute: typeof IkRoute
   IletisimRoute: typeof IletisimRoute
   UygulamalarRoute: typeof UygulamalarRoute
 }
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HizmetlerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ik': {
+      id: '/ik'
+      path: '/ik'
+      fullPath: '/ik'
+      preLoaderRoute: typeof IkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/iletisim': {
       id: '/iletisim'
       path: '/iletisim'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   ETakipRoute: ETakipRoute,
   HakkimizdaRoute: HakkimizdaRoute,
   HizmetlerRoute: HizmetlerRoute,
+  IkRoute: IkRoute,
   IletisimRoute: IletisimRoute,
   UygulamalarRoute: UygulamalarRoute,
 }

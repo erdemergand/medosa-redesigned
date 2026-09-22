@@ -1,43 +1,30 @@
 import { Link } from "@tanstack/react-router";
-import { MessageCircle } from "lucide-react";
 
 import logo from "@/assets/medosa-logo.jpg.asset.json";
-import { NAV, WHATSAPP } from "@/lib/site-data";
+import { NAV } from "@/lib/site-data";
 
 export function SiteFooter() {
   return (
-    <>
-      <footer className="bg-navy-deep py-12">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-5 sm:flex-row">
-          <div className="flex items-center gap-3">
-            <img src={logo.url} alt="Medosa logosu" className="h-10 w-10 rounded-lg object-cover" />
-            <div>
-              <div className="font-display text-sm font-extrabold text-white">MEDOSA</div>
-              <div className="text-xs text-white/50">Customs • Trade • Technology</div>
-            </div>
+    <footer className="bg-navy-deep py-12">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-5 sm:flex-row">
+        <div className="flex items-center gap-3">
+          <img src={logo.url} alt="Medosa logosu" className="h-10 w-10 rounded-lg object-cover" />
+          <div>
+            <div className="font-display text-sm font-extrabold text-white">MEDOSA</div>
+            <div className="text-xs text-white/50">Customs • Trade • Technology</div>
           </div>
-          <nav className="flex flex-wrap items-center justify-center gap-5">
-            {NAV.map((n) => (
-              <Link key={n.to} to={n.to} className="text-xs text-white/60 hover:text-white">
-                {n.label}
-              </Link>
-            ))}
-          </nav>
-          <p className="text-xs text-white/50">
-            © {new Date().getFullYear()} Medosa Gümrük Müşavirliği
-          </p>
         </div>
-      </footer>
-
-      <a
-        href={WHATSAPP}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="WhatsApp ile iletişime geç"
-        className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-cobalt text-white shadow-lg shadow-cobalt/40 transition-transform hover:scale-105"
-      >
-        <MessageCircle className="h-6 w-6" />
-      </a>
-    </>
+        <nav className="flex flex-wrap items-center justify-center gap-5">
+          {NAV.map((n) => (
+            <Link key={n.to} to={n.to} className="text-xs text-white/60 hover:text-white">
+              {n.label}
+            </Link>
+          ))}
+        </nav>
+        <p className="text-xs text-white/50">
+          © {new Date().getFullYear()} Medosa Gümrük Müşavirliği
+        </p>
+      </div>
+    </footer>
   );
 }

@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, MessageCircle, X } from "lucide-react";
+import { Menu, Radar, X } from "lucide-react";
 import { useState } from "react";
 
 import logo from "@/assets/medosa-logo.jpg.asset.json";
-import { NAV, WHATSAPP } from "@/lib/site-data";
+import { NAV } from "@/lib/site-data";
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,35 +20,33 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {NAV.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              activeProps={{ className: "text-primary" }}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              {n.label}
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-6 md:flex">
+          {NAV.map((n) =>
+            "featured" in n && n.featured ? (
+              <Link
+                key={n.to}
+                to={n.to}
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-navy px-5 py-2 text-sm font-semibold text-white shadow-md shadow-cobalt/25 transition-all hover:-translate-y-0.5"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/70" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+                </span>
+                <Radar className="h-4 w-4" />
+                {n.label}
+              </Link>
+            ) : (
+              <Link
+                key={n.to}
+                to={n.to}
+                activeProps={{ className: "text-primary" }}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                {n.label}
+              </Link>
+            ),
+          )}
         </nav>
-
-        <div className="hidden items-center gap-3 md:flex">
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-          >
-            <MessageCircle className="h-4 w-4" /> WhatsApp
-          </a>
-          <Link
-            to="/iletisim"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Teklif Alın
-          </Link>
-        </div>
 
         <button
           aria-label="Menü"
@@ -62,23 +60,27 @@ export function SiteHeader() {
       {menuOpen && (
         <div className="border-t border-border bg-background px-5 py-4 md:hidden">
           <div className="flex flex-col gap-4">
-            {NAV.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-foreground"
-              >
-                {n.label}
-              </Link>
-            ))}
-            <Link
-              to="/iletisim"
-              onClick={() => setMenuOpen(false)}
-              className="rounded-full bg-primary px-4 py-2.5 text-center text-sm font-semibold text-primary-foreground"
-            >
-              Teklif Alın
-            </Link>
+            {NAV.map((n) =>
+              "featured" in n && n.featured ? (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setMenuOpen(false)}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-navy px-4 py-2.5 text-sm font-semibold text-white"
+                >
+                  <Radar className="h-4 w-4" /> {n.label}
+                </Link>
+              ) : (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-sm font-medium text-foreground"
+                >
+                  {n.label}
+                </Link>
+              ),
+            )}
           </div>
         </div>
       )}

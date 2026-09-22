@@ -70,7 +70,11 @@ const BRANCHES = [
     desc: "Şirinevler Mh. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200, Bahçelievler / İstanbul",
     note: "İstanbul'daki tüm gümrük sahalarında saha kadrosu",
   },
-  { city: "İzmir Şubesi", desc: "2007 yılında faaliyete geçti.", note: "Ege bölgesi operasyonları" },
+  {
+    city: "İzmir Şubesi",
+    desc: "1456 sok. Bener Nural İş Hanı No:10 Kat:1 / Alsancak / İZMİR (2007 yılında faaliyete geçti.)",
+    note: "Ege bölgesi operasyonları",
+  },
   { city: "Bursa Şubesi", desc: "2011 yılı sonu itibariyle açıldı.", note: "Marmara bölgesi operasyonları" },
   { city: "Kayseri Şubesi", desc: "Şubat 2024'te kuruldu.", note: "İç Anadolu bölgesi operasyonları" },
 ];

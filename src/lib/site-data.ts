@@ -9,15 +9,64 @@ import {
   Warehouse,
 } from "lucide-react";
 
-export const WHATSAPP = "https://wa.me/905000000000";
-
 export const NAV = [
-  { to: "/hizmetler", label: "Hizmetler" },
-  { to: "/e-takip", label: "E-Takip" },
-  { to: "/uygulamalar", label: "E-Uygulamalar" },
   { to: "/hakkimizda", label: "Hakkımızda" },
+  { to: "/hizmetler", label: "Hizmetler" },
+  { to: "/ik", label: "İK" },
+  { to: "/uygulamalar", label: "E-Uygulamalar" },
+  { to: "/e-takip", label: "E-Takip", featured: true },
   { to: "/iletisim", label: "İletişim" },
 ] as const;
+
+export const BRANCHES = [
+  {
+    city: "İstanbul Merkez",
+    address:
+      "Şirinevler Mh. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200, Bahçelievler / İstanbul",
+    note: "Genel müdürlük ve tüm İstanbul gümrük sahalarında saha kadrosu",
+    q: "Kocasinan İş Merkezi Adnan Kahveci Bulvarı Şirinevler Bahçelievler İstanbul",
+  },
+  {
+    city: "İzmir Şubesi",
+    address: "1456 sok. Bener Nural İş Hanı No:10 Kat:1 / Alsancak / İZMİR",
+    note: "Ege bölgesi operasyonları (2007)",
+    q: "1456 Sokak No 10 Alsancak Konak İzmir",
+  },
+  {
+    city: "Bursa Şubesi",
+    address: "Bursa / Türkiye",
+    note: "Marmara bölgesi ve Gemlik operasyonları (2011)",
+    q: "Bursa Gümrük Müdürlüğü",
+  },
+  {
+    city: "Kayseri Şubesi",
+    address: "Kayseri / Türkiye",
+    note: "İç Anadolu bölgesi operasyonları (Şubat 2024)",
+    q: "Kayseri Gümrük Müdürlüğü",
+  },
+];
+
+export const CUSTOMS_OFFICES = [
+  { name: "Ambarlı Gümrük Müdürlüğü", city: "İstanbul", q: "Ambarlı Gümrük Müdürlüğü Avcılar İstanbul" },
+  { name: "Erenköy Gümrük Müdürlüğü", city: "İstanbul", q: "Erenköy Gümrük Müdürlüğü İstanbul" },
+  { name: "Muratbey Gümrük Müdürlüğü", city: "İstanbul", q: "Muratbey Gümrük Müdürlüğü Çatalca İstanbul" },
+  {
+    name: "İstanbul Havalimanı (AHL) Gümrük Müdürlüğü",
+    city: "İstanbul",
+    q: "İstanbul Havalimanı Gümrük Müdürlüğü Arnavutköy",
+  },
+  {
+    name: "Sabiha Gökçen Havalimanı Gümrük Müdürlüğü",
+    city: "İstanbul",
+    q: "Sabiha Gökçen Havalimanı Gümrük Müdürlüğü Pendik",
+  },
+  { name: "Halkalı Gümrük Müdürlüğü", city: "İstanbul", q: "Halkalı Gümrük Müdürlüğü İstanbul" },
+  { name: "Gemlik Gümrük Müdürlüğü", city: "Bursa", q: "Gemlik Gümrük Müdürlüğü Bursa" },
+  { name: "Bursa Gümrük Müdürlüğü", city: "Bursa", q: "Bursa Gümrük Müdürlüğü" },
+  { name: "İzmir (Alsancak) Gümrük Müdürlüğü", city: "İzmir", q: "Alsancak Gümrük Müdürlüğü İzmir" },
+  { name: "Adnan Menderes Havalimanı Gümrük Müdürlüğü", city: "İzmir", q: "Adnan Menderes Havalimanı Gümrük Müdürlüğü İzmir" },
+  { name: "Kayseri Gümrük Müdürlüğü", city: "Kayseri", q: "Kayseri Gümrük Müdürlüğü" },
+];
 
 export const SERVICES = [
   {
