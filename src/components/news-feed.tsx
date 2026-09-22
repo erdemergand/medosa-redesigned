@@ -36,17 +36,13 @@ export function NewsFeed({ compact = false }: { compact?: boolean }) {
     return () => window.clearInterval(id);
   }, [cycle]);
 
-  const [showAll, setShowAll] = useState(false);
-
   const selectTab = (t: Tab) => {
     setTab(t);
-    setShowAll(false);
     setCycle((c) => c + 1); // elle seçimde sayaç sıfırlanır
   };
 
   const filtered: NewsItem[] = data.filter((n) => (n.kind ?? "haber") === tab);
-  const items = showAll ? filtered : filtered.slice(0, 5);
-  const hasMore = filtered.length > items.length;
+  const items = filtered.slice(0, 5);
 
   return (
     <div className="glass-panel flex h-full flex-col rounded-3xl p-5">
