@@ -26,6 +26,8 @@ export const Route = createFileRoute("/iletisim")({
   component: Iletisim,
 });
 
+const CustomsMap = lazy(() => import("@/components/customs-map"));
+
 const OFFICE_ICONS = { sea: Ship, land: Truck, air: Plane, rail: Train } as const;
 const OFFICE_LABELS = { sea: "Deniz gümrüğü", land: "Kara gümrüğü", air: "Hava gümrüğü", rail: "Demiryolu gümrüğü" } as const;
 
