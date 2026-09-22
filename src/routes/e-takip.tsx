@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Download, Mail, MapPin, ShieldCheck, TriangleAlert } from "lucide-react";
+import { useState } from "react";
 
+import { Modal } from "@/components/modal";
 import { PageHero } from "@/components/page-hero";
+
 import emdsLogo from "@/assets/e-mds.png.asset.json";
 import aaccLogo from "@/assets/aacc.png.asset.json";
 import emdsLogoDark from "@/assets/e-mds-dark.png";
