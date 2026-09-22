@@ -182,3 +182,102 @@
   background-repeat: repeat-x;
   animation: globe-spin-map 18s linear infinite;
 }
+
+/* ---------- Hareket / animasyonlar ---------- */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@utility fade-up {
+  opacity: 0;
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@utility pop-in {
+  animation: pop-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@utility float-soft {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+@keyframes slow-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+
+@utility slow-zoom {
+  animation: slow-zoom 26s ease-in-out infinite alternate;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility marquee-track {
+  display: inline-flex;
+  min-width: 200%;
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes shimmer-text {
+  from { background-position: 0% 50%; }
+  to { background-position: 200% 50%; }
+}
+
+@utility shimmer-text {
+  background-image: linear-gradient(
+    100deg,
+    var(--steel) 0%,
+    var(--cobalt) 35%,
+    white 50%,
+    var(--cobalt) 65%,
+    var(--steel) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmer-text 7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .float-soft,
+  .slow-zoom,
+  .marquee-track,
+  .shimmer-text {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ---------- Gece modu uyumu ---------- */
+.dark .text-navy {
+  color: var(--foreground);
+}
+
+.dark .bg-white {
+  background-color: var(--card);
+}
+
+.dark .soft-card:hover {
+  box-shadow: 0 24px 50px -24px color-mix(in oklab, var(--cobalt) 60%, transparent);
+}
+
+/* Logolar gece modunda kaybolmasın */
+.dark .logo-tile {
+  background: color-mix(in oklab, white 92%, transparent);
+}
