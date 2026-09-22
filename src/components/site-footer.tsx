@@ -40,6 +40,9 @@ export function SiteFooter() {
               {n.label}
             </Link>
           ))}
+          <Link to="/sektorel-akis" className="text-xs text-white/60 hover:text-white">
+            Sektörel Akış
+          </Link>
         </nav>
         <div className="flex flex-col items-center gap-4 sm:items-end">
           <div className="flex items-center gap-3">
