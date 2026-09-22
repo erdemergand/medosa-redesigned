@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { CITY_PAGES } from "@/lib/city-data";
 import { SITE_URL } from "@/lib/seo";
 
 const PAGES: { path: string; priority: string; changefreq: string }[] = [
@@ -11,6 +12,11 @@ const PAGES: { path: string; priority: string; changefreq: string }[] = [
   { path: "/uygulamalar", priority: "0.7", changefreq: "monthly" },
   { path: "/sektorel-akis", priority: "0.7", changefreq: "daily" },
   { path: "/ik", priority: "0.5", changefreq: "monthly" },
+  ...CITY_PAGES.map((c) => ({
+    path: `/gumruk-musavirligi/${c.slug}`,
+    priority: "0.9",
+    changefreq: "monthly",
+  })),
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({

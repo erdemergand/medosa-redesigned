@@ -3,6 +3,7 @@ import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 import logoFull from "@/assets/medosa-logo-full.png.asset.json";
 import { NewsletterForm } from "@/components/newsletter-form";
+import { CITY_PAGES } from "@/lib/city-data";
 import { NAV } from "@/lib/site-data";
 
 function XIcon({ className }: { className?: string }) {
@@ -44,6 +45,16 @@ export function SiteFooter() {
           <Link to="/sektorel-akis" className="text-xs text-white/60 hover:text-white">
             Sektörel Akış
           </Link>
+          {CITY_PAGES.map((c) => (
+            <Link
+              key={c.slug}
+              to="/gumruk-musavirligi/$sehir"
+              params={{ sehir: c.slug }}
+              className="text-xs text-white/60 hover:text-white"
+            >
+              {c.city} Gümrük Müşavirliği
+            </Link>
+          ))}
         </nav>
         <div className="flex w-full max-w-xs flex-col items-center gap-4 sm:items-end">
           <NewsletterForm variant="dark" />
