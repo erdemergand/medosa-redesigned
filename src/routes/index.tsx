@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, FileCheck2, Radar } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { ArrowRight, FileCheck2 } from "lucide-react";
 
 import heroPort from "@/assets/hero-port.jpg";
 import { DocumentsDialog, useDocumentsPopup } from "@/components/documents-dialog";
@@ -75,29 +75,12 @@ function Index() {
           </p>
 
           <div className="fade-up mt-8 flex flex-wrap gap-3" style={{ animationDelay: "0.3s" }}>
-            <Link
-              to="/e-takip"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cobalt/30 transition-all hover:-translate-y-0.5"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/70" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-              </span>
-              <Radar className="h-4 w-4" /> E-Takip Portalı
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
             <button
               onClick={() => setOpen(true)}
               className="glass-panel inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
               <FileCheck2 className="h-4 w-4 text-cobalt" /> Bize gelmeden önce
             </button>
-            <Link
-              to="/uygulamalar"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white/85 transition-colors hover:bg-white/10"
-            >
-              E-Uygulamalar
-            </Link>
           </div>
 
         </div>
