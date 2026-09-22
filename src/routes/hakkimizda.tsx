@@ -119,7 +119,7 @@ function Hakkimizda() {
           {[
             { v: "1989", l: "Kuruluş yılı" },
             { v: "4", l: "Şube: İstanbul, İzmir, Bursa, Kayseri" },
-            { v: "EDI", l: "Online gümrük tescili" },
+            { v: "35+", l: "Yıllık gümrük müşavirliği deneyimi" },
             { v: "ISO", l: "9001 & 27001 belgeli" },
           ].map((m) => (
             <div key={m.l} className="glass-panel rounded-2xl px-6 py-6">
