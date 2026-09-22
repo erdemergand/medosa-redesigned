@@ -76,9 +76,14 @@ export default function CustomsMap({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const first = useRef(true);
   useEffect(() => {
     offices.forEach((o) => markers.current[o.name]?.setIcon(pin(o, o.name === active.name)));
     const m = map.current;
+    if (first.current) {
+      first.current = false;
+      return;
+    }
     if (m) {
       m.flyTo([active.lat, active.lng], Math.max(m.getZoom(), 9), { duration: 0.6 });
       markers.current[active.name]?.openTooltip();
