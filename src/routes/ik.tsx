@@ -63,9 +63,22 @@ const CULTURE = [
   },
 ];
 
+/** Dosyayı base64'e çevirir (data: öneki olmadan). */
+function fileToBase64(file: File) {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(",")[1] ?? "");
+    reader.onerror = () => reject(new Error("Dosya okunamadı."));
+    reader.readAsDataURL(file);
+  });
+}
+
 function IK() {
+  const sendMail = useServerFn(sendFormMail);
   const [tab, setTab] = useState<"is" | "staj">("is");
   const [sent, setSent] = useState<null | "is" | "staj">(null);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <>
