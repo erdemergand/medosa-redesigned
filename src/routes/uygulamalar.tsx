@@ -38,9 +38,8 @@ function Uygulamalar() {
     list.filter((i) => i.name.toLocaleLowerCase("tr").includes(q.toLocaleLowerCase("tr").trim()));
 
   const groups: {
-    icon?: typeof Globe2;
+    globe?: boolean;
     logo?: string;
-    logoDark?: boolean;
     title: string;
     items: AppLink[];
   }[] = [
@@ -54,7 +53,12 @@ function Uygulamalar() {
       title: "Sağlık Bakanlığı Uygulamaları",
       items: f(SAGLIK_BAKANLIGI),
     },
-    { icon: Globe2, title: "Elektronik Menşe Sorgulama", items: f(MENSE_SORGULAMA) },
+    {
+      logo: "/logos/tarim-orman.png",
+      title: "Tarım ve Orman Bakanlığı Uygulamaları",
+      items: f(TARIM_ORMAN),
+    },
+    { globe: true, title: "Elektronik Menşe Sorgulama", items: f(MENSE_SORGULAMA) },
   ];
 
   return (
