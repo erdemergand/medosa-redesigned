@@ -74,4 +74,58 @@ export const FALLBACK_NEWS: NewsItem[] = [
     kind: "duyuru",
     date: new Date(Date.now() - 10 * 864e5).toISOString(),
   },
+  {
+    id: "7",
+    title: "Yetkilendirilmiş yükümlü (YYS) denetimlerinde güncel takvim",
+    summary:
+      "YYS sahibi firmalar için yıllık iç denetim raporlarının sunum takvimi güncellendi.",
+    category: "Mevzuat",
+    kind: "haber",
+    date: new Date(Date.now() - 12 * 864e5).toISOString(),
+  },
+  {
+    id: "8",
+    title: "Tek Pencere Sistemi'nde yeni belge kodları",
+    summary:
+      "İthalatta kontrol belgesi süreçleri için TPS'ye eklenen belge kodları yayımlandı.",
+    category: "E-Uygulama",
+    kind: "haber",
+    date: new Date(Date.now() - 15 * 864e5).toISOString(),
+  },
+  {
+    id: "9",
+    title: "Konteyner navlun ve demuraj eğilimleri",
+    summary:
+      "Ege ve Marmara limanlarında güncel demuraj süreleri ve planlama önerileri.",
+    category: "Lojistik",
+    kind: "haber",
+    date: new Date(Date.now() - 18 * 864e5).toISOString(),
+  },
+  {
+    id: "10",
+    title: "Beyanname arşiv raporlarınız yenilendi",
+    summary:
+      "Firmanıza özel dönemsel beyanname raporları e-mds üzerinden indirilebilir durumda.",
+    category: "Duyuru",
+    kind: "duyuru",
+    date: new Date(Date.now() - 20 * 864e5).toISOString(),
+  },
+  {
+    id: "11",
+    title: "Resmî tatil dönemi operasyon planı",
+    summary:
+      "Tatil döneminde gümrük idarelerindeki çalışma saatleri ve nöbetçi ekip bilgileri.",
+    category: "Operasyon",
+    kind: "duyuru",
+    date: new Date(Date.now() - 24 * 864e5).toISOString(),
+  },
+  {
+    id: "12",
+    title: "Antrepo süre aşımı uyarı sistemi",
+    summary:
+      "Süre aşımı yaklaşan eşyalarınız için otomatik uyarılar portal hesabınıza tanımlandı.",
+    category: "Antrepo",
+    kind: "duyuru",
+    date: new Date(Date.now() - 28 * 864e5).toISOString(),
+  },
 ];
