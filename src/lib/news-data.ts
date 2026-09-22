@@ -26,6 +26,7 @@ export const FALLBACK_NEWS: NewsItem[] = [
     summary:
       "Beyanname tescil süreçlerine ilişkin usul değişiklikleri Resmî Gazete'de yayımlandı; yürürlük tarihine dikkat edilmelidir.",
     category: "Mevzuat",
+    kind: "haber",
     date: new Date().toISOString(),
   },
   {
@@ -34,6 +35,7 @@ export const FALLBACK_NEWS: NewsItem[] = [
     summary:
       "Ticaret Bakanlığı TAREKS uygulamasında ürün güvenliği başvuru ekranları yenilendi.",
     category: "E-Uygulama",
+    kind: "haber",
     date: new Date(Date.now() - 864e5).toISOString(),
   },
   {
@@ -42,6 +44,7 @@ export const FALLBACK_NEWS: NewsItem[] = [
     summary:
       "Ay sonu antrepo stok mutabakatlarınızı aacc portalinden tek ekranda kontrol edebilirsiniz.",
     category: "Antrepo",
+    kind: "duyuru",
     date: new Date(Date.now() - 3 * 864e5).toISOString(),
   },
   {
@@ -50,6 +53,7 @@ export const FALLBACK_NEWS: NewsItem[] = [
     summary:
       "Sınır kapısındaki araç yoğunluğu nedeniyle transit süreçlerinde planlama önerilir.",
     category: "Operasyon",
+    kind: "duyuru",
     date: new Date(Date.now() - 5 * 864e5).toISOString(),
   },
   {
@@ -58,6 +62,16 @@ export const FALLBACK_NEWS: NewsItem[] = [
     summary:
       "Elektronik menşe sorgulamada doğrulanamayan belgeler için yeni kontrol adımları uygulanıyor.",
     category: "Mevzuat",
+    kind: "haber",
     date: new Date(Date.now() - 8 * 864e5).toISOString(),
+  },
+  {
+    id: "6",
+    title: "Müşterilerimize özel operasyon bilgilendirmesi",
+    summary:
+      "Dönemsel operasyon planlaması ve firmanıza özel süreç notları aacc portalinde yayımlandı.",
+    category: "Duyuru",
+    kind: "duyuru",
+    date: new Date(Date.now() - 10 * 864e5).toISOString(),
   },
 ];
