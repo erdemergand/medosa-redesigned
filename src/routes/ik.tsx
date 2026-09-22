@@ -3,7 +3,6 @@ import { GraduationCap, HeartHandshake, Layers, TrendingUp, Users } from "lucide
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
-import { BRANCHES } from "@/lib/site-data";
 
 export const Route = createFileRoute("/ik")({
   head: () => ({
