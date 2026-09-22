@@ -15,8 +15,8 @@ type MailInput = {
   subject: string;
   /** Etiket / değer çiftleri; e-posta gövdesinde tablo olarak yazılır. */
   fields: { label: string; value: string }[];
-  replyTo?: string;
-  attachment?: Attachment;
+  replyTo?: string | undefined;
+  attachment?: Attachment | undefined;
 };
 
 const b64 = (s: string) =>
