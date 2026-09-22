@@ -50,9 +50,9 @@ export default function CustomsMap({
     if (!el.current || map.current) return;
     const m = L.map(el.current, { scrollWheelZoom: false, zoomControl: true });
     map.current = m;
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> katkıda bulunanlar',
       maxZoom: 19,
     }).addTo(m);
 
@@ -76,14 +76,16 @@ export default function CustomsMap({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const first = useRef(true);
+  const lastActive = useRef<string | null>(null);
   useEffect(() => {
     offices.forEach((o) => markers.current[o.name]?.setIcon(pin(o, o.name === active.name)));
     const m = map.current;
-    if (first.current) {
-      first.current = false;
+    if (lastActive.current === null) {
+      lastActive.current = active.name;
       return;
     }
+    if (lastActive.current === active.name) return;
+    lastActive.current = active.name;
     if (m) {
       m.flyTo([active.lat, active.lng], Math.max(m.getZoom(), 9), { duration: 0.6 });
       markers.current[active.name]?.openTooltip();
