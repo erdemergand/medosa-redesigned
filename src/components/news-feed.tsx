@@ -80,13 +80,12 @@ export function NewsFeed({ compact = false }: { compact?: boolean }) {
       <ul className="mt-4 min-h-[26rem] flex-1 space-y-3 overflow-hidden">
         {items.map((n, i) => {
           const locked = (n.kind ?? "haber") === "duyuru";
-          const href = locked ? AACC_PORTAL_URL : n.href;
-          const Wrapper = href ? "a" : "div";
           return (
             <li key={n.id} className="fade-up" style={{ animationDelay: `${0.1 * i + 0.15}s` }}>
-              <Wrapper
-                {...(href ? { href, target: "_blank", rel: "noreferrer" } : {})}
-                className="group block rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition-colors hover:border-cobalt/50 hover:bg-white/10"
+              <button
+                type="button"
+                onClick={() => setDetail(n)}
+                className="group block w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-left transition-colors hover:border-cobalt/50 hover:bg-white/10"
               >
                 <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wider text-cobalt">
                   {n.category}
@@ -94,9 +93,7 @@ export function NewsFeed({ compact = false }: { compact?: boolean }) {
                   {locked ? (
                     <Lock className="ml-auto h-3.5 w-3.5 text-white/50" />
                   ) : (
-                    href && (
-                      <ArrowUpRight className="ml-auto h-3.5 w-3.5 text-white/50 transition-transform group-hover:-translate-y-0.5" />
-                    )
+                    <ArrowUpRight className="ml-auto h-3.5 w-3.5 text-white/50 transition-transform group-hover:-translate-y-0.5" />
                   )}
                 </div>
                 <p className="mt-1 line-clamp-2 text-sm font-semibold leading-snug text-white">
@@ -114,10 +111,11 @@ export function NewsFeed({ compact = false }: { compact?: boolean }) {
                     </p>
                   )
                 )}
-              </Wrapper>
+              </button>
             </li>
           );
         })}
+
         {items.length === 0 && (
           <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-6 text-center text-xs text-white/55">
             Şu an gösterilecek içerik yok.
