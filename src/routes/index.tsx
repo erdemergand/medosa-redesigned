@@ -39,6 +39,14 @@ const KNOWLEDGE_ICONS = [EuFlagIcon, TradeShipIcon, LawBookIcon] as const;
 
 function Index() {
   const { open, setOpen } = useDocumentsPopup();
+  const [docsClosed, setDocsClosed] = useState(false);
+  const subscribePopup = useSubscribePopup(docsClosed);
+
+  useEffect(() => {
+    // Evrak popup'ı bu oturumda zaten gösterildiyse abone daveti sayacı hemen başlasın.
+    if (window.sessionStorage.getItem("medosa-docs-popup")) setDocsClosed(true);
+  }, []);
+
 
   return (
     <section className="relative isolate flex min-h-[calc(100vh-5.5rem)] flex-col justify-center overflow-hidden bg-navy-deep">
@@ -162,7 +170,17 @@ function Index() {
       </div>
 
 
-      <DocumentsDialog open={open} onClose={() => setOpen(false)} />
+      <DocumentsDialog
+        open={open}
+        onClose={() => {
+          setOpen(false);
+          setDocsClosed(true);
+        }}
+      />
+      <SubscribeDialog
+        open={subscribePopup.open && !open}
+        onClose={() => subscribePopup.setOpen(false)}
+      />
     </section>
   );
 }
