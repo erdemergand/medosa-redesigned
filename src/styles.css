@@ -158,3 +158,16 @@
 @utility spin-globe {
   animation: spin-globe 14s linear infinite;
 }
+
+@keyframes spin-rev {
+  from { rotate: 0deg; }
+  to { rotate: -360deg; }
+}
+
+@utility spin-orbit {
+  animation: spin-globe 20s linear infinite;
+}
+
+@utility spin-orbit-rev {
+  animation: spin-rev 20s linear infinite;
+}

@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ExternalLink, Globe2 } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
+import { SpinningGlobe } from "@/components/spinning-globe";
 import {
   MENSE_SORGULAMA,
   SAGLIK_BAKANLIGI,
+  TARIM_ORMAN,
   TICARET_BAKANLIGI,
   type AppLink,
 } from "@/lib/eapps-data";
@@ -36,9 +38,8 @@ function Uygulamalar() {
     list.filter((i) => i.name.toLocaleLowerCase("tr").includes(q.toLocaleLowerCase("tr").trim()));
 
   const groups: {
-    icon?: typeof Globe2;
+    globe?: boolean;
     logo?: string;
-    logoDark?: boolean;
     title: string;
     items: AppLink[];
   }[] = [
@@ -52,7 +53,12 @@ function Uygulamalar() {
       title: "Sağlık Bakanlığı Uygulamaları",
       items: f(SAGLIK_BAKANLIGI),
     },
-    { icon: Globe2, title: "Elektronik Menşe Sorgulama", items: f(MENSE_SORGULAMA) },
+    {
+      logo: "/logos/tarim-orman.png",
+      title: "Tarım ve Orman Bakanlığı Uygulamaları",
+      items: f(TARIM_ORMAN),
+    },
+    { globe: true, title: "Elektronik Menşe Sorgulama", items: f(MENSE_SORGULAMA) },
   ];
 
   return (
@@ -86,19 +92,11 @@ function Uygulamalar() {
           <div key={g.title}>
             <div className="flex items-center gap-3">
               {g.logo ? (
-                <span
-                  className={`flex h-12 w-12 items-center justify-center rounded-xl p-2 ${
-                    g.logoDark
-                      ? "bg-gradient-to-br from-navy to-cobalt"
-                      : "border border-border bg-white"
-                  }`}
-                >
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-white p-2">
                   <img src={g.logo} alt={`${g.title} logosu`} className="h-full w-full object-contain" />
                 </span>
               ) : (
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-navy to-cobalt text-white shadow-lg shadow-cobalt/30">
-                  <Globe2 className="spin-globe h-6 w-6" />
-                </span>
+                <SpinningGlobe />
               )}
               <h2 className="text-xl font-bold text-navy md:text-2xl">{g.title}</h2>
               <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-muted-foreground">

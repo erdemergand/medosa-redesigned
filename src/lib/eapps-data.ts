@@ -7,9 +7,13 @@ export const TICARET_BAKANLIGI: AppLink[] = [
     href: "https://uygulama.gtb.gov.tr/BTBBasvuru/AnaSayfa",
   },
   {
-    name: "Lara Web Sorgulama ve Belge Yükleme Ekranı",
+    name: "LARA Web Sorgulama ve Belge Yükleme Ekranı",
     href: "https://uygulama.gtb.gov.tr/LaraTahlilSorgulama/Ekranlar/Index.aspx",
   },
+  { name: "Destek Yönetim Sistemi (DYS)", href: "https://dys.ticaret.gov.tr/" },
+  { name: "TASİŞ E-İhale", href: "https://tasis.ticaret.gov.tr/" },
+  { name: "TAREKS Firma Tanımlama", href: "https://tarekskayit.ticaret.gov.tr/" },
+  { name: "TAREKS Yetkilendirme", href: "https://tareksyetki.ticaret.gov.tr/" },
   {
     name: "Yükümlü Kayıt ve Takip Sistemi",
     href: "https://uygulama.gtb.gov.tr/FirmaVekalet/Login/Login.aspx",
@@ -19,10 +23,10 @@ export const TICARET_BAKANLIGI: AppLink[] = [
     name: "Fikri ve Sınai Mülkiyet Hakları E-Başvuru",
     href: "https://uygulama.gtb.gov.tr/FSMH/Login.aspx",
   },
-  { name: "NCTS", href: "https://ncts.gtb.gov.tr/Giris.aspx" },
+  { name: "NCTS Transit Takip", href: "https://ncts.gtb.gov.tr/Giris.aspx" },
   { name: "Detaylı Beyan Durum Sorgulama", href: "https://uygulama.gtb.gov.tr/BeyannameSorgulama/" },
   {
-    name: "Gümrük İşlemleri Beyanname Sorgulama",
+    name: "GET-APP Gümrük Eşya Takip ve Beyanname Sorgulama",
     href: "https://uygulama.gtb.gov.tr/GETAPP/account/login",
   },
   { name: "GÜVAS", href: "https://guvas.gtb.gov.tr" },
@@ -30,22 +34,34 @@ export const TICARET_BAKANLIGI: AppLink[] = [
   { name: "Telafi Edici Vergi (TEV)", href: "https://uygulama.gtb.gov.tr/TEV/" },
   { name: "Kota/Kontenjan Sorgulama Uygulaması", href: "https://uygulama.gtb.gov.tr/KotaSorgulama/" },
   { name: "Yetkilendirme Başvuruları", href: "https://basvuru.dtm.gov.tr/yetkiBasvuru/giris.jsp" },
-  {
-    name: "E-İmza Uygulamalarına Giriş",
-    href: "https://eortak.dtm.gov.tr/eortak/login/listApplications.htm",
-  },
   { name: "Firma Tanımlama", href: "https://dtvs.dtm.gov.tr/DTVS_FirmaUygulamasi/" },
   { name: "Transfer Bildirim Formu Sorgulama", href: "https://uygulama.gtb.gov.tr/tbfsorgulama/" },
   {
-    name: "Tek Pencere Sistemine Giriş",
+    name: "Tek Pencere Sistemi (TPS)",
     href: "https://www.turkiye.gov.tr/gumruk-ve-ticaret-tek-pencere",
   },
   { name: "TOBB Medos Giriş", href: "https://medos-tobb.org.tr/" },
 ];
 
 export const SAGLIK_BAKANLIGI: AppLink[] = [
-  { name: "Türkiye İlaç ve Tıbbi Cihaz Kurumu (TİTCK)", href: "https://ebs.titck.gov.tr/Login/Index" },
+  {
+    name: "TİTCK İthalat Elektronik Başvuru Sistemi (EBS)",
+    href: "https://ebs.titck.gov.tr/Login/Index",
+  },
   { name: "Ürün Takip Sistemi (ÜTS)", href: "https://utsuygulama.saglik.gov.tr/UTS/" },
+  {
+    name: "Hudut ve Sahiller Sağlık Gn. Md. (Serbest Pratika / Gemi Sağlık)",
+    href: "https://www.hssgm.gov.tr/",
+  },
+];
+
+export const TARIM_ORMAN: AppLink[] = [
+  {
+    name: "Sınır Veteriner Kontrol Noktaları (VSKN / Veteriner Giriş Belgesi)",
+    href: "https://vgb.tarimorman.gov.tr/",
+  },
+  { name: "Bitki Karantina Kayıt Takip Sistemi (BKS)", href: "https://bks.tarimorman.gov.tr/" },
+  { name: "Tarım TPS Kontrol Belgesi", href: "https://tps.tarimorman.gov.tr/" },
 ];
 
 export const MENSE_SORGULAMA: AppLink[] = [
