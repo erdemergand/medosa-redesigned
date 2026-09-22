@@ -4,6 +4,8 @@ import { ArrowRight, Download, Mail, MapPin, ShieldCheck, TriangleAlert } from "
 import { PageHero } from "@/components/page-hero";
 import emdsLogo from "@/assets/e-mds.png.asset.json";
 import aaccLogo from "@/assets/aacc.png.asset.json";
+import emdsLogoDark from "@/assets/e-mds-dark.png";
+import aaccLogoDark from "@/assets/aacc-dark.png";
 import taahhutname from "@/assets/taahhutname.docx.asset.json";
 
 export const Route = createFileRoute("/e-takip")({
