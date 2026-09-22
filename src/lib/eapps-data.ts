@@ -34,22 +34,34 @@ export const TICARET_BAKANLIGI: AppLink[] = [
   { name: "Telafi Edici Vergi (TEV)", href: "https://uygulama.gtb.gov.tr/TEV/" },
   { name: "Kota/Kontenjan Sorgulama Uygulaması", href: "https://uygulama.gtb.gov.tr/KotaSorgulama/" },
   { name: "Yetkilendirme Başvuruları", href: "https://basvuru.dtm.gov.tr/yetkiBasvuru/giris.jsp" },
-  {
-    name: "E-İmza Uygulamalarına Giriş",
-    href: "https://eortak.dtm.gov.tr/eortak/login/listApplications.htm",
-  },
   { name: "Firma Tanımlama", href: "https://dtvs.dtm.gov.tr/DTVS_FirmaUygulamasi/" },
   { name: "Transfer Bildirim Formu Sorgulama", href: "https://uygulama.gtb.gov.tr/tbfsorgulama/" },
   {
-    name: "Tek Pencere Sistemine Giriş",
+    name: "Tek Pencere Sistemi (TPS)",
     href: "https://www.turkiye.gov.tr/gumruk-ve-ticaret-tek-pencere",
   },
   { name: "TOBB Medos Giriş", href: "https://medos-tobb.org.tr/" },
 ];
 
 export const SAGLIK_BAKANLIGI: AppLink[] = [
-  { name: "Türkiye İlaç ve Tıbbi Cihaz Kurumu (TİTCK)", href: "https://ebs.titck.gov.tr/Login/Index" },
+  {
+    name: "TİTCK İthalat Elektronik Başvuru Sistemi (EBS)",
+    href: "https://ebs.titck.gov.tr/Login/Index",
+  },
   { name: "Ürün Takip Sistemi (ÜTS)", href: "https://utsuygulama.saglik.gov.tr/UTS/" },
+  {
+    name: "Hudut ve Sahiller Sağlık Gn. Md. (Serbest Pratika / Gemi Sağlık)",
+    href: "https://www.hssgm.gov.tr/",
+  },
+];
+
+export const TARIM_ORMAN: AppLink[] = [
+  {
+    name: "Sınır Veteriner Kontrol Noktaları (VSKN / Veteriner Giriş Belgesi)",
+    href: "https://vgb.tarimorman.gov.tr/",
+  },
+  { name: "Bitki Karantina Kayıt Takip Sistemi (BKS)", href: "https://bks.tarimorman.gov.tr/" },
+  { name: "Tarım TPS Kontrol Belgesi", href: "https://tps.tarimorman.gov.tr/" },
 ];
 
 export const MENSE_SORGULAMA: AppLink[] = [
