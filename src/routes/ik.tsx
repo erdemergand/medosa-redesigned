@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { GraduationCap, HeartHandshake, Layers, TrendingUp, Users } from "lucide-react";
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
+import { sendFormMail } from "@/lib/mail.functions";
 
 export const Route = createFileRoute("/ik")({
   head: () => ({
