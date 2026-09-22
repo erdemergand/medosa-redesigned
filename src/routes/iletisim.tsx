@@ -28,6 +28,10 @@ function mapSrc(q: string) {
   return `https://www.google.com/maps?q=${encodeURIComponent(q)}&hl=tr&z=13&output=embed`;
 }
 
+function directionsUrl(address: string) {
+  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}&travelmode=driving`;
+}
+
 function Iletisim() {
   const [sent, setSent] = useState(false);
   const [active, setActive] = useState(CUSTOMS_OFFICES[0]!);
@@ -70,7 +74,7 @@ function Iletisim() {
                     <MapPin className="h-3.5 w-3.5" /> Haritada gör
                   </button>
                   <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.q)}`}
+                    href={directionsUrl(b.address)}
                     target="_blank"
                     rel="noreferrer"
                     className="text-xs font-semibold text-muted-foreground hover:text-cobalt hover:underline"
