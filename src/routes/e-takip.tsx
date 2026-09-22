@@ -62,11 +62,16 @@ function ETakip() {
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           {PORTALS.map((p) => (
             <article key={p.name} className="glass-panel flex flex-col rounded-2xl p-7">
-              <span className="group/logo flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl bg-white p-4">
+              <span className="group/logo flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl bg-white p-4 dark:bg-white/5">
                 <img
                   src={p.logo}
                   alt={`${p.name} logosu`}
-                  className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover/logo:scale-105"
+                  className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover/logo:scale-105 dark:hidden"
+                />
+                <img
+                  src={p.logoDark}
+                  alt={`${p.name} logosu`}
+                  className="hidden max-h-full max-w-full object-contain transition-transform duration-300 group-hover/logo:scale-105 dark:block"
                 />
               </span>
               <h2 className="mt-5 font-display text-2xl font-extrabold text-white">{p.name}</h2>
