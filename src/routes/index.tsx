@@ -119,14 +119,15 @@ function Index() {
               style={{ animationDelay: `${0.45 + i * 0.1}s` }}
             >
               <div className="flex items-center gap-3">
-                <span
-                  className={`relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-lg ring-1 ring-white/20 transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3 ${KNOWLEDGE_ACCENTS[i % KNOWLEDGE_ACCENTS.length]}`}
-                >
-                  <span className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
-                  <k.icon className="relative h-6 w-6" strokeWidth={1.75} />
+                <span className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/20 transition-transform duration-300 group-hover:scale-105">
+                  {(() => {
+                    const Icon = KNOWLEDGE_ICONS[i % KNOWLEDGE_ICONS.length];
+                    return <Icon className="h-14 w-14" />;
+                  })()}
                 </span>
                 <h2 className="text-base font-bold text-white">{k.title}</h2>
               </div>
+
               <p className="mt-3 text-xs leading-relaxed text-white/65">{k.desc}</p>
               <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold text-cobalt">
                 {k.source}
