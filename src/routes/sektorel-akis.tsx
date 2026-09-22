@@ -4,8 +4,10 @@ import { useServerFn } from "@tanstack/react-start";
 import { ArrowUpRight, Lock, Newspaper } from "lucide-react";
 import { useState } from "react";
 
+import { NewsModal } from "@/components/news-modal";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { AACC_PORTAL_URL, FALLBACK_NEWS, type NewsItem } from "@/lib/news-data";
+
 import { getSectorNews } from "@/lib/news.functions";
 import { breadcrumbJsonLd, canonical } from "@/lib/seo";
 
