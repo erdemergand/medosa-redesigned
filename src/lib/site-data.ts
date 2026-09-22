@@ -24,26 +24,26 @@ export const BRANCHES = [
     address:
       "Şirinevler Mh. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200, Bahçelievler / İstanbul",
     note: "Genel müdürlük ve tüm İstanbul gümrük sahalarında saha kadrosu",
-    q: "Kocasinan İş Merkezi Adnan Kahveci Bulvarı Şirinevler Bahçelievler İstanbul",
+    q: "Medosa Gümrük Müşavirliği, Bahçelievler, İstanbul",
   },
   {
     city: "İzmir Şubesi",
     address: "1456 sok. Bener Nural İş Hanı No:10 Kat:1 / Alsancak / İZMİR",
     note: "Ege bölgesi operasyonları (2007)",
-    q: "1456 Sokak No 10 Alsancak Konak İzmir",
+    q: "1456 sok. Bener Nural İş Hanı No:10 Alsancak Konak İzmir",
   },
   {
     city: "Bursa Şubesi",
     address:
       "Fethiye Mah. Fesleğen Sok. No:2/1 Ata Plaza D:5 (Ata Bulvarı) Nilüfer / Bursa",
     note: "Marmara bölgesi ve Gemlik operasyonları (2011)",
-    q: "Ata Plaza Fesleğen Sokak No 2 Fethiye Mahallesi Nilüfer Bursa",
+    q: "Fethiye Mah. Fesleğen Sok. No:2 Ata Plaza Nilüfer Bursa",
   },
   {
     city: "Kayseri Şubesi",
     address: "Serbest Bölge, Anbar Mah. 54. Cd. 15-D, Melikgazi / KAYSERİ",
     note: "İç Anadolu bölgesi operasyonları (Şubat 2024)",
-    q: "Anbar Mahallesi 54. Cadde 15 Melikgazi Kayseri Serbest Bölge",
+    q: "Serbest Bölge Anbar Mah. 54. Cd. 15 Melikgazi Kayseri",
   },
 ];
 
