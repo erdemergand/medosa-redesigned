@@ -30,7 +30,7 @@ function mapSrc(q: string) {
 
 function Iletisim() {
   const [sent, setSent] = useState(false);
-  const [active, setActive] = useState(CUSTOMS_OFFICES[0]);
+  const [active, setActive] = useState(CUSTOMS_OFFICES[0]!);
 
   return (
     <>
@@ -130,7 +130,7 @@ function Iletisim() {
               </a>
               <p className="flex items-start gap-3 text-sm text-foreground">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-cobalt" />
-                {BRANCHES[0].address}
+                {BRANCHES[0]!.address}
               </p>
             </div>
           </div>
