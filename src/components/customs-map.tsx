@@ -86,7 +86,7 @@ export default function CustomsMap({
     }
     if (lastActive.current === active.name) return;
     lastActive.current = active.name;
-    if (m) {
+    if (m && Number.isFinite(active.lat) && Number.isFinite(active.lng)) {
       m.flyTo([active.lat, active.lng], Math.max(m.getZoom(), 9), { duration: 0.6 });
       markers.current[active.name]?.openTooltip();
     }
