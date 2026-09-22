@@ -17,6 +17,9 @@ import { Route as IkRouteImport } from './routes/ik'
 import { Route as IletisimRouteImport } from './routes/iletisim'
 import { Route as SektorelAkisRouteImport } from './routes/sektorel-akis'
 import { Route as UygulamalarRouteImport } from './routes/uygulamalar'
+import { Route as ApiPublicAbonelikIptalRouteImport } from './routes/api/public/abonelik-iptal'
+import { Route as ApiPublicHooksAnnouncementPublishedRouteImport } from './routes/api/public/hooks/announcement-published'
+import { Route as ApiPublicHooksWeeklyApplicationsRouteImport } from './routes/api/public/hooks/weekly-applications'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +61,23 @@ const UygulamalarRoute = UygulamalarRouteImport.update({
   path: '/uygulamalar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicAbonelikIptalRoute = ApiPublicAbonelikIptalRouteImport.update({
+  id: '/api/public/abonelik-iptal',
+  path: '/api/public/abonelik-iptal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicHooksAnnouncementPublishedRoute =
+  ApiPublicHooksAnnouncementPublishedRouteImport.update({
+    id: '/api/public/hooks/announcement-published',
+    path: '/api/public/hooks/announcement-published',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicHooksWeeklyApplicationsRoute =
+  ApiPublicHooksWeeklyApplicationsRouteImport.update({
+    id: '/api/public/hooks/weekly-applications',
+    path: '/api/public/hooks/weekly-applications',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +88,9 @@ export interface FileRoutesByFullPath {
   '/iletisim': typeof IletisimRoute
   '/sektorel-akis': typeof SektorelAkisRoute
   '/uygulamalar': typeof UygulamalarRoute
+  '/api/public/abonelik-iptal': typeof ApiPublicAbonelikIptalRoute
+  '/api/public/hooks/announcement-published': typeof ApiPublicHooksAnnouncementPublishedRoute
+  '/api/public/hooks/weekly-applications': typeof ApiPublicHooksWeeklyApplicationsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +101,9 @@ export interface FileRoutesByTo {
   '/iletisim': typeof IletisimRoute
   '/sektorel-akis': typeof SektorelAkisRoute
   '/uygulamalar': typeof UygulamalarRoute
+  '/api/public/abonelik-iptal': typeof ApiPublicAbonelikIptalRoute
+  '/api/public/hooks/announcement-published': typeof ApiPublicHooksAnnouncementPublishedRoute
+  '/api/public/hooks/weekly-applications': typeof ApiPublicHooksWeeklyApplicationsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +115,9 @@ export interface FileRoutesById {
   '/iletisim': typeof IletisimRoute
   '/sektorel-akis': typeof SektorelAkisRoute
   '/uygulamalar': typeof UygulamalarRoute
+  '/api/public/abonelik-iptal': typeof ApiPublicAbonelikIptalRoute
+  '/api/public/hooks/announcement-published': typeof ApiPublicHooksAnnouncementPublishedRoute
+  '/api/public/hooks/weekly-applications': typeof ApiPublicHooksWeeklyApplicationsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +130,9 @@ export interface FileRouteTypes {
     | '/iletisim'
     | '/sektorel-akis'
     | '/uygulamalar'
+    | '/api/public/abonelik-iptal'
+    | '/api/public/hooks/announcement-published'
+    | '/api/public/hooks/weekly-applications'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +143,9 @@ export interface FileRouteTypes {
     | '/iletisim'
     | '/sektorel-akis'
     | '/uygulamalar'
+    | '/api/public/abonelik-iptal'
+    | '/api/public/hooks/announcement-published'
+    | '/api/public/hooks/weekly-applications'
   id:
     | '__root__'
     | '/'
@@ -121,6 +156,9 @@ export interface FileRouteTypes {
     | '/iletisim'
     | '/sektorel-akis'
     | '/uygulamalar'
+    | '/api/public/abonelik-iptal'
+    | '/api/public/hooks/announcement-published'
+    | '/api/public/hooks/weekly-applications'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +170,9 @@ export interface RootRouteChildren {
   IletisimRoute: typeof IletisimRoute
   SektorelAkisRoute: typeof SektorelAkisRoute
   UygulamalarRoute: typeof UygulamalarRoute
+  ApiPublicAbonelikIptalRoute: typeof ApiPublicAbonelikIptalRoute
+  ApiPublicHooksAnnouncementPublishedRoute: typeof ApiPublicHooksAnnouncementPublishedRoute
+  ApiPublicHooksWeeklyApplicationsRoute: typeof ApiPublicHooksWeeklyApplicationsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +233,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UygulamalarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/abonelik-iptal': {
+      id: '/api/public/abonelik-iptal'
+      path: '/api/public/abonelik-iptal'
+      fullPath: '/api/public/abonelik-iptal'
+      preLoaderRoute: typeof ApiPublicAbonelikIptalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/announcement-published': {
+      id: '/api/public/hooks/announcement-published'
+      path: '/api/public/hooks/announcement-published'
+      fullPath: '/api/public/hooks/announcement-published'
+      preLoaderRoute: typeof ApiPublicHooksAnnouncementPublishedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/weekly-applications': {
+      id: '/api/public/hooks/weekly-applications'
+      path: '/api/public/hooks/weekly-applications'
+      fullPath: '/api/public/hooks/weekly-applications'
+      preLoaderRoute: typeof ApiPublicHooksWeeklyApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +266,10 @@ const rootRouteChildren: RootRouteChildren = {
   IletisimRoute: IletisimRoute,
   SektorelAkisRoute: SektorelAkisRoute,
   UygulamalarRoute: UygulamalarRoute,
+  ApiPublicAbonelikIptalRoute: ApiPublicAbonelikIptalRoute,
+  ApiPublicHooksAnnouncementPublishedRoute:
+    ApiPublicHooksAnnouncementPublishedRoute,
+  ApiPublicHooksWeeklyApplicationsRoute: ApiPublicHooksWeeklyApplicationsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
