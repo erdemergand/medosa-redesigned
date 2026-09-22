@@ -23,10 +23,10 @@ export const TICARET_BAKANLIGI: AppLink[] = [
     name: "Fikri ve Sınai Mülkiyet Hakları E-Başvuru",
     href: "https://uygulama.gtb.gov.tr/FSMH/Login.aspx",
   },
-  { name: "NCTS", href: "https://ncts.gtb.gov.tr/Giris.aspx" },
+  { name: "NCTS Transit Takip", href: "https://ncts.gtb.gov.tr/Giris.aspx" },
   { name: "Detaylı Beyan Durum Sorgulama", href: "https://uygulama.gtb.gov.tr/BeyannameSorgulama/" },
   {
-    name: "Gümrük İşlemleri Beyanname Sorgulama",
+    name: "GET-APP Gümrük Eşya Takip ve Beyanname Sorgulama",
     href: "https://uygulama.gtb.gov.tr/GETAPP/account/login",
   },
   { name: "GÜVAS", href: "https://guvas.gtb.gov.tr" },
