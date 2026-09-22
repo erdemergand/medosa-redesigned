@@ -29,7 +29,7 @@ const PORTALS = [
     name: "e-mds",
     logo: emdsLogo.url,
     href: "https://www.e-mds.com.tr",
-    desc: "Medosa dijital dosya ve operasyon takip portalı. Beyanname durumu, evrak arşivi ve cari hareketlerinizi tek ekrandan izleyin.",
+    desc: "Medosa dijital takip portalı. Beyannamelerinizi görüntüleyin, evrak arşivinize ulaşın ve belgelerinizi indirin.",
     features: ["Beyanname", "Evrak arşivi ve indirme"],
   },
   {
