@@ -68,6 +68,26 @@ function Iletisim() {
                   {b.address}
                 </p>
                 <p className="mt-3 text-xs text-muted-foreground/80">{b.note}</p>
+                {(b.phone || b.email) && (
+                  <div className="mt-3 space-y-1.5 border-t border-border pt-3">
+                    {b.phone && (
+                      <a
+                        href={`tel:${b.phoneHref ?? b.phone.replace(/\s/g, "")}`}
+                        className="flex items-center gap-2 text-xs font-semibold text-foreground hover:text-cobalt"
+                      >
+                        <Phone className="h-3.5 w-3.5 shrink-0 text-cobalt" /> {b.phone}
+                      </a>
+                    )}
+                    {b.email && (
+                      <a
+                        href={`mailto:${b.email}`}
+                        className="flex items-center gap-2 text-xs font-semibold text-foreground hover:text-cobalt"
+                      >
+                        <Mail className="h-3.5 w-3.5 shrink-0 text-cobalt" /> {b.email}
+                      </a>
+                    )}
+                  </div>
+                )}
                 <div className="mt-4 flex flex-wrap items-center gap-3">
                   <button
                     type="button"
@@ -174,10 +194,10 @@ function Iletisim() {
             <h2 className="text-2xl font-bold text-navy md:text-3xl">Hızlı iletişim</h2>
             <div className="mt-8 space-y-4">
               <a
-                href="tel:+902120000000"
-                className="flex items-center gap-3 text-sm text-foreground"
+                href="tel:+902125514307"
+                className="flex items-center gap-3 text-sm text-foreground hover:text-cobalt"
               >
-                <Phone className="h-5 w-5 text-cobalt" /> +90 212 000 00 00
+                <Phone className="h-5 w-5 text-cobalt" /> 0212 551 43 07
               </a>
               <a
                 href="mailto:info@medosa.com.tr"
