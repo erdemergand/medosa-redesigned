@@ -212,3 +212,28 @@ export const VALUES = [
   { icon: Scale, t: "Mevzuat uyumu", d: "Güncel mevzuat takibi ve risk analizi." },
   { icon: FileSearch, t: "Şeffaf takip", d: "Her aşamada bildirim ve raporlama." },
 ];
+
+/** Ana sayfadaki bilgi kaynakları: kısa özet + resmî bağlantı */
+export const KNOWLEDGE_LINKS = [
+  {
+    icon: Globe2,
+    title: "Avrupa Birliği",
+    desc: "Gümrük Birliği kapsamında A.TR dolaşım belgesi, menşe kuralları ve AB ile ticarette uygulanan tercihli rejimler.",
+    href: "https://ticaret.gov.tr/avrupa-birligi",
+    source: "Ticaret Bakanlığı – Avrupa Birliği",
+  },
+  {
+    icon: Ship,
+    title: "Dış Ticaret",
+    desc: "İthalat ve ihracat rejimleri, ürün güvenliği ve denetim mevzuatı ile dış ticaret teşvik ve destekleri.",
+    href: "https://ticaret.gov.tr/dis-ticaret",
+    source: "Ticaret Bakanlığı – Dış Ticaret",
+  },
+  {
+    icon: Scale,
+    title: "Gümrük Mevzuatı",
+    desc: "Gümrük Kanunu, yönetmelik, tebliğ ve genelgelerin güncel hâli ile gümrük işlemlerine ilişkin düzenlemeler.",
+    href: "https://ticaret.gov.tr/gumruk-islemleri/mevzuat",
+    source: "Ticaret Bakanlığı – Gümrük Mevzuatı",
+  },
+];
