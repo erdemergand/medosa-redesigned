@@ -9,24 +9,34 @@ import { SubscribeDialog, useSubscribePopup } from "@/components/subscribe-dialo
 import { useEffect, useState } from "react";
 
 import { KNOWLEDGE_LINKS, METRICS, SERVICES } from "@/lib/site-data";
+import { breadcrumbJsonLd, canonical } from "@/lib/seo";
+
+const TITLE = "Gümrük Müşavirliği | Medosa Gümrük Müşavirliği Ltd. Şti.";
+const DESCRIPTION =
+  "Medosa Gümrük Müşavirliği: İstanbul, İzmir, Bursa ve Kayseri'de ithalat, ihracat, antrepo, transit ticaret ve gümrükleme hizmetleri. 1989'dan bu yana yetkili gümrük müşavirliği firması.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Medosa | Gümrük Müşavirliği, Dış Ticaret ve Teknoloji" },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
       {
-        name: "description",
+        name: "keywords",
         content:
-          "Medosa; ithalat, ihracat, antrepo, transit ticaret ve gümrük mevzuat danışmanlığında dijital çözümler sunar. Beyanname takibi ve e-uygulamalarla hızlı gümrükleme.",
+          "gümrük müşavirliği, gümrük müşaviri, gümrük firması, gümrükleme, gümrük müşavirlik firması İstanbul, ithalat gümrükleme, ihracat gümrükleme, antrepo, transit ticaret",
       },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: canonical("/") },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: canonical("/") }],
+    scripts: [
       {
-        property: "og:title",
-        content: "Medosa | Gümrük Müşavirliği, Dış Ticaret ve Teknoloji",
-      },
-      {
-        property: "og:description",
-        content:
-          "İthalat, ihracat, antrepo ve transit ticaret operasyonlarınızı teknolojiyle hızlandırın. Medosa e-takip portalı ile beyannamenizi anında sorgulayın.",
+        type: "application/ld+json",
+        children: JSON.stringify(breadcrumbJsonLd([{ name: "Ana Sayfa", path: "/" }])),
       },
     ],
   }),
@@ -81,7 +91,7 @@ function Index() {
             className="fade-up mt-5 max-w-3xl text-3xl font-extrabold leading-[1.1] text-white sm:text-4xl lg:text-6xl"
             style={{ animationDelay: "0.1s" }}
           >
-            Gümrük ve dış ticaret operasyonlarınız{" "}
+            Gümrük müşavirliği ve dış ticaret operasyonlarınız{" "}
             <span className="shimmer-text">teknolojiyle hızlansın</span>
           </h1>
           <p

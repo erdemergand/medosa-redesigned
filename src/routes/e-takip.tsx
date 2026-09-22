@@ -7,20 +7,39 @@ import aaccLogo from "@/assets/aacc.png.asset.json";
 import emdsLogoDark from "@/assets/e-mds-dark.png";
 import aaccLogoDark from "@/assets/aacc-dark.png";
 import taahhutname from "@/assets/taahhutname.docx.asset.json";
+import { breadcrumbJsonLd, canonical } from "@/lib/seo";
+
+const TITLE = "E-Takip | Beyanname ve Antrepo Takip Portalları — Medosa";
+const DESCRIPTION =
+  "Medosa müşteri portalları: e-mds ile beyanname ve dijital evrak arşivi, aacc ile canlı yük, beyanname ve antrepo stok takibi. Güvenli giriş ve üyelik taahhütnamesi.";
 
 export const Route = createFileRoute("/e-takip")({
   head: () => ({
     meta: [
-      { title: "E-Takip | Medosa Müşteri Portalları" },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
       {
-        name: "description",
+        name: "keywords",
         content:
-          "Medosa müşteri portalları: e-mds dijital dosya ve operasyon takibi, aacc antrepo ve araç kontrol sistemi. İki faktörlü doğrulama ile güvenli giriş.",
+          "beyanname sorgulama, gümrük beyanname takibi, antrepo stok takibi, e-mds, aacc, gümrük müşteri portalı",
       },
-      { property: "og:title", content: "E-Takip | Medosa Müşteri Portalları" },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: canonical("/e-takip") },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: canonical("/e-takip") }],
+    scripts: [
       {
-        property: "og:description",
-        content: "e-mds ve aacc portallarına giriş yapın, dosyalarınızı ve antrepo hareketlerinizi takip edin.",
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbJsonLd([
+            { name: "Ana Sayfa", path: "/" },
+            { name: "E-Takip", path: "/e-takip" },
+          ]),
+        ),
       },
     ],
   }),

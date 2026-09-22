@@ -11,21 +11,39 @@ import {
   TICARET_BAKANLIGI,
   type AppLink,
 } from "@/lib/eapps-data";
+import { breadcrumbJsonLd, canonical } from "@/lib/seo";
+
+const TITLE = "E-Uygulamalar | Gümrük ve Dış Ticaret Portalları — Medosa";
+const DESCRIPTION =
+  "Ticaret Bakanlığı, Sağlık Bakanlığı, Tarım ve Orman Bakanlığı uygulamaları ile menşe sorgulama bağlantıları: NCTS, TPS, BTB, TAREKS, ÜTS, Tek Pencere tek ekranda.";
 
 export const Route = createFileRoute("/uygulamalar")({
   head: () => ({
     meta: [
-      { title: "E-Uygulamalar | Medosa" },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
       {
-        name: "description",
+        name: "keywords",
         content:
-          "Ticaret Bakanlığı, Sağlık Bakanlığı ve elektronik menşe sorgulama uygulamalarına tek ekrandan hızlı erişim.",
+          "gümrük e-uygulamaları, tek pencere sistemi, NCTS, TAREKS, BTB sorgulama, ÜTS, menşe sorgulama",
       },
-      { property: "og:title", content: "E-Uygulamalar | Medosa" },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: canonical("/uygulamalar") },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: canonical("/uygulamalar") }],
+    scripts: [
       {
-        property: "og:description",
-        content:
-          "NCTS, MERSİS, Tek Pencere, TİTCK, ÜTS ve ülke bazlı menşe sorgulama bağlantıları tek listede.",
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbJsonLd([
+            { name: "Ana Sayfa", path: "/" },
+            { name: "E-Uygulamalar", path: "/uygulamalar" },
+          ]),
+        ),
       },
     ],
   }),

@@ -21,21 +21,39 @@ import sectorTextile from "@/assets/sector-textile.jpg";
 import sectorPackaging from "@/assets/sector-packaging.jpg";
 import sectorMachinery from "@/assets/sector-machinery.jpg";
 import sectorAutomotive from "@/assets/sector-automotive.jpg";
+import { breadcrumbJsonLd, canonical } from "@/lib/seo";
+
+const TITLE = "Hakkımızda | 1989'dan Bu Yana Gümrük Müşavirliği — Medosa";
+const DESCRIPTION =
+  "Medosa Gümrük Müşavirliği 1989'dan bu yana faaliyette: İstanbul merkez, İzmir, Bursa ve Kayseri şubeleri, 28 gümrük sahasında saha kadrosu, ISO 9001 ve ISO 27001 belgeli hizmet.";
 
 export const Route = createFileRoute("/hakkimizda")({
   head: () => ({
     meta: [
-      { title: "Hakkımızda | Medosa Gümrük Müşavirliği" },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
       {
-        name: "description",
+        name: "keywords",
         content:
-          "1989'dan bu yana Medosa Gümrük Müşavirliği: İstanbul merkez, İzmir ve Bursa şubeleri, uzman saha kadrosu, ISO 9001 ve ISO 27001 belgeleri ile dış ticaret çözümleri.",
+          "gümrük müşavirliği firması, gümrük müşaviri, Medosa, gümrük firması İstanbul, gümrük müşavirliği İzmir, gümrük müşavirliği Bursa",
       },
-      { property: "og:title", content: "Hakkımızda | Medosa Gümrük Müşavirliği" },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: canonical("/hakkimizda") },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: canonical("/hakkimizda") }],
+    scripts: [
       {
-        property: "og:description",
-        content:
-          "Metin Ergand ve Doğan Barutçular ortaklığında 1989'da kurulan Medosa'nın tarihçesi, şubeleri, vizyonu, misyonu ve sertifikaları.",
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbJsonLd([
+            { name: "Ana Sayfa", path: "/" },
+            { name: "Hakkımızda", path: "/hakkimizda" },
+          ]),
+        ),
       },
     ],
   }),

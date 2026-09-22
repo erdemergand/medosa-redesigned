@@ -3,21 +3,59 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 import { PageHero } from "@/components/page-hero";
 import { SERVICES } from "@/lib/site-data";
+import { breadcrumbJsonLd, canonical } from "@/lib/seo";
+
+const TITLE = "Gümrük Müşavirliği Hizmetleri | İthalat, İhracat, Antrepo — Medosa";
+const DESCRIPTION =
+  "Gümrük müşavirliği hizmetlerimiz: ithalat ve ihracat gümrükleme, antrepo, transit ticaret, özet beyan, serbest bölge işlemleri, dış ticaret izinleri ve gümrük mevzuat danışmanlığı.";
 
 export const Route = createFileRoute("/hizmetler")({
   head: () => ({
     meta: [
-      { title: "Hizmetlerimiz | Medosa Gümrük Müşavirliği" },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
       {
-        name: "description",
+        name: "keywords",
         content:
-          "İthalat, ihracat, antrepo, transit ticaret, gümrük mevzuat danışmanlığı ve lojistik koordinasyon hizmetleri tek çatı altında.",
+          "gümrük müşavirliği hizmetleri, ithalat gümrükleme, ihracat gümrükleme, antrepo işlemleri, transit ticaret, özet beyan, serbest bölge işlemleri, YYS, OKSB",
       },
-      { property: "og:title", content: "Hizmetlerimiz | Medosa" },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: canonical("/hizmetler") },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: canonical("/hizmetler") }],
+    scripts: [
       {
-        property: "og:description",
-        content:
-          "Dış ticaretin her adımında uçtan uca gümrük müşavirliği ve operasyon yönetimi hizmetleri.",
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Medosa gümrük müşavirliği hizmetleri",
+          itemListElement: SERVICES.map((s, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "Service",
+              name: s.title,
+              description: s.desc,
+              serviceType: "Gümrük müşavirliği",
+              provider: { "@type": "Organization", name: "Medosa Gümrük Müşavirliği" },
+              areaServed: { "@type": "Country", name: "Türkiye" },
+            },
+          })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbJsonLd([
+            { name: "Ana Sayfa", path: "/" },
+            { name: "Hizmetler", path: "/hizmetler" },
+          ]),
+        ),
       },
     ],
   }),
