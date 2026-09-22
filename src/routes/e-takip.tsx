@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Mail, MapPin, ShieldCheck, TriangleAlert } from "lucide-react";
+import { ArrowRight, Download, Mail, MapPin, ShieldCheck, TriangleAlert } from "lucide-react";
 
 import { PageHero } from "@/components/page-hero";
 import emdsLogo from "@/assets/e-mds.png.asset.json";
 import aaccLogo from "@/assets/aacc.png.asset.json";
+import taahhutname from "@/assets/taahhutname.docx.asset.json";
 
 export const Route = createFileRoute("/e-takip")({
   head: () => ({
@@ -109,6 +110,15 @@ function ETakip() {
                 kargo ile merkez adresimize gönderilir.
               </li>
             </ol>
+
+            <a
+              href={taahhutname.url}
+              download="Medosa-Taahhutname.docx"
+              className="group mt-6 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-6 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+            >
+              <Download className="h-4 w-4" />
+              Taahhütnameyi indir
+            </a>
             <div className="mt-6 space-y-2 border-t border-border pt-5 text-sm text-foreground/85">
               <p className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-cobalt" /> info@medosa.com.tr
