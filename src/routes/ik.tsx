@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { GraduationCap, HeartHandshake, Layers, TrendingUp, Users } from "lucide-react";
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
+import { sendFormMail } from "@/lib/mail.functions";
 
 export const Route = createFileRoute("/ik")({
   head: () => ({
@@ -61,9 +63,22 @@ const CULTURE = [
   },
 ];
 
+/** Dosyayı base64'e çevirir (data: öneki olmadan). */
+function fileToBase64(file: File) {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(",")[1] ?? "");
+    reader.onerror = () => reject(new Error("Dosya okunamadı."));
+    reader.readAsDataURL(file);
+  });
+}
+
 function IK() {
+  const sendMail = useServerFn(sendFormMail);
   const [tab, setTab] = useState<"is" | "staj">("is");
   const [sent, setSent] = useState<null | "is" | "staj">(null);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <>
@@ -122,9 +137,57 @@ function IK() {
           </div>
 
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSent(tab);
+              const form = e.currentTarget;
+              const fd = new FormData(form);
+              const get = (k: string) => String(fd.get(k) ?? "");
+              const isJob = tab === "is";
+              setError(null);
+              setSending(true);
+              try {
+                let attachment;
+                const cv = fd.get("cv");
+                if (cv instanceof File && cv.size > 0) {
+                  if (cv.size > 6 * 1024 * 1024) {
+                    throw new Error("CV dosyası en fazla 6 MB olabilir.");
+                  }
+                  attachment = {
+                    filename: cv.name,
+                    contentType: cv.type || "application/octet-stream",
+                    data: await fileToBase64(cv),
+                  };
+                }
+
+                await sendMail({
+                  data: {
+                    subject: `${isJob ? "İş" : "Staj"} başvurusu — ${get("ad")}`,
+                    replyTo: get("email"),
+                    attachment,
+                    fields: [
+                      { label: "Başvuru tipi", value: isJob ? "İş başvurusu" : "Staj başvurusu" },
+                      { label: "Ad - Soyad", value: get("ad") },
+                      { label: "E-Posta", value: get("email") },
+                      { label: "Telefon", value: get("tel") },
+                      { label: "Başvuru Yeri", value: get("yer") },
+                      ...(isJob
+                        ? [{ label: "Pozisyon", value: get("pozisyon") }]
+                        : [
+                            { label: "Staj Türü", value: get("stajTuru") },
+                            { label: "Okul", value: get("okul") },
+                          ]),
+                      { label: "Konu", value: get("konu") },
+                      { label: "Mesaj", value: get("mesaj") },
+                    ],
+                  },
+                });
+                setSent(tab);
+                form.reset();
+              } catch (err) {
+                setError(err instanceof Error ? err.message : "Başvuru gönderilemedi.");
+              } finally {
+                setSending(false);
+              }
             }}
             className="mt-6 rounded-2xl border border-border bg-card p-7 shadow-sm"
           >
@@ -181,6 +244,7 @@ function IK() {
               </label>
               <textarea
                 id="mesaj"
+                name="mesaj"
                 rows={4}
                 maxLength={2000}
                 className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
@@ -199,15 +263,25 @@ function IK() {
 
             <button
               type="submit"
-              className="mt-6 w-full rounded-full bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              disabled={sending}
+              className="mt-6 w-full rounded-full bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60"
             >
-              {tab === "is" ? "İş Başvurusunu Gönder" : "Staj Başvurusunu Gönder"}
+              {sending
+                ? "Gönderiliyor..."
+                : tab === "is"
+                  ? "İş Başvurusunu Gönder"
+                  : "Staj Başvurusunu Gönder"}
             </button>
 
             {sent === tab && (
               <p className="mt-4 rounded-xl border border-cobalt/30 bg-cobalt/10 p-3 text-sm text-navy">
                 Başvurunuz alındı. İnsan kaynakları ekibimiz uygun pozisyon olması hâlinde sizinle
                 iletişime geçecektir.
+              </p>
+            )}
+            {error && (
+              <p className="mt-4 rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
+                {error}
               </p>
             )}
           </form>
