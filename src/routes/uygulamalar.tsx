@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ExternalLink, Globe2, HeartPulse, Landmark } from "lucide-react";
+import { ArrowRight, ExternalLink, Globe2 } from "lucide-react";
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
@@ -35,9 +35,24 @@ function Uygulamalar() {
   const f = (list: AppLink[]) =>
     list.filter((i) => i.name.toLocaleLowerCase("tr").includes(q.toLocaleLowerCase("tr").trim()));
 
-  const groups = [
-    { icon: Landmark, title: "Ticaret Bakanlığı Uygulamaları", items: f(TICARET_BAKANLIGI) },
-    { icon: HeartPulse, title: "Sağlık Bakanlığı Uygulamaları", items: f(SAGLIK_BAKANLIGI) },
+  const groups: {
+    icon?: typeof Globe2;
+    logo?: string;
+    logoDark?: boolean;
+    title: string;
+    items: AppLink[];
+  }[] = [
+    {
+      logo: "/logos/ticaret-bakanligi.svg",
+      logoDark: true,
+      title: "Ticaret Bakanlığı Uygulamaları",
+      items: f(TICARET_BAKANLIGI),
+    },
+    {
+      logo: "/logos/saglik-bakanligi.svg",
+      title: "Sağlık Bakanlığı Uygulamaları",
+      items: f(SAGLIK_BAKANLIGI),
+    },
     { icon: Globe2, title: "Elektronik Menşe Sorgulama", items: f(MENSE_SORGULAMA) },
   ];
 
@@ -71,9 +86,21 @@ function Uygulamalar() {
         {groups.map((g) => (
           <div key={g.title}>
             <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-navy to-cobalt text-white">
-                <g.icon className="h-5 w-5" />
-              </span>
+              {g.logo ? (
+                <span
+                  className={`flex h-12 w-12 items-center justify-center rounded-xl p-2 ${
+                    g.logoDark
+                      ? "bg-gradient-to-br from-navy to-cobalt"
+                      : "border border-border bg-white"
+                  }`}
+                >
+                  <img src={g.logo} alt={`${g.title} logosu`} className="h-full w-full object-contain" />
+                </span>
+              ) : (
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-navy to-cobalt text-white">
+                  {g.icon ? <g.icon className="h-5 w-5" /> : null}
+                </span>
+              )}
               <h2 className="text-xl font-bold text-navy md:text-2xl">{g.title}</h2>
               <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-muted-foreground">
                 {g.items.length}
@@ -92,7 +119,15 @@ function Uygulamalar() {
                     rel="noreferrer"
                     className="group flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-cobalt/50 hover:shadow-md"
                   >
-                    <span className="text-sm font-medium text-foreground group-hover:text-navy">
+                    <span className="flex items-center gap-2.5 text-sm font-medium text-foreground group-hover:text-navy">
+                      {i.code && (
+                        <img
+                          src={`https://flagcdn.com/w40/${i.code}.png`}
+                          alt=""
+                          loading="lazy"
+                          className="h-4 w-6 shrink-0 rounded-[3px] object-cover ring-1 ring-border"
+                        />
+                      )}
                       {i.name}
                     </span>
                     <ExternalLink className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-cobalt" />
