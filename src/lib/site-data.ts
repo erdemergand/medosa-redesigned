@@ -34,15 +34,16 @@ export const BRANCHES = [
   },
   {
     city: "Bursa Şubesi",
-    address: "Bursa / Türkiye",
+    address:
+      "Fethiye Mah. Fesleğen Sok. No:2/1 Ata Plaza D:5 (Ata Bulvarı) Nilüfer / Bursa",
     note: "Marmara bölgesi ve Gemlik operasyonları (2011)",
-    q: "Bursa Gümrük Müdürlüğü",
+    q: "Ata Plaza Fesleğen Sokak No 2 Fethiye Mahallesi Nilüfer Bursa",
   },
   {
     city: "Kayseri Şubesi",
-    address: "Kayseri / Türkiye",
+    address: "Serbest Bölge, Anbar Mah. 54. Cd. 15-D, Melikgazi / KAYSERİ",
     note: "İç Anadolu bölgesi operasyonları (Şubat 2024)",
-    q: "Kayseri Gümrük Müdürlüğü",
+    q: "Anbar Mahallesi 54. Cadde 15 Melikgazi Kayseri Serbest Bölge",
   },
 ];
 
