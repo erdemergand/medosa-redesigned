@@ -146,34 +146,44 @@ function Iletisim() {
                     <p className="eyebrow mb-2 text-cobalt">{region}</p>
                     <div className="space-y-2">
                       {offices.map((o) => (
-                        <button
+                        <div
                           key={o.name}
-                          onClick={() => setActive(o)}
-                          className={`flex w-full items-start gap-3 rounded-xl border p-4 text-left transition-colors ${
+                          className={`rounded-xl border transition-colors ${
                             active.name === o.name
                               ? "border-cobalt bg-cobalt/10"
                               : "border-border bg-card hover:border-cobalt/40"
                           }`}
                         >
-                          <span className="mt-0.5 flex shrink-0 items-center gap-1">
-                            {o.types.map((t) => {
-                              const OfficeIcon = OFFICE_ICONS[t];
-                              return (
-                                <OfficeIcon
-                                  key={t}
-                                  aria-label={OFFICE_LABELS[t]}
-                                  className="h-4 w-4 text-cobalt"
-                                />
-                              );
-                            })}
-                          </span>
-                          <span>
-                            <span className="block text-sm font-semibold text-navy">{o.name}</span>
-                            <span className="text-xs text-muted-foreground">
-                              {o.city} · {o.types.map((t) => OFFICE_LABELS[t]).join(" / ")}
+                          <button
+                            onClick={() => setActive(o)}
+                            className="flex w-full items-start gap-3 p-4 text-left"
+                          >
+                            <span className="mt-0.5 flex shrink-0 items-center gap-1">
+                              {o.types.map((t) => {
+                                const OfficeIcon = OFFICE_ICONS[t];
+                                return (
+                                  <OfficeIcon
+                                    key={t}
+                                    aria-label={OFFICE_LABELS[t]}
+                                    className="h-4 w-4 text-cobalt"
+                                  />
+                                );
+                              })}
                             </span>
-                          </span>
-                        </button>
+                            <span>
+                              <span className="block text-sm font-semibold text-navy">{o.name}</span>
+                              <span className="text-xs text-muted-foreground">
+                                {o.city} · {o.types.map((t) => OFFICE_LABELS[t]).join(" / ")}
+                              </span>
+                            </span>
+                          </button>
+                          <a
+                            href={`mailto:${OFFICE_EMAIL}?subject=${encodeURIComponent(o.name)}`}
+                            className="flex items-center gap-2 border-t border-border/70 px-4 py-2.5 text-xs font-semibold text-foreground hover:text-cobalt"
+                          >
+                            <Mail className="h-3.5 w-3.5 shrink-0 text-cobalt" /> {OFFICE_EMAIL}
+                          </a>
+                        </div>
                       ))}
                     </div>
                   </div>
