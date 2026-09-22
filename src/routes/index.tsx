@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, Radar } from "lucide-react";
 
 import heroPort from "@/assets/hero-port.jpg";
-import { METRICS, WHATSAPP } from "@/lib/site-data";
+import { METRICS } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
