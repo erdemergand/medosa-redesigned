@@ -43,7 +43,7 @@ function Hizmetler() {
                   <s.icon className="h-6 w-6" />
                 </div>
                 <span className="font-display text-sm font-extrabold text-muted-foreground/40">
-                  0{i + 1}
+                  {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
               <h2 className="mt-5 text-lg font-bold text-navy">{s.title}</h2>
@@ -64,7 +64,7 @@ function Hizmetler() {
             to="/iletisim"
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-cobalt/25 transition-all hover:-translate-y-0.5"
           >
-            Teklif Alın
+            İletişime Geçin
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

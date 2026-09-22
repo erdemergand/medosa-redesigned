@@ -1,10 +1,14 @@
 import {
   Building2,
+  ClipboardList,
   FileSearch,
+  Gavel,
   Globe2,
+  Landmark,
   Package,
   Scale,
   Ship,
+  ShieldCheck,
   Truck,
   Warehouse,
 } from "lucide-react";
@@ -157,6 +161,30 @@ export const SERVICES = [
     title: "Gümrük Mevzuat Danışmanlığı",
     desc: "Mevzuat değişikliklerine karşı proaktif danışmanlık, denetim ve itiraz süreçleri.",
     points: ["YYS başvuru desteği", "Denetim & itiraz", "Eğitim programları"],
+  },
+  {
+    icon: ClipboardList,
+    title: "Özet Beyan Gümrük İşlemleri",
+    desc: "Eşyanın Türkiye gümrük bölgesine girişinden itibaren özet beyan ve taşıma belgesi süreçlerinin eksiksiz yürütülmesi.",
+    points: ["Özet beyan tescili", "Antrepo/ardiye girişi", "Eksiklik-fazlalık takibi"],
+  },
+  {
+    icon: Landmark,
+    title: "Serbest Bölge İşlemleri",
+    desc: "Serbest bölgelere giriş-çıkış işlemleri, ön statü belgeleri ve stok hareketlerinin mevzuata uygun yönetimi.",
+    points: ["SB işlem formu", "Giriş-çıkış beyanı", "Stok ve süre takibi"],
+  },
+  {
+    icon: ShieldCheck,
+    title: "Dış Ticarette İzin Alım Hizmetleri",
+    desc: "İthalat ve ihracatta gerekli tüm kurum izin, uygunluk ve kontrol belgelerinin başvuru ve takibi.",
+    points: ["Kontrol belgesi", "TAREKS / TSE / TİTCK", "Tek Pencere başvuruları"],
+  },
+  {
+    icon: Gavel,
+    title: "Hukuki İşlem Danışmanlık Hizmetleri",
+    desc: "Gümrük idaresi ile yaşanan uyuşmazlıklarda itiraz, uzlaşma ve dava süreçlerinde uzman danışmanlık.",
+    points: ["İtiraz ve uzlaşma", "Ceza kararı incelemesi", "Dava süreci desteği"],
   },
   {
     icon: Globe2,
