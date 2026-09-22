@@ -21,6 +21,8 @@ import {
 } from "lucide-react";
 
 import logo from "@/assets/medosa-logo.jpg.asset.json";
+import emdsLogo from "@/assets/e-mds.png.asset.json";
+import aaccLogo from "@/assets/aacc.png.asset.json";
 import heroPort from "@/assets/hero-port.jpg";
 
 export const Route = createFileRoute("/")({
@@ -94,7 +96,24 @@ const SERVICES = [
   },
 ];
 
-const PORTALS = [
+const PORTALS: {
+  name: string;
+  desc: string;
+  href: string;
+  logo?: string;
+}[] = [
+  {
+    name: "e-mds",
+    desc: "Medosa dijital dosya ve operasyon portalı",
+    href: "#etakip",
+    logo: emdsLogo.url,
+  },
+  {
+    name: "aacc",
+    desc: "Antrepo & araç kontrol uygulaması",
+    href: "#etakip",
+    logo: aaccLogo.url,
+  },
   {
     name: "Ticaret Bakanlığı",
     desc: "Resmî gümrük işlemleri ve duyurular",
@@ -104,16 +123,6 @@ const PORTALS = [
     name: "BİLGE / Tek Pencere",
     desc: "Beyanname ve e-belge sistemi",
     href: "https://uygulama.gtb.gov.tr",
-  },
-  {
-    name: "e-mds",
-    desc: "Medosa dijital dosya ve operasyon portalı",
-    href: "#etakip",
-  },
-  {
-    name: "aacc",
-    desc: "Antrepo & araç kontrol uygulaması",
-    href: "#etakip",
   },
 ];
 
@@ -133,10 +142,12 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
           <a href="#" className="flex items-center gap-3">
-            <img src={logo.url} alt="Medosa logosu" className="h-11 w-11 object-cover" />
+            <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl ring-1 ring-border">
+              <img src={logo.url} alt="Medosa logosu" className="h-full w-full object-cover" />
+            </span>
             <span className="font-display text-lg font-extrabold tracking-tight text-navy">
               MEDOSA
             </span>
