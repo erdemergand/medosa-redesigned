@@ -219,15 +219,15 @@ export const KNOWLEDGE_LINKS = [
     icon: Globe2,
     title: "Avrupa Birliği",
     desc: "Gümrük Birliği kapsamında A.TR dolaşım belgesi, menşe kuralları ve AB ile ticarette uygulanan tercihli rejimler.",
-    href: "https://ticaret.gov.tr/avrupa-birligi",
+    href: "https://ticaret.gov.tr/dis-iliskiler/avrupa-birligi",
     source: "Ticaret Bakanlığı – Avrupa Birliği",
   },
   {
     icon: Ship,
     title: "Dış Ticaret",
     desc: "İthalat ve ihracat rejimleri, ürün güvenliği ve denetim mevzuatı ile dış ticaret teşvik ve destekleri.",
-    href: "https://ticaret.gov.tr/dis-ticaret",
-    source: "Ticaret Bakanlığı – Dış Ticaret",
+    href: "https://ticaret.gov.tr/ihracat",
+    source: "Ticaret Bakanlığı – İhracat / İthalat",
   },
   {
     icon: Scale,

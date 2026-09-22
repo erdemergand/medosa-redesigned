@@ -25,6 +25,9 @@ export const getSectorNews = createServerFn({ method: "GET" }).handler(async ():
         title: String(item["title"] ?? "Duyuru"),
         summary: String(item["summary"] ?? item["description"] ?? ""),
         category: String(item["category"] ?? "Duyuru"),
+        kind: String(item["kind"] ?? item["type"] ?? "haber").toLowerCase().startsWith("duyuru")
+          ? "duyuru"
+          : "haber",
         date: String(item["date"] ?? item["publishedAt"] ?? new Date().toISOString()),
         href: typeof item["href"] === "string" ? (item["href"] as string) : undefined,
       } satisfies NewsItem;
