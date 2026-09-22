@@ -29,6 +29,13 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+/** Bilgi kutularının ikon renkleri: AB mavisi, ticaret turkuazı, mevzuat kehribarı. */
+const KNOWLEDGE_ACCENTS = [
+  "from-[#2b5cff] to-[#8ab4ff] shadow-[0_10px_28px_-12px_rgba(43,92,255,0.9)]",
+  "from-[#0ea5a4] to-[#5fe3c0] shadow-[0_10px_28px_-12px_rgba(14,165,164,0.9)]",
+  "from-[#f59e0b] to-[#fcd34d] shadow-[0_10px_28px_-12px_rgba(245,158,11,0.9)]",
+];
+
 function Index() {
   const { open, setOpen } = useDocumentsPopup();
 
@@ -126,8 +133,11 @@ function Index() {
               style={{ animationDelay: `${0.45 + i * 0.1}s` }}
             >
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cobalt to-primary text-white">
-                  <k.icon className="h-5 w-5" />
+                <span
+                  className={`relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-lg ring-1 ring-white/20 transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3 ${KNOWLEDGE_ACCENTS[i % KNOWLEDGE_ACCENTS.length]}`}
+                >
+                  <span className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
+                  <k.icon className="relative h-6 w-6" strokeWidth={1.75} />
                 </span>
                 <h2 className="text-base font-bold text-white">{k.title}</h2>
               </div>
