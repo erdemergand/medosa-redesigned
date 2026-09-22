@@ -57,6 +57,11 @@ const TIMELINE = [
     title: "Bursa şubesi",
     desc: "2011 yılı sonu itibariyle Bursa şubesi hizmete açıldı.",
   },
+  {
+    year: "2024",
+    title: "Kayseri şubesi",
+    desc: "Şubat 2024'te Kayseri şubemiz kurularak İç Anadolu'daki hizmet ağımız genişledi.",
+  },
 ];
 
 const BRANCHES = [
@@ -67,6 +72,7 @@ const BRANCHES = [
   },
   { city: "İzmir Şubesi", desc: "2007 yılında faaliyete geçti.", note: "Ege bölgesi operasyonları" },
   { city: "Bursa Şubesi", desc: "2011 yılı sonu itibariyle açıldı.", note: "Marmara bölgesi operasyonları" },
+  { city: "Kayseri Şubesi", desc: "Şubat 2024'te kuruldu.", note: "İç Anadolu bölgesi operasyonları" },
 ];
 
 const SECTORS = [
@@ -112,7 +118,7 @@ function Hakkimizda() {
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {[
             { v: "1989", l: "Kuruluş yılı" },
-            { v: "3", l: "Şube: İstanbul, İzmir, Bursa" },
+            { v: "4", l: "Şube: İstanbul, İzmir, Bursa, Kayseri" },
             { v: "EDI", l: "Online gümrük tescili" },
             { v: "ISO", l: "9001 & 27001 belgeli" },
           ].map((m) => (
@@ -218,8 +224,10 @@ function Hakkimizda() {
       {/* Şubeler */}
       <section className="mx-auto max-w-7xl px-5 py-20">
         <span className="eyebrow text-cobalt">Şubelerimiz</span>
-        <h2 className="mt-3 text-2xl font-bold text-navy md:text-3xl">İstanbul, İzmir ve Bursa</h2>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <h2 className="mt-3 text-2xl font-bold text-navy md:text-3xl">
+          İstanbul, İzmir, Bursa ve Kayseri
+        </h2>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {BRANCHES.map((b) => (
             <article key={b.city} className="soft-card rounded-2xl p-7">
               <MapPin className="h-6 w-6 text-cobalt" />
