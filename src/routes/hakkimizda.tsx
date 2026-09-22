@@ -15,6 +15,12 @@ import {
 } from "lucide-react";
 
 import { PageHero } from "@/components/page-hero";
+import sectorHeating from "@/assets/sector-heating.jpg";
+import sectorMarine from "@/assets/sector-marine.jpg";
+import sectorTextile from "@/assets/sector-textile.jpg";
+import sectorPackaging from "@/assets/sector-packaging.jpg";
+import sectorMachinery from "@/assets/sector-machinery.jpg";
+import sectorAutomotive from "@/assets/sector-automotive.jpg";
 
 export const Route = createFileRoute("/hakkimizda")({
   head: () => ({
@@ -88,12 +94,12 @@ const BRANCHES = [
 ];
 
 const SECTORS = [
-  { icon: Flame, name: "Isıtma Sanayi" },
-  { icon: Anchor, name: "Gemi İnşa & Denizcilik" },
-  { icon: Factory, name: "Tekstil" },
-  { icon: Package, name: "Ambalaj Sanayi" },
-  { icon: Wrench, name: "Makine & Hırdavat" },
-  { icon: Building2, name: "Otomotiv" },
+  { icon: Flame, name: "Isıtma Sanayi", image: sectorHeating },
+  { icon: Anchor, name: "Gemi İnşa & Denizcilik", image: sectorMarine },
+  { icon: Factory, name: "Tekstil", image: sectorTextile },
+  { icon: Package, name: "Ambalaj Sanayi", image: sectorPackaging },
+  { icon: Wrench, name: "Makine & Hırdavat", image: sectorMachinery },
+  { icon: Building2, name: "Otomotiv", image: sectorAutomotive },
 ];
 
 const CERTS = [
