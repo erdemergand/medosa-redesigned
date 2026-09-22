@@ -119,5 +119,57 @@ export const submitApplication = createServerFn({ method: "POST" })
       throw new Error("Başvuru kaydedilemedi, lütfen tekrar deneyin.");
     }
 
+    // Anlık bildirim e-postası
+    try {
+      const { sendMail, wrapHtml, esc, DEFAULT_TO } = await import("@/lib/mailer.server");
+      const rows = (
+        [
+          ["fullName", data.fullName],
+          ["email", data.email],
+          ["phone", data.phone],
+          ["location", data.location],
+          ["position", data.position],
+          ["internshipType", data.internshipType],
+          ["school", data.school],
+          ["subject", data.subject],
+          ["message", data.message],
+        ] as [string, string | undefined][]
+      )
+        .filter(([, v]) => v)
+        .map(
+          ([k, v]) =>
+            `<tr><td style="padding:6px 10px;color:#64748b;font-size:13px;white-space:nowrap">${esc(
+              LABELS[k] ?? k,
+            )}</td><td style="padding:6px 10px;font-size:14px;color:#0f172a">${esc(
+              String(v),
+            ).replace(/\n/g, "<br>")}</td></tr>`,
+        )
+        .join("");
+
+      const title = data.kind === "is" ? "Yeni iş başvurusu" : "Yeni staj başvurusu";
+      await sendMail({
+        to: DEFAULT_TO,
+        subject: `${title} — ${data.fullName}`,
+        replyTo: data.email,
+        html: wrapHtml(
+          title,
+          `<table style="border-collapse:collapse;width:100%">${rows}</table>${
+            data.cv ? "" : '<p style="font-size:12px;color:#64748b">CV eklenmemiş.</p>'
+          }`,
+        ),
+        attachment: data.cv
+          ? {
+              filename: data.cv.filename,
+              contentType: data.cv.contentType || "application/octet-stream",
+              data: data.cv.data,
+            }
+          : undefined,
+      });
+    } catch (mailError) {
+      console.error("Başvuru e-postası gönderilemedi:", mailError);
+    }
+
+
+
     return { ok: true as const };
   });
