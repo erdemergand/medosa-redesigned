@@ -31,6 +31,8 @@ const PORTALS = [
   {
     name: "e-mds",
     logo: emdsLogo.url,
+    logoDark: emdsLogoDark,
+
     href: "https://webgumruk.com/authentication/login.xhtml",
     desc: "Medosa dijital takip portalı. Beyannamelerinizi görüntüleyin, evrak arşivinize ulaşın ve belgelerinizi indirin.",
     features: ["Beyanname", "Evrak arşivi ve indirme"],
