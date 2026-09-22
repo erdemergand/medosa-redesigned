@@ -171,3 +171,14 @@
 @utility spin-orbit-rev {
   animation: spin-rev 20s linear infinite;
 }
+
+@keyframes globe-spin-map {
+  from { background-position: 0% 50%; }
+  to { background-position: -200% 50%; }
+}
+
+@utility globe-map {
+  background-size: 200% 100%;
+  background-repeat: repeat-x;
+  animation: globe-spin-map 18s linear infinite;
+}
