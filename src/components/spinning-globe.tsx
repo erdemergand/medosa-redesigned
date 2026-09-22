@@ -41,7 +41,7 @@ export function SpinningGlobe() {
               alt=""
               loading="lazy"
               className="spin-orbit-rev -ml-[9px] -mt-[6px] h-3 w-[18px] rounded-[2px] object-cover shadow ring-1 ring-white/70"
-              style={{ transform: `rotate(${-o.angle}deg)` }}
+             
             />
           </span>
         ))}
