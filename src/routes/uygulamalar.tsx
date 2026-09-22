@@ -3,9 +3,11 @@ import { ArrowRight, ExternalLink, Globe2 } from "lucide-react";
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
+import { SpinningGlobe } from "@/components/spinning-globe";
 import {
   MENSE_SORGULAMA,
   SAGLIK_BAKANLIGI,
+  TARIM_ORMAN,
   TICARET_BAKANLIGI,
   type AppLink,
 } from "@/lib/eapps-data";
