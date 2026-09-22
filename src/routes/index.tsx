@@ -135,8 +135,26 @@ function Index() {
             </a>
           ))}
         </div>
+      </div>
 
-        <div className="mt-4 grid gap-4 md:grid-cols-3 lg:grid-cols-4">
+      {/* Hizmet şeridi */}
+      <div className="relative mt-auto overflow-hidden border-y border-white/10 py-4">
+        <div className="marquee-track">
+          {[...SERVICES, ...SERVICES].map((s, i) => (
+            <span
+              key={`${s.title}-${i}`}
+              className="mx-6 inline-flex shrink-0 items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/45"
+            >
+              <s.icon className="h-4 w-4 text-cobalt" />
+              {s.title}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Rakamlarla Medosa */}
+      <div className="relative mx-auto w-full max-w-7xl px-5 py-10">
+        <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
           {METRICS.map((m, i) => (
             <div
               key={m.label}
@@ -150,21 +168,6 @@ function Index() {
         </div>
       </div>
 
-
-      {/* Hizmet şeridi */}
-      <div className="relative mt-auto overflow-hidden border-t border-white/10 py-4">
-        <div className="marquee-track">
-          {[...SERVICES, ...SERVICES].map((s, i) => (
-            <span
-              key={`${s.title}-${i}`}
-              className="mx-6 inline-flex shrink-0 items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/45"
-            >
-              <s.icon className="h-4 w-4 text-cobalt" />
-              {s.title}
-            </span>
-          ))}
-        </div>
-      </div>
 
       <DocumentsDialog open={open} onClose={() => setOpen(false)} />
     </section>
