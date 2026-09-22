@@ -211,14 +211,6 @@ function IK() {
               </p>
             )}
           </form>
-
-          <p className="mt-4 text-center text-xs text-muted-foreground">
-            Başvurularınızı{" "}
-            <a href="mailto:info@medosa.com.tr" className="text-cobalt underline">
-              info@medosa.com.tr
-            </a>{" "}
-            adresine de iletebilirsiniz.
-          </p>
         </div>
       </section>
     </>
