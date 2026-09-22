@@ -61,10 +61,22 @@ function base64ToBytes(b64: string) {
   return bytes;
 }
 
+const LABELS: Record<string, string> = {
+  fullName: "Ad Soyad",
+  email: "E-posta",
+  phone: "Telefon",
+  location: "Başvuru Yeri",
+  position: "Pozisyon",
+  internshipType: "Staj Türü",
+  school: "Okul",
+  subject: "Konu",
+  message: "Mesaj",
+};
+
 /**
- * Başvuruyu kaydeder. CV özel depoya yüklenir.
- * E-posta gönderilmez; başvurular pazartesi 09:00'daki toplu özetle iletilir.
+ * Başvuruyu kaydeder, CV'yi özel depoya yükler ve anında e-posta gönderir.
  */
+
 export const submitApplication = createServerFn({ method: "POST" })
   .inputValidator(validate)
   .handler(async ({ data }) => {
