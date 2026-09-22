@@ -43,8 +43,7 @@ function Uygulamalar() {
     items: AppLink[];
   }[] = [
     {
-      logo: "/logos/ticaret-bakanligi.svg",
-      logoDark: true,
+      logo: "/logos/ticaret-bakanligi.png",
       title: "Ticaret Bakanlığı Uygulamaları",
       items: f(TICARET_BAKANLIGI),
     },
