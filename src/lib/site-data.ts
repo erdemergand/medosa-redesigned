@@ -47,7 +47,15 @@ export const BRANCHES = [
   },
 ];
 
-export const CUSTOMS_OFFICES = [
+export type CustomsOfficeType = "sea" | "land" | "air" | "rail";
+
+export const CUSTOMS_OFFICES: {
+  type: CustomsOfficeType;
+  name: string;
+  city: string;
+  region: string;
+  q: string;
+}[] = [
   // İstanbul
   { type: "sea", name: "Ambarlı Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Ambarlı Gümrük Müdürlüğü Avcılar İstanbul" },
   { type: "land", name: "Erenköy Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Erenköy Gümrük Müdürlüğü İstanbul" },
