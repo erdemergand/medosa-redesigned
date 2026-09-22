@@ -36,8 +36,13 @@ const PORTALS = [
     name: "aacc",
     logo: aaccLogo.url,
     href: "https://www.aacc.com.tr",
-    desc: "Antrepo ve araç kontrol uygulaması. Stok, giriş-çıkış ve araç hareketlerini anlık olarak görüntüleyin.",
-    features: ["Antrepo stok takibi", "Araç giriş-çıkış kontrolü", "Süre ve devir uyarıları"],
+    desc: "Uçtan uca canlı takip ve izleme platformu. Yükünüzün, beyannamenizin, antrepo stoğunuzun ve kargonuzun tüm sürecini anlık olarak izleyin.",
+    features: [
+      "Canlı yük takibi",
+      "Canlı beyanname takibi",
+      "Antrepo stok takibi",
+      "Kargo ve tüm süreç izleme",
+    ],
   },
 ];
 
