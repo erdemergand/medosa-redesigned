@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { Building2, Mail, MapPin, Phone, Plane, Ship, Train, Truck } from "lucide-react";
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
 import { sendFormMail } from "@/lib/mail.functions";
@@ -25,6 +25,8 @@ export const Route = createFileRoute("/iletisim")({
   }),
   component: Iletisim,
 });
+
+const CustomsMap = lazy(() => import("@/components/customs-map"));
 
 const OFFICE_ICONS = { sea: Ship, land: Truck, air: Plane, rail: Train } as const;
 const OFFICE_LABELS = { sea: "Deniz gümrüğü", land: "Kara gümrüğü", air: "Hava gümrüğü", rail: "Demiryolu gümrüğü" } as const;
@@ -180,14 +182,36 @@ function Iletisim() {
             </div>
 
             <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-              <iframe
-                key={active.name}
-                title={`${active.name} haritası`}
-                src={mapSrc(active.q)}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-[460px] w-full border-0"
-              />
+              <ClientOnly
+                fallback={
+                  <div className="flex h-[520px] w-full items-center justify-center text-sm text-muted-foreground">
+                    Harita yükleniyor...
+                  </div>
+                }
+              >
+                <Suspense
+                  fallback={
+                    <div className="flex h-[520px] w-full items-center justify-center text-sm text-muted-foreground">
+                      Harita yükleniyor...
+                    </div>
+                  }
+                >
+                  <CustomsMap offices={CUSTOMS_OFFICES} active={active} onSelect={setActive} />
+                </Suspense>
+              </ClientOnly>
+              <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3">
+                <p className="text-xs text-muted-foreground">
+                  Tüm gümrük ofislerimiz tek haritada. Bir işareti veya listeden bir müdürlüğü seçin.
+                </p>
+                <a
+                  href={directionsUrl(active.q)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="shrink-0 text-xs font-semibold text-cobalt hover:underline"
+                >
+                  Yol tarifi
+                </a>
+              </div>
             </div>
           </div>
         </div>
