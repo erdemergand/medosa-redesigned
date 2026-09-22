@@ -45,7 +45,15 @@ function Index() {
       <img
         src={heroPort}
         alt="Konteyner limanı"
-        className="slow-zoom absolute inset-0 h-full w-full object-cover opacity-20"
+        className="slow-zoom absolute inset-0 h-full w-full object-cover opacity-35 dark:opacity-20"
+      />
+      {/* Gündüz modunda hero'yu aydınlatan ışık katmanı */}
+      <div
+        className="absolute inset-0 dark:hidden"
+        style={{
+          background:
+            "linear-gradient(135deg, color-mix(in oklab, var(--cobalt) 55%, transparent) 0%, transparent 45%, color-mix(in oklab, white 22%, transparent) 100%)",
+        }}
       />
       <div className="grid-lines absolute inset-0 opacity-60" />
       <div className="glow-orb float-soft absolute -left-24 top-10 h-96 w-96 opacity-50" />

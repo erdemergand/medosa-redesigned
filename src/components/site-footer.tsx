@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="bg-navy-deep py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-5 sm:flex-row">
         <div className="flex items-center gap-3">
-          <div className="flex h-32 w-32 items-center justify-center rounded-full bg-white p-4 shadow-lg md:h-36 md:w-36">
+          <div className="logo-tile flex h-32 w-32 items-center justify-center rounded-full bg-white p-4 shadow-lg md:h-36 md:w-36">
             <img
               src={logoFull.url}
               alt="Medosa logosu"
