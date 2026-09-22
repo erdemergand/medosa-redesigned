@@ -137,9 +137,57 @@ function IK() {
           </div>
 
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSent(tab);
+              const form = e.currentTarget;
+              const fd = new FormData(form);
+              const get = (k: string) => String(fd.get(k) ?? "");
+              const isJob = tab === "is";
+              setError(null);
+              setSending(true);
+              try {
+                let attachment;
+                const cv = fd.get("cv");
+                if (cv instanceof File && cv.size > 0) {
+                  if (cv.size > 6 * 1024 * 1024) {
+                    throw new Error("CV dosyası en fazla 6 MB olabilir.");
+                  }
+                  attachment = {
+                    filename: cv.name,
+                    contentType: cv.type || "application/octet-stream",
+                    data: await fileToBase64(cv),
+                  };
+                }
+
+                await sendMail({
+                  data: {
+                    subject: `${isJob ? "İş" : "Staj"} başvurusu — ${get("ad")}`,
+                    replyTo: get("email"),
+                    attachment,
+                    fields: [
+                      { label: "Başvuru tipi", value: isJob ? "İş başvurusu" : "Staj başvurusu" },
+                      { label: "Ad - Soyad", value: get("ad") },
+                      { label: "E-Posta", value: get("email") },
+                      { label: "Telefon", value: get("tel") },
+                      { label: "Başvuru Yeri", value: get("yer") },
+                      ...(isJob
+                        ? [{ label: "Pozisyon", value: get("pozisyon") }]
+                        : [
+                            { label: "Staj Türü", value: get("stajTuru") },
+                            { label: "Okul", value: get("okul") },
+                          ]),
+                      { label: "Konu", value: get("konu") },
+                      { label: "Mesaj", value: get("mesaj") },
+                    ],
+                  },
+                });
+                setSent(tab);
+                form.reset();
+              } catch (err) {
+                setError(err instanceof Error ? err.message : "Başvuru gönderilemedi.");
+              } finally {
+                setSending(false);
+              }
             }}
             className="mt-6 rounded-2xl border border-border bg-card p-7 shadow-sm"
           >
