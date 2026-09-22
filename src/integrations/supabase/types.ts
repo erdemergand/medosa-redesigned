@@ -14,7 +14,132 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      announcements: {
+        Row: {
+          category: string
+          created_at: string
+          id: string
+          is_published: boolean
+          notified_at: string | null
+          summary: string
+          title: string
+          url: string | null
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          id?: string
+          is_published?: boolean
+          notified_at?: string | null
+          summary?: string
+          title: string
+          url?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          id?: string
+          is_published?: boolean
+          notified_at?: string | null
+          summary?: string
+          title?: string
+          url?: string | null
+        }
+        Relationships: []
+      }
+      applications: {
+        Row: {
+          created_at: string
+          cv_filename: string | null
+          cv_path: string | null
+          digest_sent_at: string | null
+          email: string
+          full_name: string
+          id: string
+          internship_type: string | null
+          kind: string
+          location: string | null
+          message: string | null
+          phone: string | null
+          position: string | null
+          school: string | null
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string
+          cv_filename?: string | null
+          cv_path?: string | null
+          digest_sent_at?: string | null
+          email: string
+          full_name: string
+          id?: string
+          internship_type?: string | null
+          kind: string
+          location?: string | null
+          message?: string | null
+          phone?: string | null
+          position?: string | null
+          school?: string | null
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string
+          cv_filename?: string | null
+          cv_path?: string | null
+          digest_sent_at?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          internship_type?: string | null
+          kind?: string
+          location?: string | null
+          message?: string | null
+          phone?: string | null
+          position?: string | null
+          school?: string | null
+          subject?: string | null
+        }
+        Relationships: []
+      }
+      job_locks: {
+        Row: {
+          job_name: string
+          locked_until: string
+        }
+        Insert: {
+          job_name: string
+          locked_until: string
+        }
+        Update: {
+          job_name?: string
+          locked_until?: string
+        }
+        Relationships: []
+      }
+      subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          is_active: boolean
+          unsubscribe_token: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          is_active?: boolean
+          unsubscribe_token?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          is_active?: boolean
+          unsubscribe_token?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
