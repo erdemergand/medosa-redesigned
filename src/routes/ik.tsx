@@ -244,6 +244,7 @@ function IK() {
               </label>
               <textarea
                 id="mesaj"
+                name="mesaj"
                 rows={4}
                 maxLength={2000}
                 className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
