@@ -39,7 +39,7 @@ function Index() {
   const { open, setOpen } = useDocumentsPopup();
 
   return (
-    <section className="relative isolate flex min-h-[calc(100vh-4.5rem)] flex-col justify-center overflow-hidden bg-navy-deep">
+    <section className="relative isolate flex min-h-[calc(100vh-5.5rem)] flex-col justify-center overflow-hidden bg-navy-deep">
       <img
         src={heroPort}
         alt="Konteyner limanı"
