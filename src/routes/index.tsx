@@ -168,13 +168,13 @@ function Index() {
               href={WHATSAPP}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </a>
             <a
               href="#iletisim"
-              className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             >
               Teklif Alın
             </a>
@@ -364,12 +364,12 @@ function Index() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Örn: 26341300IM123456"
-                    className="w-full rounded-md border border-white/20 bg-navy-deep/60 py-3 pl-9 pr-3 text-sm text-white placeholder:text-white/40 focus:border-cobalt focus:outline-none"
+                    className="w-full rounded-xl border border-white/20 bg-navy-deep/60 py-3 pl-9 pr-3 text-sm text-white placeholder:text-white/40 focus:border-cobalt focus:outline-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="rounded-md bg-cobalt px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                  className="rounded-xl bg-cobalt px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
                 >
                   Sorgula
                 </button>
@@ -466,7 +466,7 @@ function Index() {
               { icon: Scale, t: "Mevzuat uyumu", d: "Güncel mevzuat takibi ve risk analizi." },
               { icon: FileSearch, t: "Şeffaf takip", d: "Her aşamada bildirim ve raporlama." },
             ].map((c) => (
-              <div key={c.t} className="rounded-xl border border-border bg-card p-6">
+              <div key={c.t} className="soft-card rounded-2xl p-6">
                 <c.icon className="h-6 w-6 text-cobalt" />
                 <h3 className="mt-4 text-base font-bold text-navy">{c.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{c.d}</p>
@@ -502,7 +502,7 @@ function Index() {
                 href={WHATSAPP}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-navy px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
               >
                 <MessageCircle className="h-4 w-4" /> WhatsApp ile hızlı destek
               </a>
@@ -514,7 +514,7 @@ function Index() {
               e.preventDefault();
               setSent(true);
             }}
-            className="rounded-xl border border-border bg-card p-7"
+            className="rounded-2xl border border-border bg-card p-7 shadow-sm"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Ad Soyad" name="ad" />
@@ -528,7 +528,7 @@ function Index() {
               </label>
               <select
                 id="konu"
-                className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
+                className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
               >
                 {SERVICES.map((s) => (
                   <option key={s.title}>{s.title}</option>
@@ -543,13 +543,13 @@ function Index() {
                 id="mesaj"
                 rows={4}
                 required
-                className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
+                className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
                 placeholder="Yük tipi, güzergâh ve termin bilgisi..."
               />
             </div>
             <button
               type="submit"
-              className="mt-6 w-full rounded-md bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              className="mt-6 w-full rounded-full bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
               Teklif Talebi Gönder
             </button>
@@ -603,7 +603,7 @@ function Field({ label, name, type = "text" }: { label: string; name: string; ty
         name={name}
         type={type}
         required
-        className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
+        className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
       />
     </div>
   );
