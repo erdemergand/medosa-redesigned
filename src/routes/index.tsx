@@ -124,10 +124,10 @@ function Index() {
             >
               <div className="flex items-center gap-3">
                 <span className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/20 transition-transform duration-300 group-hover:scale-105">
-                  {(() => {
-                    const Icon = KNOWLEDGE_ICONS[i % KNOWLEDGE_ICONS.length];
-                    return <Icon className="h-14 w-14" />;
-                  })()}
+                  {KNOWLEDGE_ICONS[i % KNOWLEDGE_ICONS.length]!({
+                    className: "h-14 w-14",
+                  })}
+
                 </span>
                 <h2 className="text-base font-bold text-white">{k.title}</h2>
               </div>
