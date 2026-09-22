@@ -35,9 +35,22 @@ function Uygulamalar() {
   const f = (list: AppLink[]) =>
     list.filter((i) => i.name.toLocaleLowerCase("tr").includes(q.toLocaleLowerCase("tr").trim()));
 
-  const groups = [
-    { icon: Landmark, title: "Ticaret Bakanlığı Uygulamaları", items: f(TICARET_BAKANLIGI) },
-    { icon: HeartPulse, title: "Sağlık Bakanlığı Uygulamaları", items: f(SAGLIK_BAKANLIGI) },
+  const groups: {
+    icon?: typeof Globe2;
+    logo?: string;
+    title: string;
+    items: AppLink[];
+  }[] = [
+    {
+      logo: "/logos/ticaret-bakanligi.svg",
+      title: "Ticaret Bakanlığı Uygulamaları",
+      items: f(TICARET_BAKANLIGI),
+    },
+    {
+      logo: "/logos/saglik-bakanligi.svg",
+      title: "Sağlık Bakanlığı Uygulamaları",
+      items: f(SAGLIK_BAKANLIGI),
+    },
     { icon: Globe2, title: "Elektronik Menşe Sorgulama", items: f(MENSE_SORGULAMA) },
   ];
 
