@@ -9,14 +9,12 @@ import {
   Warehouse,
 } from "lucide-react";
 
-import emdsLogo from "@/assets/e-mds.png.asset.json";
-import aaccLogo from "@/assets/aacc.png.asset.json";
-
 export const WHATSAPP = "https://wa.me/905000000000";
 
 export const NAV = [
   { to: "/hizmetler", label: "Hizmetler" },
-  { to: "/uygulamalar", label: "Uygulamalar" },
+  { to: "/e-takip", label: "E-Takip" },
+  { to: "/uygulamalar", label: "E-Uygulamalar" },
   { to: "/hakkimizda", label: "Hakkımızda" },
   { to: "/iletisim", label: "İletişim" },
 ] as const;
@@ -57,36 +55,6 @@ export const SERVICES = [
     title: "Lojistik Koordinasyon",
     desc: "Taşıma, sigorta ve depolama paydaşlarınızla tek noktadan koordinasyon ve raporlama.",
     points: ["Navlun takibi", "Sigorta", "Maliyet raporu"],
-  },
-];
-
-export const PORTALS: {
-  name: string;
-  desc: string;
-  href: string;
-  logo?: string;
-}[] = [
-  {
-    name: "e-mds",
-    desc: "Medosa dijital dosya ve operasyon portalı",
-    href: "https://www.e-mds.com.tr",
-    logo: emdsLogo.url,
-  },
-  {
-    name: "aacc",
-    desc: "Antrepo & araç kontrol uygulaması",
-    href: "https://www.aacc.com.tr",
-    logo: aaccLogo.url,
-  },
-  {
-    name: "Ticaret Bakanlığı",
-    desc: "Resmî gümrük işlemleri ve duyurular",
-    href: "https://www.ticaret.gov.tr",
-  },
-  {
-    name: "BİLGE / Tek Pencere",
-    desc: "Beyanname ve e-belge sistemi",
-    href: "https://uygulama.gtb.gov.tr",
   },
 ];
 

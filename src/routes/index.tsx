@@ -71,10 +71,16 @@ function Index() {
             <MessageCircle className="h-4 w-4" /> Hızlı İletişim
           </a>
           <Link
+            to="/e-takip"
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white/85 transition-colors hover:bg-white/10"
+          >
+            E-Takip
+          </Link>
+          <Link
             to="/uygulamalar"
             className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white/85 transition-colors hover:bg-white/10"
           >
-            Uygulamalar
+            E-Uygulamalar
           </Link>
         </div>
 
