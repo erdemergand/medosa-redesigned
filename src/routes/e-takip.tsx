@@ -39,6 +39,7 @@ const PORTALS = [
   {
     name: "All About Customs Clearance",
     logo: aaccLogo.url,
+    logoDark: aaccLogoDark,
     href: "https://gumruk.io/login",
     desc: "Uçtan uca canlı takip ve izleme platformu. Yükünüzün, beyannamenizin, antrepo stoğunuzun ve kargonuzun tüm sürecini anlık olarak izleyin.",
     features: [
