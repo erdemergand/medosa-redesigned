@@ -49,44 +49,47 @@ export const BRANCHES = [
 
 export const CUSTOMS_OFFICES = [
   // İstanbul
-  { name: "Ambarlı Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Ambarlı Gümrük Müdürlüğü Avcılar İstanbul" },
-  { name: "Erenköy Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Erenköy Gümrük Müdürlüğü İstanbul" },
-  { name: "Muratbey Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Muratbey Gümrük Müdürlüğü Çatalca İstanbul" },
-  { name: "Halkalı Gar Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Halkalı Gar Gümrük Müdürlüğü Küçükçekmece İstanbul" },
+  { type: "sea", name: "Ambarlı Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Ambarlı Gümrük Müdürlüğü Avcılar İstanbul" },
+  { type: "land", name: "Erenköy Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Erenköy Gümrük Müdürlüğü İstanbul" },
+  { type: "land", name: "Muratbey Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Muratbey Gümrük Müdürlüğü Çatalca İstanbul" },
+  { type: "rail", name: "Halkalı Gar Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Halkalı Gar Gümrük Müdürlüğü Küçükçekmece İstanbul" },
   {
     name: "İstanbul Havalimanı Gümrük Müdürlüğü",
+    type: "air",
     city: "İstanbul",
     region: "İstanbul",
     q: "İstanbul Havalimanı Gümrük Müdürlüğü Arnavutköy",
   },
   {
     name: "Sabiha Gökçen Havalimanı Gümrük Müdürlüğü",
+    type: "air",
     city: "İstanbul",
     region: "İstanbul",
     q: "Sabiha Gökçen Havalimanı Gümrük Müdürlüğü Pendik",
   },
   // Trakya ve sınır kapıları
-  { name: "Çerkezköy Gümrük Müdürlüğü", city: "Tekirdağ", region: "Trakya ve Sınır Kapıları", q: "Çerkezköy Gümrük Müdürlüğü Tekirdağ" },
-  { name: "Kapıkule Gümrük Müdürlüğü", city: "Edirne", region: "Trakya ve Sınır Kapıları", q: "Kapıkule Gümrük Kapısı Edirne" },
-  { name: "İpsala Gümrük Müdürlüğü", city: "Edirne", region: "Trakya ve Sınır Kapıları", q: "İpsala Gümrük Kapısı Edirne" },
+  { type: "land", name: "Çerkezköy Gümrük Müdürlüğü", city: "Tekirdağ", region: "Trakya ve Sınır Kapıları", q: "Çerkezköy Gümrük Müdürlüğü Tekirdağ" },
+  { type: "land", name: "Kapıkule Gümrük Müdürlüğü", city: "Edirne", region: "Trakya ve Sınır Kapıları", q: "Kapıkule Gümrük Kapısı Edirne" },
+  { type: "land", name: "İpsala Gümrük Müdürlüğü", city: "Edirne", region: "Trakya ve Sınır Kapıları", q: "İpsala Gümrük Kapısı Edirne" },
   // Güney Marmara
-  { name: "Bursa Gümrük Müdürlüğü", city: "Bursa", region: "Güney Marmara", q: "Bursa Gümrük Müdürlüğü" },
-  { name: "Gemlik Gümrük Müdürlüğü", city: "Bursa", region: "Güney Marmara", q: "Gemlik Gümrük Müdürlüğü Bursa" },
-  { name: "Yalova Gümrük Müdürlüğü", city: "Yalova", region: "Güney Marmara", q: "Yalova Gümrük Müdürlüğü" },
+  { type: "land", name: "Bursa Gümrük Müdürlüğü", city: "Bursa", region: "Güney Marmara", q: "Bursa Gümrük Müdürlüğü" },
+  { type: "sea", name: "Gemlik Gümrük Müdürlüğü", city: "Bursa", region: "Güney Marmara", q: "Gemlik Gümrük Müdürlüğü Bursa" },
+  { type: "sea", name: "Yalova Gümrük Müdürlüğü", city: "Yalova", region: "Güney Marmara", q: "Yalova Gümrük Müdürlüğü" },
   // Ege
-  { name: "İzmir (Alsancak) Gümrük Müdürlüğü", city: "İzmir", region: "Ege", q: "Alsancak Gümrük Müdürlüğü İzmir" },
+  { type: "sea", name: "İzmir (Alsancak) Gümrük Müdürlüğü", city: "İzmir", region: "Ege", q: "Alsancak Gümrük Müdürlüğü İzmir" },
   {
     name: "Adnan Menderes Havalimanı Gümrük Müdürlüğü",
+    type: "air",
     city: "İzmir",
     region: "Ege",
     q: "Adnan Menderes Havalimanı Gümrük Müdürlüğü İzmir",
   },
-  { name: "Aliağa Gümrük Müdürlüğü", city: "İzmir", region: "Ege", q: "Aliağa Gümrük Müdürlüğü İzmir" },
+  { type: "sea", name: "Aliağa Gümrük Müdürlüğü", city: "İzmir", region: "Ege", q: "Aliağa Gümrük Müdürlüğü İzmir" },
   // İç Anadolu
-  { name: "Kayseri Gümrük Müdürlüğü", city: "Kayseri", region: "İç Anadolu", q: "Kayseri Gümrük Müdürlüğü" },
+  { type: "land", name: "Kayseri Gümrük Müdürlüğü", city: "Kayseri", region: "İç Anadolu", q: "Kayseri Gümrük Müdürlüğü" },
   // Akdeniz
-  { name: "Mersin Gümrük Müdürlüğü", city: "Mersin", region: "Akdeniz", q: "Mersin Gümrük Müdürlüğü" },
-  { name: "Yumurtalık Gümrük Müdürlüğü", city: "Adana", region: "Akdeniz", q: "Yumurtalık Serbest Bölge Gümrük Müdürlüğü Adana" },
+  { type: "sea", name: "Mersin Gümrük Müdürlüğü", city: "Mersin", region: "Akdeniz", q: "Mersin Gümrük Müdürlüğü" },
+  { type: "sea", name: "Yumurtalık Gümrük Müdürlüğü", city: "Adana", region: "Akdeniz", q: "Yumurtalık Serbest Bölge Gümrük Müdürlüğü Adana" },
 ];
 
 export const CUSTOMS_REGIONS = [
