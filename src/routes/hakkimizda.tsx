@@ -57,6 +57,11 @@ const TIMELINE = [
     title: "Bursa şubesi",
     desc: "2011 yılı sonu itibariyle Bursa şubesi hizmete açıldı.",
   },
+  {
+    year: "2024",
+    title: "Kayseri şubesi",
+    desc: "Şubat 2024'te Kayseri şubemiz kurularak İç Anadolu'daki hizmet ağımız genişledi.",
+  },
 ];
 
 const BRANCHES = [
