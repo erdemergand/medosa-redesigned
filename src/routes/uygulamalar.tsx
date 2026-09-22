@@ -85,7 +85,13 @@ function Uygulamalar() {
           <div key={g.title}>
             <div className="flex items-center gap-3">
               {g.logo ? (
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-white p-1.5">
+                <span
+                  className={`flex h-12 w-12 items-center justify-center rounded-xl p-2 ${
+                    g.logoDark
+                      ? "bg-gradient-to-br from-navy to-cobalt"
+                      : "border border-border bg-white"
+                  }`}
+                >
                   <img src={g.logo} alt={`${g.title} logosu`} className="h-full w-full object-contain" />
                 </span>
               ) : (
@@ -112,10 +118,13 @@ function Uygulamalar() {
                     className="group flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-cobalt/50 hover:shadow-md"
                   >
                     <span className="flex items-center gap-2.5 text-sm font-medium text-foreground group-hover:text-navy">
-                      {i.flag && (
-                        <span className="text-lg leading-none" aria-hidden>
-                          {i.flag}
-                        </span>
+                      {i.code && (
+                        <img
+                          src={`https://flagcdn.com/w40/${i.code}.png`}
+                          alt=""
+                          loading="lazy"
+                          className="h-4 w-6 shrink-0 rounded-[3px] object-cover ring-1 ring-border"
+                        />
                       )}
                       {i.name}
                     </span>
