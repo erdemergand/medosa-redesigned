@@ -60,8 +60,15 @@ export const TARIM_ORMAN: AppLink[] = [
     name: "Sınır Veteriner Kontrol Noktaları (VSKN / Veteriner Giriş Belgesi)",
     href: "https://vskn.tarimorman.gov.tr/",
   },
-  { name: "Bitki Karantina Kayıt Takip Sistemi (BKS)", href: "https://bks.tarimorman.gov.tr/" },
-  { name: "Tarım TPS Kontrol Belgesi", href: "https://tps.tarimorman.gov.tr/" },
+  {
+    name: "Bitki Karantina Kayıt Takip Sistemi (BKKTS)",
+    href: "https://tbs.tarbil.gov.tr",
+  },
+  {
+    name: "Tarım Kontrol Belgesi (GKGM)",
+    href: "https://www.tarimorman.gov.tr/GKGM/Sayfalar/Detay.aspx?SayfaId=58",
+  },
+  { name: "Tek Pencere Sistemi (TPS) Arayüzü", href: "https://uygulama.gtb.gov.tr/TekPencere" },
 ];
 
 export const MENSE_SORGULAMA: AppLink[] = [
