@@ -191,6 +191,36 @@ function ETakip() {
           </article>
         </div>
       </section>
+      {PORTALS.map((p) => (
+        <Modal
+          key={p.name}
+          open={portal === p.name}
+          onClose={() => setPortal(null)}
+          label={`${p.name} portalı`}
+        >
+          <span className="flex h-24 w-full items-center justify-center rounded-2xl bg-white p-3">
+            <img src={p.logo} alt={`${p.name} logosu`} className="max-h-full max-w-full object-contain" />
+          </span>
+          <h2 className="mt-5 text-xl font-bold text-navy">{p.name}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+          <ul className="mt-5 space-y-2 border-t border-border pt-4">
+            {p.features.map((f) => (
+              <li key={f} className="flex items-center gap-2 text-sm text-foreground">
+                <ShieldCheck className="h-4 w-4 shrink-0 text-cobalt" /> {f}
+              </li>
+            ))}
+          </ul>
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-6 text-sm font-semibold text-white"
+          >
+            Giriş Yap <ArrowRight className="h-4 w-4" />
+          </a>
+        </Modal>
+      ))}
     </>
+
   );
 }
