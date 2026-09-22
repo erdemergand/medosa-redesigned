@@ -33,7 +33,7 @@ const PORTALS = [
     features: ["Beyanname", "Evrak arşivi ve indirme"],
   },
   {
-    name: "aacc",
+    name: "All About Customs Clearance",
     logo: aaccLogo.url,
     href: "https://www.aacc.com.tr",
     desc: "Uçtan uca canlı takip ve izleme platformu. Yükünüzün, beyannamenizin, antrepo stoğunuzun ve kargonuzun tüm sürecini anlık olarak izleyin.",
