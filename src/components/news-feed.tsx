@@ -122,6 +122,19 @@ export function NewsFeed({ compact = false }: { compact?: boolean }) {
           </li>
         )}
       </ul>
+
+      {(hasMore || showAll) && (
+        <button
+          type="button"
+          onClick={() => setShowAll((v) => !v)}
+          className="mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:border-cobalt/60 hover:bg-white/10"
+        >
+          {showAll ? "Daha az göster" : "Devamını gör"}
+          <ArrowUpRight
+            className={`h-3.5 w-3.5 transition-transform ${showAll ? "rotate-180" : ""}`}
+          />
+        </button>
+      )}
       <p className="mt-4 border-t border-white/10 pt-3 text-[11px] text-white/45">
         Haberler herkese açıktır; duyuru detayları yalnızca aacc portal kullanıcılarına gösterilir.
       </p>
