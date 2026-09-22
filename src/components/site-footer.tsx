@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import logo from "@/assets/medosa-logo.jpg.asset.json";
+import logoMark from "@/assets/medosa-mark.png.asset.json";
 import { NAV } from "@/lib/site-data";
 
 export function SiteFooter() {
@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="bg-navy-deep py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-5 sm:flex-row">
         <div className="flex items-center gap-3">
-          <img src={logo.url} alt="Medosa logosu" className="h-20 w-20 rounded-2xl object-contain" />
+          <img src={logoMark.url} alt="Medosa logosu" className="h-16 w-16 object-contain" />
           <div>
             <div className="font-display text-lg font-extrabold text-white">MEDOSA</div>
             <div className="text-xs text-white/50">Customs • Trade • Technology</div>
