@@ -135,7 +135,21 @@ function Index() {
             </a>
           ))}
         </div>
+
+        <div className="mt-4 grid gap-4 md:grid-cols-3 lg:grid-cols-4">
+          {METRICS.map((m, i) => (
+            <div
+              key={m.label}
+              className="fade-up glass-panel rounded-2xl p-6 transition-transform hover:-translate-y-1"
+              style={{ animationDelay: `${0.5 + i * 0.1}s` }}
+            >
+              <div className="font-display text-3xl font-extrabold text-white">{m.value}</div>
+              <div className="mt-2 text-xs leading-relaxed text-white/65">{m.label}</div>
+            </div>
+          ))}
+        </div>
       </div>
+
 
       {/* Hizmet şeridi */}
       <div className="relative mt-auto overflow-hidden border-t border-white/10 py-4">
