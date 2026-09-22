@@ -72,6 +72,7 @@ const BRANCHES = [
   },
   { city: "İzmir Şubesi", desc: "2007 yılında faaliyete geçti.", note: "Ege bölgesi operasyonları" },
   { city: "Bursa Şubesi", desc: "2011 yılı sonu itibariyle açıldı.", note: "Marmara bölgesi operasyonları" },
+  { city: "Kayseri Şubesi", desc: "Şubat 2024'te kuruldu.", note: "İç Anadolu bölgesi operasyonları" },
 ];
 
 const SECTORS = [
