@@ -16,6 +16,7 @@ import { Route as HizmetlerRouteImport } from './routes/hizmetler'
 import { Route as IkRouteImport } from './routes/ik'
 import { Route as IletisimRouteImport } from './routes/iletisim'
 import { Route as SektorelAkisRouteImport } from './routes/sektorel-akis'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as UygulamalarRouteImport } from './routes/uygulamalar'
 import { Route as ApiPublicAbonelikIptalRouteImport } from './routes/api/public/abonelik-iptal'
 import { Route as ApiPublicHooksAnnouncementPublishedRouteImport } from './routes/api/public/hooks/announcement-published'
@@ -56,6 +57,11 @@ const SektorelAkisRoute = SektorelAkisRouteImport.update({
   path: '/sektorel-akis',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UygulamalarRoute = UygulamalarRouteImport.update({
   id: '/uygulamalar',
   path: '/uygulamalar',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/ik': typeof IkRoute
   '/iletisim': typeof IletisimRoute
   '/sektorel-akis': typeof SektorelAkisRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uygulamalar': typeof UygulamalarRoute
   '/api/public/abonelik-iptal': typeof ApiPublicAbonelikIptalRoute
   '/api/public/hooks/announcement-published': typeof ApiPublicHooksAnnouncementPublishedRoute
@@ -100,6 +107,7 @@ export interface FileRoutesByTo {
   '/ik': typeof IkRoute
   '/iletisim': typeof IletisimRoute
   '/sektorel-akis': typeof SektorelAkisRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uygulamalar': typeof UygulamalarRoute
   '/api/public/abonelik-iptal': typeof ApiPublicAbonelikIptalRoute
   '/api/public/hooks/announcement-published': typeof ApiPublicHooksAnnouncementPublishedRoute
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/ik': typeof IkRoute
   '/iletisim': typeof IletisimRoute
   '/sektorel-akis': typeof SektorelAkisRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uygulamalar': typeof UygulamalarRoute
   '/api/public/abonelik-iptal': typeof ApiPublicAbonelikIptalRoute
   '/api/public/hooks/announcement-published': typeof ApiPublicHooksAnnouncementPublishedRoute
@@ -129,6 +138,7 @@ export interface FileRouteTypes {
     | '/ik'
     | '/iletisim'
     | '/sektorel-akis'
+    | '/sitemap.xml'
     | '/uygulamalar'
     | '/api/public/abonelik-iptal'
     | '/api/public/hooks/announcement-published'
@@ -142,6 +152,7 @@ export interface FileRouteTypes {
     | '/ik'
     | '/iletisim'
     | '/sektorel-akis'
+    | '/sitemap.xml'
     | '/uygulamalar'
     | '/api/public/abonelik-iptal'
     | '/api/public/hooks/announcement-published'
@@ -155,6 +166,7 @@ export interface FileRouteTypes {
     | '/ik'
     | '/iletisim'
     | '/sektorel-akis'
+    | '/sitemap.xml'
     | '/uygulamalar'
     | '/api/public/abonelik-iptal'
     | '/api/public/hooks/announcement-published'
@@ -169,6 +181,7 @@ export interface RootRouteChildren {
   IkRoute: typeof IkRoute
   IletisimRoute: typeof IletisimRoute
   SektorelAkisRoute: typeof SektorelAkisRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UygulamalarRoute: typeof UygulamalarRoute
   ApiPublicAbonelikIptalRoute: typeof ApiPublicAbonelikIptalRoute
   ApiPublicHooksAnnouncementPublishedRoute: typeof ApiPublicHooksAnnouncementPublishedRoute
@@ -226,6 +239,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SektorelAkisRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/uygulamalar': {
       id: '/uygulamalar'
       path: '/uygulamalar'
@@ -265,6 +285,7 @@ const rootRouteChildren: RootRouteChildren = {
   IkRoute: IkRoute,
   IletisimRoute: IletisimRoute,
   SektorelAkisRoute: SektorelAkisRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   UygulamalarRoute: UygulamalarRoute,
   ApiPublicAbonelikIptalRoute: ApiPublicAbonelikIptalRoute,
   ApiPublicHooksAnnouncementPublishedRoute:

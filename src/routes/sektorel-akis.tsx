@@ -7,23 +7,40 @@ import { useState } from "react";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { AACC_PORTAL_URL, FALLBACK_NEWS, type NewsItem } from "@/lib/news-data";
 import { getSectorNews } from "@/lib/news.functions";
+import { breadcrumbJsonLd, canonical } from "@/lib/seo";
+
+const TITLE = "Gümrük Haberleri ve Duyurular | Medosa Gümrük Müşavirliği";
+const DESCRIPTION =
+  "Gümrük mevzuatı, ithalat ve ihracat gündeminden güncel haberler ile Medosa müşteri duyuruları tek sayfada.";
 
 export const Route = createFileRoute("/sektorel-akis")({
   head: () => ({
     meta: [
-      { title: "Sektörel Akış — Medosa Gümrük Müşavirliği" },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
       {
-        name: "description",
+        name: "keywords",
         content:
-          "Gümrük ve dış ticaret gündeminden güncel haberler ile Medosa müşteri duyuruları tek sayfada.",
+          "gümrük haberleri, gümrük mevzuatı değişiklikleri, dış ticaret gündemi, ithalat ihracat haberleri",
       },
-      { property: "og:title", content: "Sektörel Akış — Medosa Gümrük Müşavirliği" },
-      {
-        property: "og:description",
-        content: "Gümrük ve dış ticaret haberleri ile Medosa duyuruları.",
-      },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: canonical("/sektorel-akis") },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: canonical("/sektorel-akis") }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbJsonLd([
+            { name: "Ana Sayfa", path: "/" },
+            { name: "Sektörel Akış", path: "/sektorel-akis" },
+          ]),
+        ),
+      },
     ],
   }),
   component: SektorelAkisPage,

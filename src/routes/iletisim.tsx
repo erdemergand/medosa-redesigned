@@ -6,20 +6,59 @@ import { lazy, Suspense, useState } from "react";
 import { PageHero } from "@/components/page-hero";
 import { sendFormMail } from "@/lib/mail.functions";
 import { BRANCHES, CUSTOMS_OFFICES, CUSTOMS_REGIONS, SERVICES } from "@/lib/site-data";
+import { breadcrumbJsonLd, canonical } from "@/lib/seo";
+
+const TITLE = "İletişim | Gümrük Müşavirliği Şubeleri ve Gümrük Ofisleri — Medosa";
+const DESCRIPTION =
+  "Medosa Gümrük Müşavirliği İstanbul Merkez (0212 551 43 07), İzmir, Bursa ve Kayseri şubeleri ile Ambarlı, Erenköy, Muratbey, Halkalı, Gemlik, Mersin dahil 28 gümrük sahasındaki ofislerimize ulaşın.";
 
 export const Route = createFileRoute("/iletisim")({
   head: () => ({
     meta: [
-      { title: "İletişim, Şubeler ve Gümrük Ofisleri | Medosa" },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
       {
-        name: "description",
+        name: "keywords",
         content:
-          "Medosa İstanbul Merkez, İzmir, Bursa ve Kayseri şubeleri ile Ambarlı, Erenköy, Muratbey, AHL, Sabiha Gökçen ve Gemlik gümrük sahalarındaki ofislerimize ulaşın.",
+          "gümrük müşavirliği iletişim, gümrük firması İstanbul, gümrük müşaviri İzmir, gümrük müşaviri Bursa, gümrük müşaviri Kayseri, Ambarlı gümrük, Mersin gümrük",
       },
-      { property: "og:title", content: "İletişim, Şubeler ve Gümrük Ofisleri | Medosa" },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: canonical("/iletisim") },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: canonical("/iletisim") }],
+    scripts: [
       {
-        property: "og:description",
-        content: "Şube adreslerimiz, gümrük sahası ofislerimiz ve iletişim formu.",
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Medosa şubeleri",
+          itemListElement: BRANCHES.map((b, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "LocalBusiness",
+              name: `Medosa Gümrük Müşavirliği — ${b.city}`,
+              address: { "@type": "PostalAddress", streetAddress: b.address, addressCountry: "TR" },
+              telephone: b.phone ?? "+90 212 551 43 07",
+              email: b.email ?? "info@medosa.com.tr",
+              url: canonical("/iletisim"),
+            },
+          })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbJsonLd([
+            { name: "Ana Sayfa", path: "/" },
+            { name: "İletişim", path: "/iletisim" },
+          ]),
+        ),
       },
     ],
   }),

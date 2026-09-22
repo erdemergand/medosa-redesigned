@@ -5,21 +5,39 @@ import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
 import { submitApplication } from "@/lib/applications.functions";
+import { breadcrumbJsonLd, canonical } from "@/lib/seo";
+
+const TITLE = "Kariyer ve Staj Başvurusu | Medosa Gümrük Müşavirliği";
+const DESCRIPTION =
+  "Gümrük müşavirliği alanında kariyer: Medosa'da iş başvurusu ve lise/üniversite staj başvurusu formları, çalışma kültürümüz ve açık pozisyonlar.";
 
 export const Route = createFileRoute("/ik")({
   head: () => ({
     meta: [
-      { title: "İnsan Kaynakları & Kariyer | Medosa" },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
       {
-        name: "description",
+        name: "keywords",
         content:
-          "Medosa Gümrük Müşavirliği'nde kariyer: iş başvurusu ve lise/üniversite staj başvurusu formları, çalışma kültürümüz ve açık pozisyonlar.",
+          "gümrük müşavirliği iş ilanı, gümrük staj başvurusu, dış ticaret kariyer, Medosa kariyer",
       },
-      { property: "og:title", content: "İnsan Kaynakları & Kariyer | Medosa" },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: canonical("/ik") },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: canonical("/ik") }],
+    scripts: [
       {
-        property: "og:description",
-        content:
-          "Gümrük ve dış ticaretin dijitalleşen tarafında kariyer yapın. İş ve staj başvurularınızı çevrim içi iletin.",
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbJsonLd([
+            { name: "Ana Sayfa", path: "/" },
+            { name: "İnsan Kaynakları", path: "/ik" },
+          ]),
+        ),
       },
     ],
   }),
