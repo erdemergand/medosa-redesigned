@@ -1,4 +1,5 @@
-import { FileCheck2, X } from "lucide-react";
+import { FileCheck2, Mail, Phone, X, ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 export const REQUIRED_DOCUMENTS = [
@@ -21,16 +22,13 @@ export function DocumentsDialog({ open, onClose }: { open: boolean; onClose: () 
 
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
-      <div
-        className="absolute inset-0 bg-navy-deep/80 backdrop-blur-sm"
-        onClick={onClose}
-        aria-hidden
-      />
+      <div className="absolute inset-0 bg-slate-900/60" onClick={onClose} aria-hidden />
       <div
         role="dialog"
         aria-modal="true"
         aria-label="Bize gelmeden önce hazırlamanız gerekenler"
-        className="pop-in relative w-full max-w-lg overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-2xl"
+        style={{ willChange: "transform, opacity" }}
+        className="modal-in relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-border bg-card p-7 shadow-2xl"
       >
         <button
           onClick={onClose}
@@ -49,16 +47,43 @@ export function DocumentsDialog({ open, onClose }: { open: boolean; onClose: () 
 
         <ul className="mt-5 space-y-2.5">
           {REQUIRED_DOCUMENTS.map((d, i) => (
-            <li
-              key={d.n}
-              className="fade-up flex items-start gap-3 rounded-2xl border border-border bg-background px-4 py-3"
-              style={{ animationDelay: `${0.05 * i}s` }}
-            >
-              <FileCheck2 className="mt-0.5 h-4 w-4 shrink-0 text-cobalt" />
-              <span className="text-sm text-foreground">
-                {d.n}
-                {d.note && <span className="text-muted-foreground"> ({d.note})</span>}
-              </span>
+            <li key={d.n}>
+              <div className="flex items-start gap-3 rounded-2xl border border-border bg-background px-4 py-3">
+                <FileCheck2 className="mt-0.5 h-4 w-4 shrink-0 text-cobalt" />
+                <span className="text-sm text-foreground">
+                  {d.n}
+                  {d.note && <span className="text-muted-foreground"> ({d.note})</span>}
+                </span>
+              </div>
+
+              {i === 0 && (
+                <div className="mt-2 rounded-2xl border border-cobalt/30 bg-cobalt/5 px-4 py-3">
+                  <p className="text-sm font-medium text-foreground">
+                    Vekâletname örneği ve taslağımız için lütfen bizimle iletişime geçiniz.
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <Link
+                      to="/iletisim"
+                      onClick={onClose}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cobalt to-primary px-4 py-2 text-xs font-semibold text-white"
+                    >
+                      İletişime geç <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                    <a
+                      href="tel:+902125514307"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-muted"
+                    >
+                      <Phone className="h-3.5 w-3.5 text-cobalt" /> 0212 551 43 07
+                    </a>
+                    <a
+                      href="mailto:info@medosa.com.tr"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-muted"
+                    >
+                      <Mail className="h-3.5 w-3.5 text-cobalt" /> info@medosa.com.tr
+                    </a>
+                  </div>
+                </div>
+              )}
             </li>
           ))}
         </ul>

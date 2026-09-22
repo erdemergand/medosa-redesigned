@@ -203,6 +203,17 @@
   animation: pop-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+@keyframes modal-in {
+  from { opacity: 0; transform: translate3d(0, 8px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@utility modal-in {
+  animation: modal-in 0.18s ease-out;
+  will-change: transform, opacity;
+}
+
+
 @keyframes float-soft {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
