@@ -4,6 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { ArrowUpRight, Lock, Newspaper } from "lucide-react";
 import { useState } from "react";
 
+import { NewsletterForm } from "@/components/newsletter-form";
 import { AACC_PORTAL_URL, FALLBACK_NEWS, type NewsItem } from "@/lib/news-data";
 import { getSectorNews } from "@/lib/news.functions";
 
@@ -66,6 +67,10 @@ function SektorelAkisPage() {
           Gümrük ve dış ticaret gündemindeki gelişmeler herkese açıktır. Duyuru detayları yalnızca
           aacc portal kullanıcılarına gösterilir.
         </p>
+
+        <div className="soft-card mt-8 max-w-md rounded-2xl p-5">
+          <NewsletterForm />
+        </div>
 
         <div className="mt-8 inline-flex rounded-full border border-white/10 bg-white/5 p-1 text-xs font-semibold">
           {[

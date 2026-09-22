@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 import logoFull from "@/assets/medosa-logo-full.png.asset.json";
+import { NewsletterForm } from "@/components/newsletter-form";
 import { NAV } from "@/lib/site-data";
 
 function XIcon({ className }: { className?: string }) {
@@ -44,7 +45,8 @@ export function SiteFooter() {
             Sektörel Akış
           </Link>
         </nav>
-        <div className="flex flex-col items-center gap-4 sm:items-end">
+        <div className="flex w-full max-w-xs flex-col items-center gap-4 sm:items-end">
+          <NewsletterForm variant="dark" />
           <div className="flex items-center gap-3">
             {SOCIALS.map(({ name, href, Icon }) => (
               <a
