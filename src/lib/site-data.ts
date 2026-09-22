@@ -77,10 +77,10 @@ export const CUSTOMS_OFFICES: {
   },
   // Trakya ve sınır kapıları
   { types: ["land", "rail"], name: "Çerkezköy Gümrük Müdürlüğü", city: "Tekirdağ", region: "Trakya ve Sınır Kapıları", q: "Çerkezköy Gümrük Müdürlüğü Tekirdağ" },
-  { types: ["land"], name: "Kapıkule Gümrük Müdürlüğü", city: "Edirne", region: "Trakya ve Sınır Kapıları", q: "Kapıkule Gümrük Kapısı Edirne" },
+  { types: ["land"], name: "Kapıkule Gümrük Müdürlüğü", city: "Edirne", region: "Trakya ve Sınır Kapıları", q: "Kapıkule Sınır Kapısı Gümrük Sahası, Edirne" },
   { types: ["land"], name: "İpsala Gümrük Müdürlüğü", city: "Edirne", region: "Trakya ve Sınır Kapıları", q: "İpsala Gümrük Kapısı Edirne" },
   // Güney Marmara
-  { types: ["land"], name: "Bursa Gümrük Müdürlüğü", city: "Bursa", region: "Güney Marmara", q: "Bursa Gümrük Müdürlüğü" },
+  { types: ["land"], name: "Bursa Gümrük Müdürlüğü", city: "Bursa", region: "Güney Marmara", q: "T.C. Ticaret Bakanlığı Bursa Gümrük Müdürlüğü, Bursa" },
   { types: ["sea"], name: "Gemlik Gümrük Müdürlüğü", city: "Bursa", region: "Güney Marmara", q: "Gemlik Gümrük Müdürlüğü Bursa" },
   { types: ["sea"], name: "Yalova Gümrük Müdürlüğü", city: "Yalova", region: "Güney Marmara", q: "Yalova Gümrük Müdürlüğü" },
   // Ege
@@ -96,7 +96,7 @@ export const CUSTOMS_OFFICES: {
   // İç Anadolu
   { types: ["land"], name: "Kayseri Gümrük Müdürlüğü", city: "Kayseri", region: "İç Anadolu", q: "Kayseri Gümrük Müdürlüğü" },
   // Akdeniz
-  { types: ["sea"], name: "Mersin Gümrük Müdürlüğü", city: "Mersin", region: "Akdeniz", q: "Mersin Gümrük Müdürlüğü" },
+  { types: ["sea"], name: "Mersin Gümrük Müdürlüğü", city: "Mersin", region: "Akdeniz", q: "T.C. Ticaret Bakanlığı Mersin Gümrük Müdürlüğü, Akdeniz, Mersin" },
   { types: ["sea"], name: "Yumurtalık Gümrük Müdürlüğü", city: "Adana", region: "Akdeniz", q: "Yumurtalık Serbest Bölge Gümrük Müdürlüğü Adana" },
 ];
 
