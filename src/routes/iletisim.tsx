@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { Building2, Mail, MapPin, Phone, Plane, Ship, Train, Truck } from "lucide-react";
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
 import { sendFormMail } from "@/lib/mail.functions";
