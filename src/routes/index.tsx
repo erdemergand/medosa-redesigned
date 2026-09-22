@@ -3,7 +3,9 @@ import { ArrowRight, FileCheck2, Radar } from "lucide-react";
 
 import heroPort from "@/assets/hero-port.jpg";
 import { DocumentsDialog, useDocumentsPopup } from "@/components/documents-dialog";
+import { EuFlagIcon, LawBookIcon, TradeShipIcon } from "@/components/knowledge-icons";
 import { NewsFeed } from "@/components/news-feed";
+
 import { KNOWLEDGE_LINKS, METRICS, SERVICES } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
