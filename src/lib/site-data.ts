@@ -160,7 +160,12 @@ export const SERVICES = [
     icon: Scale,
     title: "Gümrük Mevzuat Danışmanlığı",
     desc: "Mevzuat değişikliklerine karşı proaktif danışmanlık, denetim ve itiraz süreçleri.",
-    points: ["YYS başvuru desteği", "Denetim & itiraz", "Eğitim programları"],
+    points: [
+      "YYS başvuru desteği",
+      "OKSB başvuru desteği",
+      "Denetim & itiraz",
+      "Eğitim programları",
+    ],
   },
   {
     icon: ClipboardList,
