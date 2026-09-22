@@ -71,9 +71,15 @@ function Uygulamalar() {
         {groups.map((g) => (
           <div key={g.title}>
             <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-navy to-cobalt text-white">
-                <g.icon className="h-5 w-5" />
-              </span>
+              {g.logo ? (
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-white p-1.5">
+                  <img src={g.logo} alt={`${g.title} logosu`} className="h-full w-full object-contain" />
+                </span>
+              ) : (
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-navy to-cobalt text-white">
+                  {g.icon ? <g.icon className="h-5 w-5" /> : null}
+                </span>
+              )}
               <h2 className="text-xl font-bold text-navy md:text-2xl">{g.title}</h2>
               <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-muted-foreground">
                 {g.items.length}
