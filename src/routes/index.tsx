@@ -21,6 +21,8 @@ import {
 } from "lucide-react";
 
 import logo from "@/assets/medosa-logo.jpg.asset.json";
+import emdsLogo from "@/assets/e-mds.png.asset.json";
+import aaccLogo from "@/assets/aacc.png.asset.json";
 import heroPort from "@/assets/hero-port.jpg";
 
 export const Route = createFileRoute("/")({
@@ -94,7 +96,24 @@ const SERVICES = [
   },
 ];
 
-const PORTALS = [
+const PORTALS: {
+  name: string;
+  desc: string;
+  href: string;
+  logo?: string;
+}[] = [
+  {
+    name: "e-mds",
+    desc: "Medosa dijital dosya ve operasyon portalı",
+    href: "#etakip",
+    logo: emdsLogo.url,
+  },
+  {
+    name: "aacc",
+    desc: "Antrepo & araç kontrol uygulaması",
+    href: "#etakip",
+    logo: aaccLogo.url,
+  },
   {
     name: "Ticaret Bakanlığı",
     desc: "Resmî gümrük işlemleri ve duyurular",
@@ -104,16 +123,6 @@ const PORTALS = [
     name: "BİLGE / Tek Pencere",
     desc: "Beyanname ve e-belge sistemi",
     href: "https://uygulama.gtb.gov.tr",
-  },
-  {
-    name: "e-mds",
-    desc: "Medosa dijital dosya ve operasyon portalı",
-    href: "#etakip",
-  },
-  {
-    name: "aacc",
-    desc: "Antrepo & araç kontrol uygulaması",
-    href: "#etakip",
   },
 ];
 
@@ -133,10 +142,12 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
           <a href="#" className="flex items-center gap-3">
-            <img src={logo.url} alt="Medosa logosu" className="h-11 w-11 object-cover" />
+            <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl ring-1 ring-border">
+              <img src={logo.url} alt="Medosa logosu" className="h-full w-full object-cover" />
+            </span>
             <span className="font-display text-lg font-extrabold tracking-tight text-navy">
               MEDOSA
             </span>
@@ -157,13 +168,13 @@ function Index() {
               href={WHATSAPP}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </a>
             <a
               href="#iletisim"
-              className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             >
               Teklif Alın
             </a>
@@ -208,50 +219,60 @@ function Index() {
           alt="Konteyner limanı"
           width={1920}
           height={1088}
-          className="absolute inset-0 h-full w-full object-cover opacity-45"
+          className="absolute inset-0 h-full w-full scale-105 object-cover opacity-35"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-navy-deep via-navy-deep/85 to-cobalt/30" />
-        <div className="relative mx-auto max-w-7xl px-5 py-24 md:py-32">
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-deep via-navy-deep/90 to-cobalt/25" />
+        <div className="grid-lines absolute inset-0 opacity-60" />
+        <div className="glow-orb absolute -right-24 -top-24 h-96 w-96 opacity-50" />
+        <div className="glow-orb absolute -bottom-32 left-1/4 h-80 w-80 opacity-25" />
+        <div className="relative mx-auto max-w-7xl px-5 py-28 md:py-36">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-white/90">
+            <span className="glass-panel inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[0.7rem] font-semibold tracking-[0.18em] text-white/85">
+              <span className="h-1.5 w-1.5 rounded-full bg-cobalt" />
               CUSTOMS • TRADE • TECHNOLOGY
             </span>
-            <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] text-white md:text-6xl">
-              Gümrükte hız, dış ticarette
+            <h1 className="mt-7 text-[2.6rem] font-extrabold leading-[1.05] text-white md:text-[4.25rem]">
+              Gümrükte hız,
+              <br />
+              dış ticarette
               <span className="block bg-gradient-to-r from-white via-steel to-cobalt bg-clip-text text-transparent">
                 teknolojiyle güven.
               </span>
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+            <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
               Medosa; ithalat, ihracat, antrepo ve transit ticaret operasyonlarınızı uzman gümrük
               müşavirliği kadrosu ve kendi geliştirdiği dijital takip altyapısıyla tek çatı altında
               yönetir.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#iletisim"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-cobalt/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cobalt/40"
               >
-                Teklif Alın <ArrowRight className="h-4 w-4" />
+                Teklif Alın
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
               <a
                 href={WHATSAPP}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/15"
+                className="glass-panel inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-white/15"
               >
                 <MessageCircle className="h-4 w-4" /> Hızlı İletişim
               </a>
             </div>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/15 bg-white/10 lg:grid-cols-4">
+          <div className="mt-20 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {METRICS.map((m) => (
-              <div key={m.label} className="bg-navy-deep/70 px-5 py-6 backdrop-blur">
-                <div className="font-display text-2xl font-extrabold text-white md:text-3xl">
+              <div
+                key={m.label}
+                className="glass-panel rounded-2xl px-6 py-7 transition-colors hover:border-cobalt/50"
+              >
+                <div className="font-display text-3xl font-extrabold text-white md:text-4xl">
                   {m.value}
                 </div>
-                <div className="mt-1 text-xs text-white/65 md:text-sm">{m.label}</div>
+                <div className="mt-2 text-xs text-white/60 md:text-sm">{m.label}</div>
               </div>
             ))}
           </div>
@@ -274,17 +295,23 @@ function Index() {
         </div>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s) => (
+          {SERVICES.map((s, i) => (
             <article
               key={s.title}
-              className="group relative overflow-hidden rounded-xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-cobalt/40 hover:shadow-xl hover:shadow-cobalt/10"
+              className="soft-card group relative overflow-hidden rounded-2xl p-7"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-navy to-cobalt text-primary-foreground">
-                <s.icon className="h-6 w-6" />
+              <span className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-cobalt/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="flex items-start justify-between">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-navy to-cobalt text-primary-foreground shadow-md shadow-cobalt/20">
+                  <s.icon className="h-6 w-6" />
+                </div>
+                <span className="font-display text-sm font-extrabold text-muted-foreground/40">
+                  0{i + 1}
+                </span>
               </div>
               <h3 className="mt-5 text-lg font-bold text-navy">{s.title}</h3>
               <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-              <ul className="mt-5 space-y-2">
+              <ul className="mt-5 space-y-2 border-t border-border pt-5">
                 {s.points.map((p) => (
                   <li key={p} className="flex items-center gap-2 text-sm text-foreground/80">
                     <CheckCircle2 className="h-4 w-4 shrink-0 text-cobalt" /> {p}
@@ -337,12 +364,12 @@ function Index() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Örn: 26341300IM123456"
-                    className="w-full rounded-md border border-white/20 bg-navy-deep/60 py-3 pl-9 pr-3 text-sm text-white placeholder:text-white/40 focus:border-cobalt focus:outline-none"
+                    className="w-full rounded-xl border border-white/20 bg-navy-deep/60 py-3 pl-9 pr-3 text-sm text-white placeholder:text-white/40 focus:border-cobalt focus:outline-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="rounded-md bg-cobalt px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                  className="rounded-xl bg-cobalt px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
                 >
                   Sorgula
                 </button>
@@ -372,17 +399,30 @@ function Index() {
                 href={p.href}
                 target={p.href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
-                className="group flex h-full flex-col justify-between rounded-xl border border-white/15 bg-white/5 p-6 transition-colors hover:border-cobalt/60 hover:bg-white/10"
+                className="glass-panel group flex h-full flex-col justify-between rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-cobalt/60 hover:bg-white/10"
               >
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-display text-base font-bold text-white">{p.name}</h3>
-                    <ExternalLink className="h-4 w-4 text-white/40 transition-colors group-hover:text-cobalt" />
+                  <div className="flex items-start justify-between gap-3">
+                    {p.logo ? (
+                      <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-white/95 p-1.5">
+                        <img
+                          src={p.logo}
+                          alt={`${p.name} logosu`}
+                          className="h-full w-full object-contain"
+                        />
+                      </span>
+                    ) : (
+                      <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-white/10">
+                        <Globe2 className="h-6 w-6 text-steel" />
+                      </span>
+                    )}
+                    <ExternalLink className="mt-1 h-4 w-4 text-white/40 transition-colors group-hover:text-cobalt" />
                   </div>
+                  <h3 className="mt-4 font-display text-base font-bold text-white">{p.name}</h3>
                   <p className="mt-2 text-sm text-white/65">{p.desc}</p>
                 </div>
-                <span className="mt-6 text-xs font-semibold uppercase tracking-wide text-steel">
-                  Sisteme git
+                <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-steel transition-colors group-hover:text-cobalt">
+                  Sisteme git <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </a>
             ))}
@@ -426,7 +466,7 @@ function Index() {
               { icon: Scale, t: "Mevzuat uyumu", d: "Güncel mevzuat takibi ve risk analizi." },
               { icon: FileSearch, t: "Şeffaf takip", d: "Her aşamada bildirim ve raporlama." },
             ].map((c) => (
-              <div key={c.t} className="rounded-xl border border-border bg-card p-6">
+              <div key={c.t} className="soft-card rounded-2xl p-6">
                 <c.icon className="h-6 w-6 text-cobalt" />
                 <h3 className="mt-4 text-base font-bold text-navy">{c.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{c.d}</p>
@@ -462,7 +502,7 @@ function Index() {
                 href={WHATSAPP}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-navy px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
               >
                 <MessageCircle className="h-4 w-4" /> WhatsApp ile hızlı destek
               </a>
@@ -474,7 +514,7 @@ function Index() {
               e.preventDefault();
               setSent(true);
             }}
-            className="rounded-xl border border-border bg-card p-7"
+            className="rounded-2xl border border-border bg-card p-7 shadow-sm"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Ad Soyad" name="ad" />
@@ -488,7 +528,7 @@ function Index() {
               </label>
               <select
                 id="konu"
-                className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
+                className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
               >
                 {SERVICES.map((s) => (
                   <option key={s.title}>{s.title}</option>
@@ -503,13 +543,13 @@ function Index() {
                 id="mesaj"
                 rows={4}
                 required
-                className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
+                className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
                 placeholder="Yük tipi, güzergâh ve termin bilgisi..."
               />
             </div>
             <button
               type="submit"
-              className="mt-6 w-full rounded-md bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              className="mt-6 w-full rounded-full bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
               Teklif Talebi Gönder
             </button>
@@ -563,7 +603,7 @@ function Field({ label, name, type = "text" }: { label: string; name: string; ty
         name={name}
         type={type}
         required
-        className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
+        className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
       />
     </div>
   );
