@@ -65,9 +65,13 @@ export default function CustomsMap({
       markers.current[o.name] = mk;
     });
 
-    m.fitBounds(L.latLngBounds(offices.map((o) => [o.lat, o.lng] as [number, number])), {
-      padding: [40, 40],
-    });
+    if (valid.length > 0) {
+      m.fitBounds(L.latLngBounds(valid.map((o) => [o.lat, o.lng] as [number, number])), {
+        padding: [40, 40],
+      });
+    } else {
+      m.setView([39, 35], 6);
+    }
 
     return () => {
       m.remove();
