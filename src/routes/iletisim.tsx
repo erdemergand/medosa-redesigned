@@ -3,7 +3,7 @@ import { Building2, Mail, MapPin, Phone, Ship } from "lucide-react";
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
-import { BRANCHES, CUSTOMS_OFFICES, SERVICES } from "@/lib/site-data";
+import { BRANCHES, CUSTOMS_OFFICES, CUSTOMS_REGIONS, SERVICES } from "@/lib/site-data";
 
 export const Route = createFileRoute("/iletisim")({
   head: () => ({
