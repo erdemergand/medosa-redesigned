@@ -120,7 +120,7 @@ export const sendFormMail = createServerFn({ method: "POST" })
   .inputValidator(validate)
   .handler(async ({ data }) => {
     const apiKey = process.env["LOVABLE_API_KEY"];
-    const connKey = process.env["GOOGLE_MAIL_API_KEY"];
+    const connKey = process.env["GOOGLE_MAIL_API_KEY_1"] ?? process.env["GOOGLE_MAIL_API_KEY"];
     if (!apiKey || !connKey) {
       console.error("Gmail bağlantı bilgileri eksik.");
       throw new Error("E-posta servisi şu anda kullanılamıyor.");
