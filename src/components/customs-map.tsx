@@ -56,7 +56,8 @@ export default function CustomsMap({
       maxZoom: 19,
     }).addTo(m);
 
-    offices.forEach((o) => {
+    const valid = offices.filter((o) => Number.isFinite(o.lat) && Number.isFinite(o.lng));
+    valid.forEach((o) => {
       const mk = L.marker([o.lat, o.lng], { icon: pin(o, false), title: o.name })
         .addTo(m)
         .bindTooltip(`<strong>${o.name}</strong><br/>${o.city}`, { direction: "top", offset: [0, -30] })
