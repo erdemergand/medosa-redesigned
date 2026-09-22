@@ -92,7 +92,12 @@ function Uygulamalar() {
                     rel="noreferrer"
                     className="group flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-cobalt/50 hover:shadow-md"
                   >
-                    <span className="text-sm font-medium text-foreground group-hover:text-navy">
+                    <span className="flex items-center gap-2.5 text-sm font-medium text-foreground group-hover:text-navy">
+                      {i.flag && (
+                        <span className="text-lg leading-none" aria-hidden>
+                          {i.flag}
+                        </span>
+                      )}
                       {i.name}
                     </span>
                     <ExternalLink className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-cobalt" />
