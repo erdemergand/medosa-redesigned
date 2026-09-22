@@ -5,6 +5,8 @@ import heroPort from "@/assets/hero-port.jpg";
 import { DocumentsDialog, useDocumentsPopup } from "@/components/documents-dialog";
 import { EuFlagIcon, LawBookIcon, TradeShipIcon } from "@/components/knowledge-icons";
 import { NewsFeed } from "@/components/news-feed";
+import { SubscribeDialog, useSubscribePopup } from "@/components/subscribe-dialog";
+import { useEffect, useState } from "react";
 
 import { KNOWLEDGE_LINKS, METRICS, SERVICES } from "@/lib/site-data";
 
