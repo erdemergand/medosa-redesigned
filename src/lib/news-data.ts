@@ -1,11 +1,18 @@
+/** "haber" herkese açık; "duyuru" detayı yalnızca aacc portal girişi ile görülebilir. */
+export type NewsKind = "haber" | "duyuru";
+
 export type NewsItem = {
   id: string;
   title: string;
   summary: string;
   category: string;
   date: string; // ISO
+  kind: NewsKind;
   href?: string | undefined;
 };
+
+/** Duyuru detayları için aacc portal giriş adresi. */
+export const AACC_PORTAL_URL = "https://www.aacc.com.tr";
 
 /**
  * AACC portalındaki haber/duyuru akışı yayına alınana kadar kullanılan
