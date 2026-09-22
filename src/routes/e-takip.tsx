@@ -113,7 +113,7 @@ function ETakip() {
 
             <a
               href={taahhutname.url}
-              download="Medosa-Taahhutname.docx"
+              download="Medosa-Taahhutname-2026.docx"
               className="group mt-6 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-6 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
             >
               <Download className="h-4 w-4" />
