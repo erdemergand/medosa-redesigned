@@ -4,7 +4,8 @@ import { useServerFn } from "@tanstack/react-start";
 import { ArrowUpRight, Lock, Newspaper } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { AACC_PORTAL_URL, FALLBACK_NEWS, type NewsItem } from "@/lib/news-data";
+import { NewsModal } from "@/components/news-modal";
+import { FALLBACK_NEWS, type NewsItem } from "@/lib/news-data";
 import { getSectorNews } from "@/lib/news.functions";
 
 function formatDate(iso: string) {
