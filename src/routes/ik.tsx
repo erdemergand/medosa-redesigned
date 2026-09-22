@@ -262,15 +262,25 @@ function IK() {
 
             <button
               type="submit"
-              className="mt-6 w-full rounded-full bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              disabled={sending}
+              className="mt-6 w-full rounded-full bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60"
             >
-              {tab === "is" ? "İş Başvurusunu Gönder" : "Staj Başvurusunu Gönder"}
+              {sending
+                ? "Gönderiliyor..."
+                : tab === "is"
+                  ? "İş Başvurusunu Gönder"
+                  : "Staj Başvurusunu Gönder"}
             </button>
 
             {sent === tab && (
               <p className="mt-4 rounded-xl border border-cobalt/30 bg-cobalt/10 p-3 text-sm text-navy">
                 Başvurunuz alındı. İnsan kaynakları ekibimiz uygun pozisyon olması hâlinde sizinle
                 iletişime geçecektir.
+              </p>
+            )}
+            {error && (
+              <p className="mt-4 rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
+                {error}
               </p>
             )}
           </form>
