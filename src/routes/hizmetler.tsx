@@ -43,7 +43,7 @@ function Hizmetler() {
                   <s.icon className="h-6 w-6" />
                 </div>
                 <span className="font-display text-sm font-extrabold text-muted-foreground/40">
-                  0{i + 1}
+                  {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
               <h2 className="mt-5 text-lg font-bold text-navy">{s.title}</h2>
