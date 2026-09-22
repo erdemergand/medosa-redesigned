@@ -94,25 +94,28 @@ function ETakip() {
                 />
               </span>
               <h2 className="mt-5 font-display text-2xl font-extrabold text-white">{p.name}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-white/70">{p.desc}</p>
-              <ul className="mt-5 flex-1 space-y-2 border-t border-white/10 pt-5">
-                {p.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-white/80">
-                    <ShieldCheck className="h-4 w-4 shrink-0 text-cobalt" /> {f}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noreferrer"
-                className="group mt-6 inline-flex h-12 w-full max-w-[16rem] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-6 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
-              >
-                Giriş Yap
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-white/70">{p.desc}</p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-6 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+                >
+                  Giriş Yap
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setPortal(p.name)}
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-semibold text-white/85 transition-colors hover:bg-white/10"
+                >
+                  Neler yapabilirim?
+                </button>
+              </div>
             </article>
           ))}
+
         </div>
       </PageHero>
 
