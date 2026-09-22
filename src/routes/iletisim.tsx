@@ -89,6 +89,8 @@ function Iletisim() {
   const [error, setError] = useState<string | null>(null);
   const [active, setActive] = useState(CUSTOMS_OFFICES[0]!);
   const [activeBranch, setActiveBranch] = useState(BRANCHES[0]!);
+  const [branchModal, setBranchModal] = useState<string | null>(null);
+
 
   return (
     <>
