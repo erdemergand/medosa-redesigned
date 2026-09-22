@@ -3,7 +3,9 @@ import { ArrowRight, FileCheck2, Radar } from "lucide-react";
 
 import heroPort from "@/assets/hero-port.jpg";
 import { DocumentsDialog, useDocumentsPopup } from "@/components/documents-dialog";
+import { EuFlagIcon, LawBookIcon, TradeShipIcon } from "@/components/knowledge-icons";
 import { NewsFeed } from "@/components/news-feed";
+
 import { KNOWLEDGE_LINKS, METRICS, SERVICES } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
@@ -29,18 +31,17 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-/** Bilgi kutularının ikon renkleri: AB mavisi, ticaret turkuazı, mevzuat kehribarı. */
-const KNOWLEDGE_ACCENTS = [
-  "from-[#2b5cff] to-[#8ab4ff] shadow-[0_10px_28px_-12px_rgba(43,92,255,0.9)]",
-  "from-[#0ea5a4] to-[#5fe3c0] shadow-[0_10px_28px_-12px_rgba(14,165,164,0.9)]",
-  "from-[#f59e0b] to-[#fcd34d] shadow-[0_10px_28px_-12px_rgba(245,158,11,0.9)]",
-];
+/** Bilgi kutularının gerçekçi simgeleri: AB bayrağı, konteyner gemisi, mevzuat kitabı. */
+const KNOWLEDGE_ICONS = [EuFlagIcon, TradeShipIcon, LawBookIcon] as const;
+
+
+
 
 function Index() {
   const { open, setOpen } = useDocumentsPopup();
 
   return (
-    <section className="relative isolate flex min-h-[calc(100vh-4.5rem)] flex-col justify-center overflow-hidden bg-navy-deep">
+    <section className="relative isolate flex min-h-[calc(100vh-5.5rem)] flex-col justify-center overflow-hidden bg-navy-deep">
       <img
         src={heroPort}
         alt="Konteyner limanı"
@@ -119,14 +120,15 @@ function Index() {
               style={{ animationDelay: `${0.45 + i * 0.1}s` }}
             >
               <div className="flex items-center gap-3">
-                <span
-                  className={`relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-lg ring-1 ring-white/20 transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3 ${KNOWLEDGE_ACCENTS[i % KNOWLEDGE_ACCENTS.length]}`}
-                >
-                  <span className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
-                  <k.icon className="relative h-6 w-6" strokeWidth={1.75} />
+                <span className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/20 transition-transform duration-300 group-hover:scale-105">
+                  {KNOWLEDGE_ICONS[i % KNOWLEDGE_ICONS.length]!({
+                    className: "h-14 w-14",
+                  })}
+
                 </span>
                 <h2 className="text-base font-bold text-white">{k.title}</h2>
               </div>
+
               <p className="mt-3 text-xs leading-relaxed text-white/65">{k.desc}</p>
               <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold text-cobalt">
                 {k.source}
