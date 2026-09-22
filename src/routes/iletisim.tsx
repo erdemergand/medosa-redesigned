@@ -1,12 +1,15 @@
-import { ClientOnly, createFileRoute } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { Building2, Mail, MapPin, Phone, Plane, Ship, Train, Truck } from "lucide-react";
+import { ArrowRight, Building2, Mail, MapPin, Phone, Plane, Ship, Train, Truck } from "lucide-react";
 import { lazy, Suspense, useState } from "react";
 
+import { Modal } from "@/components/modal";
 import { PageHero } from "@/components/page-hero";
 import { sendFormMail } from "@/lib/mail.functions";
+import { CITY_PAGES } from "@/lib/city-data";
 import { BRANCHES, CUSTOMS_OFFICES, CUSTOMS_REGIONS, SERVICES } from "@/lib/site-data";
 import { breadcrumbJsonLd, canonical } from "@/lib/seo";
+
 
 const TITLE = "İletişim | Gümrük Müşavirliği Şubeleri ve Gümrük Ofisleri — Medosa";
 const DESCRIPTION =
