@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ExternalLink, Globe2 } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
