@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, Moon, Radar, Sun, X } from "lucide-react";
 import { useState } from "react";
 
-import logoFull from "@/assets/medosa-logo-full.png.asset.json";
+import logoMark from "@/assets/medosa-mark.png.asset.json";
 import { NAV } from "@/lib/site-data";
 import { useTheme } from "@/lib/theme";
 
