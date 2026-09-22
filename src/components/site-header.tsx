@@ -26,7 +26,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
         <Link to="/" className="flex items-center gap-3">
-          <span className="logo-tile flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl ring-1 ring-border">
+          <span className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl">
             <img src={logo.url} alt="Medosa logosu" className="h-full w-full object-cover" />
           </span>
           <span className="font-display text-2xl font-extrabold tracking-tight text-navy">
