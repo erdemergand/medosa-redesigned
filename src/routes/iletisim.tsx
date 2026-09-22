@@ -77,7 +77,7 @@ function Iletisim() {
                     <MapPin className="h-3.5 w-3.5" /> Haritada gör
                   </button>
                   <a
-                    href={directionsUrl(b.address)}
+                    href={directionsUrl(b.q)}
                     target="_blank"
                     rel="noreferrer"
                     className="text-xs font-semibold text-muted-foreground hover:text-cobalt hover:underline"
