@@ -38,7 +38,10 @@ function directionsUrl(address: string) {
 }
 
 function Iletisim() {
+  const sendMail = useServerFn(sendFormMail);
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [active, setActive] = useState(CUSTOMS_OFFICES[0]!);
   const [activeBranch, setActiveBranch] = useState(BRANCHES[0]!);
 
