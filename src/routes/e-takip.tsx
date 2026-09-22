@@ -4,6 +4,8 @@ import { ArrowRight, Download, Mail, MapPin, ShieldCheck, TriangleAlert } from "
 import { PageHero } from "@/components/page-hero";
 import emdsLogo from "@/assets/e-mds.png.asset.json";
 import aaccLogo from "@/assets/aacc.png.asset.json";
+import emdsLogoDark from "@/assets/e-mds-dark.png";
+import aaccLogoDark from "@/assets/aacc-dark.png";
 import taahhutname from "@/assets/taahhutname.docx.asset.json";
 
 export const Route = createFileRoute("/e-takip")({
@@ -29,6 +31,7 @@ const PORTALS = [
   {
     name: "e-mds",
     logo: emdsLogo.url,
+    logoDark: emdsLogoDark,
     href: "https://webgumruk.com/authentication/login.xhtml",
     desc: "Medosa dijital takip portalı. Beyannamelerinizi görüntüleyin, evrak arşivinize ulaşın ve belgelerinizi indirin.",
     features: ["Beyanname", "Evrak arşivi ve indirme"],
@@ -36,6 +39,7 @@ const PORTALS = [
   {
     name: "All About Customs Clearance",
     logo: aaccLogo.url,
+    logoDark: aaccLogoDark,
     href: "https://gumruk.io/login",
     desc: "Uçtan uca canlı takip ve izleme platformu. Yükünüzün, beyannamenizin, antrepo stoğunuzun ve kargonuzun tüm sürecini anlık olarak izleyin.",
     features: [
@@ -58,11 +62,16 @@ function ETakip() {
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           {PORTALS.map((p) => (
             <article key={p.name} className="glass-panel flex flex-col rounded-2xl p-7">
-              <span className="group/logo flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl bg-white p-4">
+              <span className="group/logo flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl bg-white p-4 dark:bg-white/5">
                 <img
                   src={p.logo}
                   alt={`${p.name} logosu`}
-                  className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover/logo:scale-105"
+                  className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover/logo:scale-105 dark:hidden"
+                />
+                <img
+                  src={p.logoDark}
+                  alt={`${p.name} logosu`}
+                  className="hidden max-h-full max-w-full object-contain transition-transform duration-300 group-hover/logo:scale-105 dark:block"
                 />
               </span>
               <h2 className="mt-5 font-display text-2xl font-extrabold text-white">{p.name}</h2>
