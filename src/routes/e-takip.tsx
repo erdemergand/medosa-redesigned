@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Download, Mail, MapPin, ShieldCheck, TriangleAlert } from "lucide-react";
+import { useState } from "react";
 
+import { Modal } from "@/components/modal";
 import { PageHero } from "@/components/page-hero";
+
 import emdsLogo from "@/assets/e-mds.png.asset.json";
 import aaccLogo from "@/assets/aacc.png.asset.json";
 import emdsLogoDark from "@/assets/e-mds-dark.png";
@@ -71,7 +74,10 @@ const PORTALS = [
 ];
 
 function ETakip() {
+  const [portal, setPortal] = useState<string | null>(null);
+
   return (
+
     <>
       <PageHero
         eyebrow="E-Takip"
@@ -94,25 +100,28 @@ function ETakip() {
                 />
               </span>
               <h2 className="mt-5 font-display text-2xl font-extrabold text-white">{p.name}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-white/70">{p.desc}</p>
-              <ul className="mt-5 flex-1 space-y-2 border-t border-white/10 pt-5">
-                {p.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-white/80">
-                    <ShieldCheck className="h-4 w-4 shrink-0 text-cobalt" /> {f}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noreferrer"
-                className="group mt-6 inline-flex h-12 w-full max-w-[16rem] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-6 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
-              >
-                Giriş Yap
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-white/70">{p.desc}</p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-6 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+                >
+                  Giriş Yap
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setPortal(p.name)}
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-semibold text-white/85 transition-colors hover:bg-white/10"
+                >
+                  Neler yapabilirim?
+                </button>
+              </div>
             </article>
           ))}
+
         </div>
       </PageHero>
 
@@ -188,6 +197,36 @@ function ETakip() {
           </article>
         </div>
       </section>
+      {PORTALS.map((p) => (
+        <Modal
+          key={p.name}
+          open={portal === p.name}
+          onClose={() => setPortal(null)}
+          label={`${p.name} portalı`}
+        >
+          <span className="flex h-24 w-full items-center justify-center rounded-2xl bg-white p-3">
+            <img src={p.logo} alt={`${p.name} logosu`} className="max-h-full max-w-full object-contain" />
+          </span>
+          <h2 className="mt-5 text-xl font-bold text-navy">{p.name}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+          <ul className="mt-5 space-y-2 border-t border-border pt-4">
+            {p.features.map((f) => (
+              <li key={f} className="flex items-center gap-2 text-sm text-foreground">
+                <ShieldCheck className="h-4 w-4 shrink-0 text-cobalt" /> {f}
+              </li>
+            ))}
+          </ul>
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cobalt to-primary px-6 text-sm font-semibold text-white"
+          >
+            Giriş Yap <ArrowRight className="h-4 w-4" />
+          </a>
+        </Modal>
+      ))}
     </>
+
   );
 }

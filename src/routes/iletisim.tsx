@@ -1,12 +1,15 @@
-import { ClientOnly, createFileRoute } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { Building2, Mail, MapPin, Phone, Plane, Ship, Train, Truck } from "lucide-react";
+import { ArrowRight, Building2, Mail, MapPin, Phone, Plane, Ship, Train, Truck } from "lucide-react";
 import { lazy, Suspense, useState } from "react";
 
+import { Modal } from "@/components/modal";
 import { PageHero } from "@/components/page-hero";
 import { sendFormMail } from "@/lib/mail.functions";
+import { CITY_PAGES } from "@/lib/city-data";
 import { BRANCHES, CUSTOMS_OFFICES, CUSTOMS_REGIONS, SERVICES } from "@/lib/site-data";
 import { breadcrumbJsonLd, canonical } from "@/lib/seo";
+
 
 const TITLE = "İletişim | Gümrük Müşavirliği Şubeleri ve Gümrük Ofisleri — Medosa";
 const DESCRIPTION =
@@ -86,6 +89,8 @@ function Iletisim() {
   const [error, setError] = useState<string | null>(null);
   const [active, setActive] = useState(CUSTOMS_OFFICES[0]!);
   const [activeBranch, setActiveBranch] = useState(BRANCHES[0]!);
+  const [branchModal, setBranchModal] = useState<string | null>(null);
+
 
   return (
     <>
@@ -101,60 +106,35 @@ function Iletisim() {
           <h2 className="mt-3 text-2xl font-bold text-navy md:text-3xl">
             İstanbul, İzmir, Bursa ve Kayseri
           </h2>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
+            Şube kartına tıklayarak adres, telefon, e-posta ve o ildeki gümrük müdürlüklerini
+            görebilirsiniz.
+          </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {BRANCHES.map((b) => (
-              <article
+              <button
                 key={b.city}
-                className={`soft-card flex flex-col rounded-2xl p-6 transition-colors ${
+                type="button"
+                onClick={() => {
+                  setActiveBranch(b);
+                  setBranchModal(b.city);
+                }}
+                className={`soft-card flex flex-col items-start rounded-2xl p-6 text-left transition-transform hover:-translate-y-0.5 ${
                   activeBranch.city === b.city ? "ring-2 ring-cobalt" : ""
                 }`}
               >
                 <Building2 className="h-6 w-6 text-cobalt" />
                 <h3 className="mt-4 text-base font-bold text-navy">{b.city}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 flex-1 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
                   {b.address}
                 </p>
-                <p className="mt-3 text-xs text-muted-foreground/80">{b.note}</p>
-                {(b.phone || b.email) && (
-                  <div className="mt-3 space-y-1.5 border-t border-border pt-3">
-                    {b.phone && (
-                      <a
-                        href={`tel:${b.phoneHref ?? b.phone.replace(/\s/g, "")}`}
-                        className="flex items-center gap-2 text-xs font-semibold text-foreground hover:text-cobalt"
-                      >
-                        <Phone className="h-3.5 w-3.5 shrink-0 text-cobalt" /> {b.phone}
-                      </a>
-                    )}
-                    {b.email && (
-                      <a
-                        href={`mailto:${b.email}`}
-                        className="flex items-center gap-2 text-xs font-semibold text-foreground hover:text-cobalt"
-                      >
-                        <Mail className="h-3.5 w-3.5 shrink-0 text-cobalt" /> {b.email}
-                      </a>
-                    )}
-                  </div>
-                )}
-                <div className="mt-4 flex flex-wrap items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setActiveBranch(b)}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-cobalt hover:underline"
-                  >
-                    <MapPin className="h-3.5 w-3.5" /> Haritada gör
-                  </button>
-                  <a
-                    href={directionsUrl(b.q)}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-xs font-semibold text-muted-foreground hover:text-cobalt hover:underline"
-                  >
-                    Yol tarifi
-                  </a>
-                </div>
-              </article>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-cobalt">
+                  Detayları gör <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </button>
             ))}
           </div>
+
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
             <iframe
@@ -378,7 +358,97 @@ function Iletisim() {
           </form>
         </div>
       </section>
+      {BRANCHES.map((b) => {
+        const cityPage = CITY_PAGES.find((c) => c.branchCity === b.city);
+        const offices = cityPage
+          ? CUSTOMS_OFFICES.filter((o) => cityPage.officeCities.includes(o.city))
+          : [];
+        return (
+          <Modal
+            key={b.city}
+            open={branchModal === b.city}
+            onClose={() => setBranchModal(null)}
+            label={`${b.city} ofisi`}
+          >
+            <span className="eyebrow text-cobalt">Şubemiz</span>
+            <h2 className="mt-2 text-xl font-bold text-navy">{b.city}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{b.address}</p>
+            {b.note && <p className="mt-2 text-xs text-muted-foreground/80">{b.note}</p>}
+
+            <div className="mt-5 space-y-2 border-t border-border pt-4 text-sm">
+              <a
+                href={`tel:${b.phoneHref ?? (b.phone ?? "0212 551 43 07").replace(/\s/g, "")}`}
+                className="flex items-center gap-2 font-semibold text-foreground hover:text-cobalt"
+              >
+                <Phone className="h-4 w-4 text-cobalt" /> {b.phone ?? "0212 551 43 07"}
+              </a>
+              <a
+                href={`mailto:${b.email ?? OFFICE_EMAIL}`}
+                className="flex items-center gap-2 font-semibold text-foreground hover:text-cobalt"
+              >
+                <Mail className="h-4 w-4 text-cobalt" /> {b.email ?? OFFICE_EMAIL}
+              </a>
+            </div>
+
+            {cityPage && (
+              <>
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                  {cityPage.intro}
+                </p>
+                {offices.length > 0 && (
+                  <>
+                    <h3 className="mt-5 text-xs font-bold uppercase tracking-wide text-navy">
+                      Bu bölgede çalıştığımız gümrük müdürlükleri
+                    </h3>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {offices.map((o) => (
+                        <span
+                          key={o.name}
+                          className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
+                        >
+                          {o.name}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </>
+            )}
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveBranch(b);
+                  setBranchModal(null);
+                }}
+                className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cobalt to-primary px-4 py-2 text-xs font-semibold text-white"
+              >
+                <MapPin className="h-3.5 w-3.5" /> Haritada gör
+              </button>
+              <a
+                href={directionsUrl(b.q)}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-border px-4 py-2 text-xs font-semibold text-foreground hover:bg-muted"
+              >
+                Yol tarifi
+              </a>
+              {cityPage && (
+                <Link
+                  to="/gumruk-musavirligi/$sehir"
+                  params={{ sehir: cityPage.slug }}
+                  className="rounded-full border border-border px-4 py-2 text-xs font-semibold text-foreground hover:bg-muted"
+                >
+                  {cityPage.city} sayfası
+                </Link>
+              )}
+            </div>
+          </Modal>
+        );
+      })}
     </>
+
   );
 }
 

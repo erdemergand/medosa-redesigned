@@ -4,8 +4,10 @@ import { useServerFn } from "@tanstack/react-start";
 import { ArrowUpRight, Lock, Newspaper } from "lucide-react";
 import { useState } from "react";
 
+import { NewsModal } from "@/components/news-modal";
 import { NewsletterForm } from "@/components/newsletter-form";
-import { AACC_PORTAL_URL, FALLBACK_NEWS, type NewsItem } from "@/lib/news-data";
+import { FALLBACK_NEWS, type NewsItem } from "@/lib/news-data";
+
 import { getSectorNews } from "@/lib/news.functions";
 import { breadcrumbJsonLd, canonical } from "@/lib/seo";
 
@@ -63,6 +65,8 @@ type Tab = "haber" | "duyuru";
 function SektorelAkisPage() {
   const fetchNews = useServerFn(getSectorNews);
   const [tab, setTab] = useState<Tab>("haber");
+  const [detail, setDetail] = useState<NewsItem | null>(null);
+
   const { data } = useQuery({
     queryKey: ["sector-news"],
     queryFn: () => fetchNews(),
@@ -111,13 +115,12 @@ function SektorelAkisPage() {
         <ul className="mt-8 space-y-4">
           {items.map((n) => {
             const locked = (n.kind ?? "haber") === "duyuru";
-            const href = locked ? AACC_PORTAL_URL : n.href;
-            const Wrapper = href ? "a" : "div";
             return (
               <li key={n.id}>
-                <Wrapper
-                  {...(href ? { href, target: "_blank", rel: "noreferrer" } : {})}
-                  className="soft-card group block rounded-2xl p-5 transition-colors hover:border-cobalt/50"
+                <button
+                  type="button"
+                  onClick={() => setDetail(n)}
+                  className="soft-card group block w-full rounded-2xl p-5 text-left transition-colors hover:border-cobalt/50"
                 >
                   <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-cobalt">
                     {n.category}
@@ -125,9 +128,7 @@ function SektorelAkisPage() {
                     {locked ? (
                       <Lock className="ml-auto h-4 w-4 text-muted-foreground" />
                     ) : (
-                      href && (
-                        <ArrowUpRight className="ml-auto h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5" />
-                      )
+                      <ArrowUpRight className="ml-auto h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5" />
                     )}
                   </div>
                   <p className="mt-2 text-base font-semibold leading-snug">{n.title}</p>
@@ -136,7 +137,7 @@ function SektorelAkisPage() {
                       ? "Detay için aacc portal girişi gerekir — görmek için tıklayın."
                       : n.summary}
                   </p>
-                </Wrapper>
+                </button>
               </li>
             );
           })}
@@ -146,6 +147,8 @@ function SektorelAkisPage() {
             </li>
           )}
         </ul>
+        <NewsModal item={detail} onClose={() => setDetail(null)} />
+
       </section>
     </main>
   );
