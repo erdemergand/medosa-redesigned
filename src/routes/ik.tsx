@@ -25,18 +25,19 @@ export const Route = createFileRoute("/ik")({
   component: IK,
 });
 
-const LOCATIONS = BRANCHES.map((b) => b.city);
+/** Eski sitedeki başvuru formlarıyla birebir seçenekler. */
+const PLACEHOLDER = "Lütfen seçiminizi yapınız.";
 
-const POSITIONS = [
-  "İthalat Operasyon Uzmanı",
-  "İhracat Operasyon Uzmanı",
-  "Muhasebe / Finans",
-  "Saha Personeli",
-  "Gümrük Müşavir Yardımcısı",
-  "Müşteri İlişkileri",
-  "Bilgi İşlem / Yazılım",
-  "Diğer",
+const LOCATIONS = [
+  "İstanbul Merkez Ofis (Şirinevler)",
+  "Bursa Ofis (Nilüfer)",
+  "İzmir Ofis (Alsancak)",
+  "Kayseri Ofis (Anbar)",
 ];
+
+const POSITIONS = ["İthalat Operasyon", "İhracat Operasyon", "Muhasebe", "Saha Personeli"];
+
+const STAJ_TURLERI = ["Lise Stajı", "Üniversite Stajı"];
 
 const CULTURE = [
   {
