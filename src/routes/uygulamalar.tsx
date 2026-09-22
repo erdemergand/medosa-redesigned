@@ -92,7 +92,7 @@ function Uygulamalar() {
           <div key={g.title}>
             <div className="flex items-center gap-3">
               {g.logo ? (
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-white p-2">
+                <span className="logo-tile flex h-16 w-16 items-center justify-center rounded-xl bg-white p-0.5">
                   <img src={g.logo} alt={`${g.title} logosu`} className="h-full w-full object-contain" />
                 </span>
               ) : (
