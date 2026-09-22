@@ -15,6 +15,7 @@ import { Route as HakkimizdaRouteImport } from './routes/hakkimizda'
 import { Route as HizmetlerRouteImport } from './routes/hizmetler'
 import { Route as IkRouteImport } from './routes/ik'
 import { Route as IletisimRouteImport } from './routes/iletisim'
+import { Route as SektorelAkisRouteImport } from './routes/sektorel-akis'
 import { Route as UygulamalarRouteImport } from './routes/uygulamalar'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +48,11 @@ const IletisimRoute = IletisimRouteImport.update({
   path: '/iletisim',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SektorelAkisRoute = SektorelAkisRouteImport.update({
+  id: '/sektorel-akis',
+  path: '/sektorel-akis',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UygulamalarRoute = UygulamalarRouteImport.update({
   id: '/uygulamalar',
   path: '/uygulamalar',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/hizmetler': typeof HizmetlerRoute
   '/ik': typeof IkRoute
   '/iletisim': typeof IletisimRoute
+  '/sektorel-akis': typeof SektorelAkisRoute
   '/uygulamalar': typeof UygulamalarRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/hizmetler': typeof HizmetlerRoute
   '/ik': typeof IkRoute
   '/iletisim': typeof IletisimRoute
+  '/sektorel-akis': typeof SektorelAkisRoute
   '/uygulamalar': typeof UygulamalarRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/hizmetler': typeof HizmetlerRoute
   '/ik': typeof IkRoute
   '/iletisim': typeof IletisimRoute
+  '/sektorel-akis': typeof SektorelAkisRoute
   '/uygulamalar': typeof UygulamalarRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/hizmetler'
     | '/ik'
     | '/iletisim'
+    | '/sektorel-akis'
     | '/uygulamalar'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/hizmetler'
     | '/ik'
     | '/iletisim'
+    | '/sektorel-akis'
     | '/uygulamalar'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/hizmetler'
     | '/ik'
     | '/iletisim'
+    | '/sektorel-akis'
     | '/uygulamalar'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   HizmetlerRoute: typeof HizmetlerRoute
   IkRoute: typeof IkRoute
   IletisimRoute: typeof IletisimRoute
+  SektorelAkisRoute: typeof SektorelAkisRoute
   UygulamalarRoute: typeof UygulamalarRoute
 }
 
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IletisimRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sektorel-akis': {
+      id: '/sektorel-akis'
+      path: '/sektorel-akis'
+      fullPath: '/sektorel-akis'
+      preLoaderRoute: typeof SektorelAkisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/uygulamalar': {
       id: '/uygulamalar'
       path: '/uygulamalar'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   HizmetlerRoute: HizmetlerRoute,
   IkRoute: IkRoute,
   IletisimRoute: IletisimRoute,
+  SektorelAkisRoute: SektorelAkisRoute,
   UygulamalarRoute: UygulamalarRoute,
 }
 export const routeTree = rootRouteImport
