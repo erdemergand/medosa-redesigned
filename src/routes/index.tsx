@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, FileCheck2, Radar } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { ArrowRight, FileCheck2 } from "lucide-react";
 
 import heroPort from "@/assets/hero-port.jpg";
 import { DocumentsDialog, useDocumentsPopup } from "@/components/documents-dialog";
