@@ -226,35 +226,60 @@ function IK() {
   );
 }
 
-function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
+function Field({
+  label,
+  name,
+  type = "text",
+  required = false,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
   return (
     <div>
       <label htmlFor={name} className="text-sm font-medium text-foreground">
-        {label}
+        {label} {required && <span className="text-destructive">*</span>}
       </label>
       <input
         id={name}
         name={name}
         type={type}
-        required
-        maxLength={120}
+        required={required}
+        maxLength={400}
         className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
       />
     </div>
   );
 }
 
-function Select({ label, name, options }: { label: string; name: string; options: string[] }) {
+function Select({
+  label,
+  name,
+  options,
+  required = false,
+}: {
+  label: string;
+  name: string;
+  options: string[];
+  required?: boolean;
+}) {
   return (
     <div>
       <label htmlFor={name} className="text-sm font-medium text-foreground">
-        {label}
+        {label} {required && <span className="text-destructive">*</span>}
       </label>
       <select
         id={name}
         name={name}
+        required={required}
+        defaultValue=""
         className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
       >
+        <option value="" disabled>
+          {PLACEHOLDER}
+        </option>
         {options.map((o) => (
           <option key={o}>{o}</option>
         ))}
