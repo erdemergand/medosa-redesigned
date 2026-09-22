@@ -77,7 +77,7 @@ export function NewsFeed({ compact = false }: { compact?: boolean }) {
         ))}
       </div>
 
-      <ul className="mt-4 flex-1 space-y-3 overflow-hidden">
+      <ul className="mt-4 min-h-[26rem] flex-1 space-y-3 overflow-hidden">
         {items.map((n, i) => {
           const locked = (n.kind ?? "haber") === "duyuru";
           const href = locked ? AACC_PORTAL_URL : n.href;
