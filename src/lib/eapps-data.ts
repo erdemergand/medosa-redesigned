@@ -7,9 +7,13 @@ export const TICARET_BAKANLIGI: AppLink[] = [
     href: "https://uygulama.gtb.gov.tr/BTBBasvuru/AnaSayfa",
   },
   {
-    name: "Lara Web Sorgulama ve Belge Yükleme Ekranı",
+    name: "LARA Web Sorgulama ve Belge Yükleme Ekranı",
     href: "https://uygulama.gtb.gov.tr/LaraTahlilSorgulama/Ekranlar/Index.aspx",
   },
+  { name: "Destek Yönetim Sistemi (DYS)", href: "https://dys.ticaret.gov.tr/" },
+  { name: "TASİŞ E-İhale", href: "https://tasis.ticaret.gov.tr/" },
+  { name: "TAREKS Firma Tanımlama", href: "https://tarekskayit.ticaret.gov.tr/" },
+  { name: "TAREKS Yetkilendirme", href: "https://tareksyetki.ticaret.gov.tr/" },
   {
     name: "Yükümlü Kayıt ve Takip Sistemi",
     href: "https://uygulama.gtb.gov.tr/FirmaVekalet/Login/Login.aspx",
