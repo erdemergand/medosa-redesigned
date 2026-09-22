@@ -109,8 +109,8 @@ const CERTS = [
   },
   {
     code: "Gümrük Müşavirliği",
-    name: "Yetki Belgesi",
-    desc: "Ticaret Bakanlığı nezdinde yetkilendirilmiş gümrük müşavirliği faaliyet izni.",
+    name: "İzin Belgesi",
+    desc: "Ticaret Bakanlığı lisanslı Gümrük Müşavirliği İzin Belgesi ile gümrük idarelerinde doğrudan/dolaylı temsil ve müşavirlik yetkisi.",
   },
   {
     code: "EDI / e-Birlik",
