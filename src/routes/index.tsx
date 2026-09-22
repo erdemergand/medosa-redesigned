@@ -29,6 +29,13 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+/** Bilgi kutularının ikon renkleri: AB mavisi, ticaret turkuazı, mevzuat kehribarı. */
+const KNOWLEDGE_ACCENTS = [
+  "from-[#2b5cff] to-[#8ab4ff] shadow-[0_10px_28px_-12px_rgba(43,92,255,0.9)]",
+  "from-[#0ea5a4] to-[#5fe3c0] shadow-[0_10px_28px_-12px_rgba(14,165,164,0.9)]",
+  "from-[#f59e0b] to-[#fcd34d] shadow-[0_10px_28px_-12px_rgba(245,158,11,0.9)]",
+];
+
 function Index() {
   const { open, setOpen } = useDocumentsPopup();
 
