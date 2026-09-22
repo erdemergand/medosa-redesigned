@@ -45,16 +45,18 @@ export function SiteFooter() {
           <Link to="/sektorel-akis" className="text-xs text-white/60 hover:text-white">
             Sektörel Akış
           </Link>
+          {/* Şehir sayfaları görsel olarak gizli; arama motorları için bağlantı korunuyor. */}
           {CITY_PAGES.map((c) => (
             <Link
               key={c.slug}
               to="/gumruk-musavirligi/$sehir"
               params={{ sehir: c.slug }}
-              className="text-xs text-white/60 hover:text-white"
+              className="sr-only"
             >
               {c.city} Gümrük Müşavirliği
             </Link>
           ))}
+
         </nav>
         <div className="flex w-full max-w-xs flex-col items-center gap-4 sm:items-end">
           <NewsletterForm variant="dark" />
