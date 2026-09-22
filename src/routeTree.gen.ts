@@ -18,6 +18,7 @@ import { Route as IletisimRouteImport } from './routes/iletisim'
 import { Route as SektorelAkisRouteImport } from './routes/sektorel-akis'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as UygulamalarRouteImport } from './routes/uygulamalar'
+import { Route as GumrukMusavirligiSehirRouteImport } from './routes/gumruk-musavirligi.$sehir'
 import { Route as ApiPublicAbonelikIptalRouteImport } from './routes/api/public/abonelik-iptal'
 import { Route as ApiPublicHooksAnnouncementPublishedRouteImport } from './routes/api/public/hooks/announcement-published'
 import { Route as ApiPublicHooksWeeklyApplicationsRouteImport } from './routes/api/public/hooks/weekly-applications'
@@ -67,6 +68,11 @@ const UygulamalarRoute = UygulamalarRouteImport.update({
   path: '/uygulamalar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GumrukMusavirligiSehirRoute = GumrukMusavirligiSehirRouteImport.update({
+  id: '/gumruk-musavirligi/$sehir',
+  path: '/gumruk-musavirligi/$sehir',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicAbonelikIptalRoute = ApiPublicAbonelikIptalRouteImport.update({
   id: '/api/public/abonelik-iptal',
   path: '/api/public/abonelik-iptal',
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/sektorel-akis': typeof SektorelAkisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uygulamalar': typeof UygulamalarRoute
+  '/gumruk-musavirligi/$sehir': typeof GumrukMusavirligiSehirRoute
   '/api/public/abonelik-iptal': typeof ApiPublicAbonelikIptalRoute
   '/api/public/hooks/announcement-published': typeof ApiPublicHooksAnnouncementPublishedRoute
   '/api/public/hooks/weekly-applications': typeof ApiPublicHooksWeeklyApplicationsRoute
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/sektorel-akis': typeof SektorelAkisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uygulamalar': typeof UygulamalarRoute
+  '/gumruk-musavirligi/$sehir': typeof GumrukMusavirligiSehirRoute
   '/api/public/abonelik-iptal': typeof ApiPublicAbonelikIptalRoute
   '/api/public/hooks/announcement-published': typeof ApiPublicHooksAnnouncementPublishedRoute
   '/api/public/hooks/weekly-applications': typeof ApiPublicHooksWeeklyApplicationsRoute
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/sektorel-akis': typeof SektorelAkisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uygulamalar': typeof UygulamalarRoute
+  '/gumruk-musavirligi/$sehir': typeof GumrukMusavirligiSehirRoute
   '/api/public/abonelik-iptal': typeof ApiPublicAbonelikIptalRoute
   '/api/public/hooks/announcement-published': typeof ApiPublicHooksAnnouncementPublishedRoute
   '/api/public/hooks/weekly-applications': typeof ApiPublicHooksWeeklyApplicationsRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
     | '/sektorel-akis'
     | '/sitemap.xml'
     | '/uygulamalar'
+    | '/gumruk-musavirligi/$sehir'
     | '/api/public/abonelik-iptal'
     | '/api/public/hooks/announcement-published'
     | '/api/public/hooks/weekly-applications'
@@ -154,6 +164,7 @@ export interface FileRouteTypes {
     | '/sektorel-akis'
     | '/sitemap.xml'
     | '/uygulamalar'
+    | '/gumruk-musavirligi/$sehir'
     | '/api/public/abonelik-iptal'
     | '/api/public/hooks/announcement-published'
     | '/api/public/hooks/weekly-applications'
@@ -168,6 +179,7 @@ export interface FileRouteTypes {
     | '/sektorel-akis'
     | '/sitemap.xml'
     | '/uygulamalar'
+    | '/gumruk-musavirligi/$sehir'
     | '/api/public/abonelik-iptal'
     | '/api/public/hooks/announcement-published'
     | '/api/public/hooks/weekly-applications'
@@ -183,6 +195,7 @@ export interface RootRouteChildren {
   SektorelAkisRoute: typeof SektorelAkisRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UygulamalarRoute: typeof UygulamalarRoute
+  GumrukMusavirligiSehirRoute: typeof GumrukMusavirligiSehirRoute
   ApiPublicAbonelikIptalRoute: typeof ApiPublicAbonelikIptalRoute
   ApiPublicHooksAnnouncementPublishedRoute: typeof ApiPublicHooksAnnouncementPublishedRoute
   ApiPublicHooksWeeklyApplicationsRoute: typeof ApiPublicHooksWeeklyApplicationsRoute
@@ -253,6 +266,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UygulamalarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gumruk-musavirligi/$sehir': {
+      id: '/gumruk-musavirligi/$sehir'
+      path: '/gumruk-musavirligi/$sehir'
+      fullPath: '/gumruk-musavirligi/$sehir'
+      preLoaderRoute: typeof GumrukMusavirligiSehirRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/abonelik-iptal': {
       id: '/api/public/abonelik-iptal'
       path: '/api/public/abonelik-iptal'
@@ -287,6 +307,7 @@ const rootRouteChildren: RootRouteChildren = {
   SektorelAkisRoute: SektorelAkisRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UygulamalarRoute: UygulamalarRoute,
+  GumrukMusavirligiSehirRoute: GumrukMusavirligiSehirRoute,
   ApiPublicAbonelikIptalRoute: ApiPublicAbonelikIptalRoute,
   ApiPublicHooksAnnouncementPublishedRoute:
     ApiPublicHooksAnnouncementPublishedRoute,
