@@ -99,20 +99,6 @@ function Index() {
             </Link>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 lg:grid-cols-4">
-            {METRICS.map((m, i) => (
-              <div
-                key={m.label}
-                className="fade-up glass-panel rounded-2xl px-5 py-4 transition-transform hover:-translate-y-1"
-                style={{ animationDelay: `${0.4 + i * 0.1}s` }}
-              >
-                <div className="font-display text-xl font-extrabold text-white lg:text-2xl">
-                  {m.value}
-                </div>
-                <div className="mt-1 text-[11px] leading-snug text-white/60">{m.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="fade-up h-full" style={{ animationDelay: "0.35s" }}>
