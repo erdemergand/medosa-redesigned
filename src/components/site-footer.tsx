@@ -14,7 +14,7 @@ function XIcon({ className }: { className?: string }) {
 
 const SOCIALS = [
   { name: "Instagram", href: "https://www.instagram.com/medosagumruk/", Icon: Instagram },
-  { name: "Facebook", href: "https://www.facebook.com/medosagumruk/?locale=tr_TR", Icon: Facebook },
+  { name: "Facebook", href: "https://www.facebook.com/medosagumruk/", Icon: Facebook },
   { name: "LinkedIn", href: "https://tr.linkedin.com/company/medosa-gumruk", Icon: Linkedin },
   { name: "X", href: "https://x.com/medosagumruk", Icon: XIcon },
 ];
