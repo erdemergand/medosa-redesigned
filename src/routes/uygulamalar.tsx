@@ -38,11 +38,13 @@ function Uygulamalar() {
   const groups: {
     icon?: typeof Globe2;
     logo?: string;
+    logoDark?: boolean;
     title: string;
     items: AppLink[];
   }[] = [
     {
       logo: "/logos/ticaret-bakanligi.svg",
+      logoDark: true,
       title: "Ticaret Bakanlığı Uygulamaları",
       items: f(TICARET_BAKANLIGI),
     },
