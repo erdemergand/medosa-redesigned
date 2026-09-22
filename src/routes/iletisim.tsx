@@ -213,9 +213,35 @@ function Iletisim() {
           </div>
 
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSent(true);
+              const form = e.currentTarget;
+              const fd = new FormData(form);
+              const get = (k: string) => String(fd.get(k) ?? "");
+              setError(null);
+              setSending(true);
+              try {
+                await sendMail({
+                  data: {
+                    subject: `Web sitesi iletişim formu — ${get("ad")}`,
+                    replyTo: get("email"),
+                    fields: [
+                      { label: "Ad Soyad", value: get("ad") },
+                      { label: "Firma", value: get("firma") },
+                      { label: "E-posta", value: get("email") },
+                      { label: "Telefon", value: get("tel") },
+                      { label: "Hizmet konusu", value: get("konu") },
+                      { label: "Mesaj", value: get("mesaj") },
+                    ],
+                  },
+                });
+                setSent(true);
+                form.reset();
+              } catch (err) {
+                setError(err instanceof Error ? err.message : "Mesaj gönderilemedi.");
+              } finally {
+                setSending(false);
+              }
             }}
             className="rounded-2xl border border-border bg-card p-7 shadow-sm"
           >
@@ -231,6 +257,7 @@ function Iletisim() {
               </label>
               <select
                 id="konu"
+                name="konu"
                 className="mt-1.5 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm focus:border-cobalt focus:outline-none"
               >
                 {SERVICES.map((s) => (
@@ -244,6 +271,7 @@ function Iletisim() {
               </label>
               <textarea
                 id="mesaj"
+                name="mesaj"
                 rows={4}
                 required
                 maxLength={1000}
@@ -253,13 +281,19 @@ function Iletisim() {
             </div>
             <button
               type="submit"
-              className="mt-6 w-full rounded-full bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              disabled={sending}
+              className="mt-6 w-full rounded-full bg-cobalt px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60"
             >
-              Mesajı Gönder
+              {sending ? "Gönderiliyor..." : "Mesajı Gönder"}
             </button>
             {sent && (
               <p className="mt-4 rounded-xl border border-cobalt/30 bg-cobalt/10 p-3 text-sm text-navy">
                 Mesajınız alındı. Ekibimiz en kısa sürede sizinle iletişime geçecek.
+              </p>
+            )}
+            {error && (
+              <p className="mt-4 rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
+                {error}
               </p>
             )}
           </form>
