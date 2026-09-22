@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, Moon, Radar, Sun, X } from "lucide-react";
 import { useState } from "react";
 
-import logo from "@/assets/medosa-logo.jpg.asset.json";
+import logoFull from "@/assets/medosa-logo-full.png.asset.json";
 import { NAV } from "@/lib/site-data";
 import { useTheme } from "@/lib/theme";
 
@@ -26,12 +26,11 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
         <Link to="/" className="flex items-center gap-3">
-          <span className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl">
-            <img src={logo.url} alt="Medosa logosu" className="h-full w-full object-cover" />
-          </span>
-          <span className="font-display text-2xl font-extrabold tracking-tight text-navy">
-            MEDOSA
-          </span>
+          <img
+            src={logoFull.url}
+            alt="Medosa logosu"
+            className="h-14 w-auto object-contain md:h-16"
+          />
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
