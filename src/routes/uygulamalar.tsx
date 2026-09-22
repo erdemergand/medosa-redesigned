@@ -96,8 +96,8 @@ function Uygulamalar() {
                   <img src={g.logo} alt={`${g.title} logosu`} className="h-full w-full object-contain" />
                 </span>
               ) : (
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-navy to-cobalt text-white">
-                  {g.icon ? <g.icon className="h-5 w-5" /> : null}
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-navy to-cobalt text-white shadow-lg shadow-cobalt/30">
+                  <Globe2 className="spin-globe h-6 w-6" />
                 </span>
               )}
               <h2 className="text-xl font-bold text-navy md:text-2xl">{g.title}</h2>
