@@ -32,7 +32,12 @@ export const Route = createFileRoute("/")({
 });
 
 /** Bilgi kutularının gerçekçi simgeleri: AB bayrağı, konteyner gemisi, mevzuat kitabı. */
-const KNOWLEDGE_ICONS = [EuFlagIcon, TradeShipIcon, LawBookIcon];
+const KNOWLEDGE_ICONS: Array<(p: { className?: string }) => JSX.Element> = [
+  EuFlagIcon,
+  TradeShipIcon,
+  LawBookIcon,
+];
+
 
 
 function Index() {
