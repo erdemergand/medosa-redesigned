@@ -266,17 +266,30 @@ function Hakkimizda() {
           <h2 className="mt-3 text-2xl font-bold text-navy md:text-3xl">
             Deneyimimizin yoğunlaştığı alanlar
           </h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SECTORS.map((s) => (
-              <div
+              <article
                 key={s.name}
-                className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5"
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-lg"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-navy to-cobalt text-white">
-                  <s.icon className="h-5 w-5" />
-                </span>
-                <span className="text-sm font-semibold text-navy">{s.name}</span>
-              </div>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.name}
+                    loading="lazy"
+                    width={944}
+                    height={704}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/25 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 p-5">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/15 text-white backdrop-blur-sm">
+                      <s.icon className="h-5 w-5" />
+                    </span>
+                    <span className="text-sm font-semibold text-white">{s.name}</span>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>
