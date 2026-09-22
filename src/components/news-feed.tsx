@@ -135,6 +135,8 @@ export function NewsFeed({ compact = false }: { compact?: boolean }) {
       <p className="mt-4 border-t border-white/10 pt-3 text-[11px] text-white/45">
         Haberler herkese açıktır; duyuru detayları yalnızca aacc portal kullanıcılarına gösterilir.
       </p>
+      <NewsModal item={detail} onClose={() => setDetail(null)} />
+
     </div>
   );
 }
