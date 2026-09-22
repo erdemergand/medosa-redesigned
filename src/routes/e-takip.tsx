@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Mail, MapPin, ShieldCheck, TriangleAlert } from "lucide-react";
+import { ArrowRight, Download, Mail, MapPin, ShieldCheck, TriangleAlert } from "lucide-react";
 
 import { PageHero } from "@/components/page-hero";
 import emdsLogo from "@/assets/e-mds.png.asset.json";
 import aaccLogo from "@/assets/aacc.png.asset.json";
+import taahhutname from "@/assets/taahhutname.docx.asset.json";
 
 export const Route = createFileRoute("/e-takip")({
   head: () => ({
