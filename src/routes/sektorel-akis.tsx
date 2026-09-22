@@ -65,6 +65,8 @@ type Tab = "haber" | "duyuru";
 function SektorelAkisPage() {
   const fetchNews = useServerFn(getSectorNews);
   const [tab, setTab] = useState<Tab>("haber");
+  const [detail, setDetail] = useState<NewsItem | null>(null);
+
   const { data } = useQuery({
     queryKey: ["sector-news"],
     queryFn: () => fetchNews(),
