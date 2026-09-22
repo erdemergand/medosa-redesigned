@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Building2, Mail, MapPin, Phone, Ship } from "lucide-react";
+import { Building2, Mail, MapPin, Phone, Plane, Ship, Train, Truck } from "lucide-react";
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
-import { BRANCHES, CUSTOMS_OFFICES, SERVICES } from "@/lib/site-data";
+import { BRANCHES, CUSTOMS_OFFICES, CUSTOMS_REGIONS, SERVICES } from "@/lib/site-data";
 
 export const Route = createFileRoute("/iletisim")({
   head: () => ({
@@ -23,6 +23,9 @@ export const Route = createFileRoute("/iletisim")({
   }),
   component: Iletisim,
 });
+
+const OFFICE_ICONS = { sea: Ship, land: Truck, air: Plane, rail: Train } as const;
+const OFFICE_LABELS = { sea: "Deniz gümrüğü", land: "Kara gümrüğü", air: "Hava gümrüğü", rail: "Demiryolu gümrüğü" } as const;
 
 function mapSrc(q: string) {
   return `https://www.google.com/maps?q=${encodeURIComponent(q)}&hl=tr&z=13&output=embed`;
@@ -107,24 +110,45 @@ function Iletisim() {
           </h2>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,360px)_1fr]">
-            <div className="max-h-[460px] space-y-2 overflow-y-auto pr-1">
-              {CUSTOMS_OFFICES.map((o) => (
-                <button
-                  key={o.name}
-                  onClick={() => setActive(o)}
-                  className={`flex w-full items-start gap-3 rounded-xl border p-4 text-left transition-colors ${
-                    active.name === o.name
-                      ? "border-cobalt bg-cobalt/10"
-                      : "border-border bg-card hover:border-cobalt/40"
-                  }`}
-                >
-                  <Ship className="mt-0.5 h-4 w-4 shrink-0 text-cobalt" />
-                  <span>
-                    <span className="block text-sm font-semibold text-navy">{o.name}</span>
-                    <span className="text-xs text-muted-foreground">{o.city}</span>
-                  </span>
-                </button>
-              ))}
+            <div className="max-h-[460px] space-y-5 overflow-y-auto pr-1">
+              {CUSTOMS_REGIONS.map((region) => {
+                const offices = CUSTOMS_OFFICES.filter((o) => o.region === region);
+                if (offices.length === 0) return null;
+                return (
+                  <div key={region}>
+                    <p className="eyebrow mb-2 text-cobalt">{region}</p>
+                    <div className="space-y-2">
+                      {offices.map((o) => (
+                        <button
+                          key={o.name}
+                          onClick={() => setActive(o)}
+                          className={`flex w-full items-start gap-3 rounded-xl border p-4 text-left transition-colors ${
+                            active.name === o.name
+                              ? "border-cobalt bg-cobalt/10"
+                              : "border-border bg-card hover:border-cobalt/40"
+                          }`}
+                        >
+                          {(() => {
+                            const OfficeIcon = OFFICE_ICONS[o.type];
+                            return (
+                              <OfficeIcon
+                                aria-label={OFFICE_LABELS[o.type]}
+                                className="mt-0.5 h-4 w-4 shrink-0 text-cobalt"
+                              />
+                            );
+                          })()}
+                          <span>
+                            <span className="block text-sm font-semibold text-navy">{o.name}</span>
+                            <span className="text-xs text-muted-foreground">
+                              {o.city} · {OFFICE_LABELS[o.type]}
+                            </span>
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">

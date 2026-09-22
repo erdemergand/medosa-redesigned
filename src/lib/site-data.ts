@@ -47,27 +47,67 @@ export const BRANCHES = [
   },
 ];
 
-export const CUSTOMS_OFFICES = [
-  { name: "Ambarlı Gümrük Müdürlüğü", city: "İstanbul", q: "Ambarlı Gümrük Müdürlüğü Avcılar İstanbul" },
-  { name: "Erenköy Gümrük Müdürlüğü", city: "İstanbul", q: "Erenköy Gümrük Müdürlüğü İstanbul" },
-  { name: "Muratbey Gümrük Müdürlüğü", city: "İstanbul", q: "Muratbey Gümrük Müdürlüğü Çatalca İstanbul" },
+export type CustomsOfficeType = "sea" | "land" | "air" | "rail";
+
+export const CUSTOMS_OFFICES: {
+  type: CustomsOfficeType;
+  name: string;
+  city: string;
+  region: string;
+  q: string;
+}[] = [
+  // İstanbul
+  { type: "sea", name: "Ambarlı Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Ambarlı Gümrük Müdürlüğü Avcılar İstanbul" },
+  { type: "land", name: "Erenköy Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Erenköy Gümrük Müdürlüğü İstanbul" },
+  { type: "land", name: "Muratbey Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Muratbey Gümrük Müdürlüğü Çatalca İstanbul" },
+  { type: "rail", name: "Halkalı Gar Gümrük Müdürlüğü", city: "İstanbul", region: "İstanbul", q: "Halkalı Gar Gümrük Müdürlüğü Küçükçekmece İstanbul" },
   {
-    name: "İstanbul Havalimanı (AHL) Gümrük Müdürlüğü",
+    name: "İstanbul Havalimanı Gümrük Müdürlüğü",
+    type: "air",
     city: "İstanbul",
+    region: "İstanbul",
     q: "İstanbul Havalimanı Gümrük Müdürlüğü Arnavutköy",
   },
   {
     name: "Sabiha Gökçen Havalimanı Gümrük Müdürlüğü",
+    type: "air",
     city: "İstanbul",
+    region: "İstanbul",
     q: "Sabiha Gökçen Havalimanı Gümrük Müdürlüğü Pendik",
   },
-  { name: "Halkalı Gümrük Müdürlüğü", city: "İstanbul", q: "Halkalı Gümrük Müdürlüğü İstanbul" },
-  { name: "Gemlik Gümrük Müdürlüğü", city: "Bursa", q: "Gemlik Gümrük Müdürlüğü Bursa" },
-  { name: "Bursa Gümrük Müdürlüğü", city: "Bursa", q: "Bursa Gümrük Müdürlüğü" },
-  { name: "İzmir (Alsancak) Gümrük Müdürlüğü", city: "İzmir", q: "Alsancak Gümrük Müdürlüğü İzmir" },
-  { name: "Adnan Menderes Havalimanı Gümrük Müdürlüğü", city: "İzmir", q: "Adnan Menderes Havalimanı Gümrük Müdürlüğü İzmir" },
-  { name: "Kayseri Gümrük Müdürlüğü", city: "Kayseri", q: "Kayseri Gümrük Müdürlüğü" },
+  // Trakya ve sınır kapıları
+  { type: "land", name: "Çerkezköy Gümrük Müdürlüğü", city: "Tekirdağ", region: "Trakya ve Sınır Kapıları", q: "Çerkezköy Gümrük Müdürlüğü Tekirdağ" },
+  { type: "land", name: "Kapıkule Gümrük Müdürlüğü", city: "Edirne", region: "Trakya ve Sınır Kapıları", q: "Kapıkule Gümrük Kapısı Edirne" },
+  { type: "land", name: "İpsala Gümrük Müdürlüğü", city: "Edirne", region: "Trakya ve Sınır Kapıları", q: "İpsala Gümrük Kapısı Edirne" },
+  // Güney Marmara
+  { type: "land", name: "Bursa Gümrük Müdürlüğü", city: "Bursa", region: "Güney Marmara", q: "Bursa Gümrük Müdürlüğü" },
+  { type: "sea", name: "Gemlik Gümrük Müdürlüğü", city: "Bursa", region: "Güney Marmara", q: "Gemlik Gümrük Müdürlüğü Bursa" },
+  { type: "sea", name: "Yalova Gümrük Müdürlüğü", city: "Yalova", region: "Güney Marmara", q: "Yalova Gümrük Müdürlüğü" },
+  // Ege
+  { type: "sea", name: "İzmir (Alsancak) Gümrük Müdürlüğü", city: "İzmir", region: "Ege", q: "Alsancak Gümrük Müdürlüğü İzmir" },
+  {
+    name: "Adnan Menderes Havalimanı Gümrük Müdürlüğü",
+    type: "air",
+    city: "İzmir",
+    region: "Ege",
+    q: "Adnan Menderes Havalimanı Gümrük Müdürlüğü İzmir",
+  },
+  { type: "sea", name: "Aliağa Gümrük Müdürlüğü", city: "İzmir", region: "Ege", q: "Aliağa Gümrük Müdürlüğü İzmir" },
+  // İç Anadolu
+  { type: "land", name: "Kayseri Gümrük Müdürlüğü", city: "Kayseri", region: "İç Anadolu", q: "Kayseri Gümrük Müdürlüğü" },
+  // Akdeniz
+  { type: "sea", name: "Mersin Gümrük Müdürlüğü", city: "Mersin", region: "Akdeniz", q: "Mersin Gümrük Müdürlüğü" },
+  { type: "sea", name: "Yumurtalık Gümrük Müdürlüğü", city: "Adana", region: "Akdeniz", q: "Yumurtalık Serbest Bölge Gümrük Müdürlüğü Adana" },
 ];
+
+export const CUSTOMS_REGIONS = [
+  "İstanbul",
+  "Trakya ve Sınır Kapıları",
+  "Güney Marmara",
+  "Ege",
+  "İç Anadolu",
+  "Akdeniz",
+] as const;
 
 export const SERVICES = [
   {
