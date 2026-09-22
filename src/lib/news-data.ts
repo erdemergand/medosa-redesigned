@@ -4,7 +4,7 @@ export type NewsItem = {
   summary: string;
   category: string;
   date: string; // ISO
-  href?: string;
+  href?: string | undefined;
 };
 
 /**
