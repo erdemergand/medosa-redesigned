@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { ArrowUpRight, Lock, Newspaper } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AACC_PORTAL_URL, FALLBACK_NEWS, type NewsItem } from "@/lib/news-data";
 import { getSectorNews } from "@/lib/news.functions";
@@ -25,6 +25,20 @@ export function NewsFeed({ compact = false }: { compact?: boolean }) {
     initialData: FALLBACK_NEWS,
     staleTime: 5 * 60 * 1000,
   });
+
+  // 30 saniyede bir Haberler ↔ Duyurular geçişi
+  const [cycle, setCycle] = useState(0);
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setTab((t) => (t === "haber" ? "duyuru" : "haber"));
+    }, 30000);
+    return () => window.clearInterval(id);
+  }, [cycle]);
+
+  const selectTab = (t: Tab) => {
+    setTab(t);
+    setCycle((c) => c + 1); // elle seçimde sayaç sıfırlanır
+  };
 
   const filtered: NewsItem[] = data.filter((n) => (n.kind ?? "haber") === tab);
   const items = compact ? filtered.slice(0, 4) : filtered;
