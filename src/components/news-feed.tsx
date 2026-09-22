@@ -65,7 +65,7 @@ export function NewsFeed({ compact = false }: { compact?: boolean }) {
           <button
             key={t.id}
             type="button"
-            onClick={() => setTab(t.id)}
+            onClick={() => selectTab(t.id)}
             className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors ${
               tab === t.id ? "bg-cobalt text-white" : "text-white/60 hover:text-white"
             }`}
