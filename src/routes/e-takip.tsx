@@ -153,7 +153,7 @@ function ETakip() {
               </p>
               <p className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-cobalt" />
-                Şirinevler Mh. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200,
+                Şirinevler Mah. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200,
                 Bahçelievler / İstanbul
               </p>
             </div>

@@ -37,7 +37,7 @@ export const ORGANIZATION_JSONLD = {
       address: {
         "@type": "PostalAddress",
         streetAddress:
-          "Şirinevler Mh. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200",
+          "Şirinevler Mah. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200",
         addressLocality: "Bahçelievler",
         addressRegion: "İstanbul",
         addressCountry: "TR",

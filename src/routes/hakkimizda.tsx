@@ -91,22 +91,22 @@ const TIMELINE = [
 const BRANCHES = [
   {
     city: "İstanbul (Merkez)",
-    desc: "Şirinevler Mh. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200, Bahçelievler / İstanbul",
+    desc: "Şirinevler Mah. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200, Bahçelievler / İstanbul",
     note: "İstanbul'daki tüm gümrük sahalarında saha kadrosu",
   },
   {
     city: "İzmir Şubesi",
-    desc: "1456 sok. Bener Nural İş Hanı No:10 Kat:1 / Alsancak / İZMİR (2007 yılında faaliyete geçti.)",
+    desc: "1456 Sok. Bener Nural İş Hanı No: 10 Kat: 1, Alsancak / İzmir (2007 yılında faaliyete geçti.)",
     note: "Ege bölgesi operasyonları",
   },
   {
     city: "Bursa Şubesi",
-    desc: "Fethiye Mah. Fesleğen Sok. No:2/1 Ata Plaza D:5 (Ata Bulvarı) Nilüfer / Bursa (2011 yılı sonu itibariyle açıldı.)",
+    desc: "Fethiye Mah. Fesleğen Sok. No: 2/1 Ata Plaza D: 5 (Ata Bulvarı), Nilüfer / Bursa (2011 yılı sonu itibariyle açıldı.)",
     note: "Marmara bölgesi operasyonları",
   },
   {
     city: "Kayseri Şubesi",
-    desc: "Serbest Bölge, Anbar Mah. 54. Cd. 15-D, Melikgazi / KAYSERİ (Şubat 2024'te kuruldu.)",
+    desc: "Serbest Bölge, Anbar Mah. 54. Cd. 15-D, Melikgazi / Kayseri (Şubat 2024'te kuruldu.)",
     note: "İç Anadolu bölgesi operasyonları",
   },
 ];

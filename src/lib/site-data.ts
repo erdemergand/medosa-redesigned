@@ -38,7 +38,7 @@ export const BRANCHES: Branch[] = [
   {
     city: "İstanbul Merkez",
     address:
-      "Şirinevler Mh. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200, Bahçelievler / İstanbul",
+      "Şirinevler Mah. Adnan Kahveci Bulvarı, Kocasinan İş Merkezi B Blok No: 200, Bahçelievler / İstanbul",
     note: "Genel müdürlük ve tüm İstanbul gümrük sahalarında saha kadrosu",
     q: "Medosa Gümrük Müşavirliği, Bahçelievler, İstanbul",
     phone: "0212 551 43 07",
@@ -47,22 +47,22 @@ export const BRANCHES: Branch[] = [
   },
   {
     city: "İzmir Şubesi",
-    address: "1456 sok. Bener Nural İş Hanı No:10 Kat:1 / Alsancak / İZMİR",
+    address: "1456 Sok. Bener Nural İş Hanı No: 10 Kat: 1, Alsancak / İzmir",
     note: "Ege bölgesi operasyonları (2007)",
-    q: "1456 sok. Bener Nural İş Hanı No:10 Alsancak Konak İzmir",
+    q: "1456 Sok. Bener Nural İş Hanı No: 10 Alsancak Konak İzmir",
     email: "info@medosa.com.tr",
   },
   {
     city: "Bursa Şubesi",
     address:
-      "Fethiye Mah. Fesleğen Sok. No:2/1 Ata Plaza D:5 (Ata Bulvarı) Nilüfer / Bursa",
+      "Fethiye Mah. Fesleğen Sok. No: 2/1 Ata Plaza D: 5 (Ata Bulvarı), Nilüfer / Bursa",
     note: "Marmara bölgesi ve Gemlik operasyonları (2011)",
-    q: "Fethiye Mah. Fesleğen Sok. No:2 Ata Plaza Nilüfer Bursa",
+    q: "Fethiye Mah. Fesleğen Sok. No: 2 Ata Plaza Nilüfer Bursa",
     email: "info@medosa.com.tr",
   },
   {
     city: "Kayseri Şubesi",
-    address: "Serbest Bölge, Anbar Mah. 54. Cd. 15-D, Melikgazi / KAYSERİ",
+    address: "Serbest Bölge, Anbar Mah. 54. Cd. 15-D, Melikgazi / Kayseri",
     note: "İç Anadolu bölgesi operasyonları (Şubat 2024)",
     q: "Serbest Bölge Anbar Mah. 54. Cd. 15 Melikgazi Kayseri",
     email: "info@medosa.com.tr",
