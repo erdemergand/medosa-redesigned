@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Building2, Mail, MapPin, Phone, Ship } from "lucide-react";
+import { Building2, Mail, MapPin, Phone, Plane, Ship, Train, Truck } from "lucide-react";
 import { useState } from "react";
 
 import { PageHero } from "@/components/page-hero";
@@ -23,6 +23,9 @@ export const Route = createFileRoute("/iletisim")({
   }),
   component: Iletisim,
 });
+
+const OFFICE_ICONS = { sea: Ship, land: Truck, air: Plane, rail: Train } as const;
+const OFFICE_LABELS = { sea: "Deniz gümrüğü", land: "Kara gümrüğü", air: "Hava gümrüğü", rail: "Demiryolu gümrüğü" } as const;
 
 function mapSrc(q: string) {
   return `https://www.google.com/maps?q=${encodeURIComponent(q)}&hl=tr&z=13&output=embed`;
@@ -125,10 +128,20 @@ function Iletisim() {
                               : "border-border bg-card hover:border-cobalt/40"
                           }`}
                         >
-                          <Ship className="mt-0.5 h-4 w-4 shrink-0 text-cobalt" />
+                          {(() => {
+                            const OfficeIcon = OFFICE_ICONS[o.type];
+                            return (
+                              <OfficeIcon
+                                aria-label={OFFICE_LABELS[o.type]}
+                                className="mt-0.5 h-4 w-4 shrink-0 text-cobalt"
+                              />
+                            );
+                          })()}
                           <span>
                             <span className="block text-sm font-semibold text-navy">{o.name}</span>
-                            <span className="text-xs text-muted-foreground">{o.city}</span>
+                            <span className="text-xs text-muted-foreground">
+                              {o.city} · {OFFICE_LABELS[o.type]}
+                            </span>
                           </span>
                         </button>
                       ))}
