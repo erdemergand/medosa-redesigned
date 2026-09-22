@@ -113,6 +113,34 @@ function Index() {
         </div>
       </div>
 
+      {/* Bilgi kaynakları */}
+      <div className="relative mx-auto w-full max-w-7xl px-5 pb-12">
+        <div className="grid gap-4 md:grid-cols-3">
+          {KNOWLEDGE_LINKS.map((k, i) => (
+            <a
+              key={k.title}
+              href={k.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fade-up glass-panel group rounded-2xl p-6 transition-transform hover:-translate-y-1"
+              style={{ animationDelay: `${0.45 + i * 0.1}s` }}
+            >
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cobalt to-primary text-white">
+                  <k.icon className="h-5 w-5" />
+                </span>
+                <h2 className="text-base font-bold text-white">{k.title}</h2>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-white/65">{k.desc}</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold text-cobalt">
+                {k.source}
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+
       {/* Hizmet şeridi */}
       <div className="relative mt-auto overflow-hidden border-t border-white/10 py-4">
         <div className="marquee-track">
